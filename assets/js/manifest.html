@@ -1,6 +1,6 @@
 <html>
     <head>
-        <link rel="manifest" href="manifest.json" />
+        <link rel="manifest" href="js/manifest.json" />
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
 
@@ -9,7 +9,7 @@
         <script>
             window.onload=function() {
                 if('serviceWorker' in navigator) {
-                    navigator.serviceWorker.register("serviceWorker.js").then(function() {
+                    navigator.serviceWorker.register("js/serviceWorker.js").then(function() {
                         console.log("serviceWorker");
                     }).catch(function(error) {
                         console.log("errorr :"+error);
