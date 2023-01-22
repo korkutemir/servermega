@@ -5,7 +5,7 @@
         {
             "src":"eko.png",
             "type":"image/png",
-            "sizes":"192x192"
+            "sizes":"200x200"
         }
     ],
     "start_url":"manifest.html",
