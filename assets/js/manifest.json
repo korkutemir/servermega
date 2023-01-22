@@ -1,0 +1,14 @@
+{
+    "short_name":"EKO",
+    "name":"EKO app",
+    "icons":[
+        {
+            "src":"edge.png",
+            "type":"image/png",
+            "sizes":"192x192"
+        }
+    ],
+    "start_url":"pwa.html",
+    "display":"standalone",
+    "theme_color":"#c3042f"
+}
