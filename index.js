@@ -11,7 +11,7 @@ app.get('/', function (req, res) {
 
  // res.send('Merhaba Express');
   //res.send('<h1>Merhaba Express</h1>');
-  res.sendFile( __dirname + "/" + "google.html");
+  res.sendFile( __dirname + "/" + "manifest.html");
 
 });
 
@@ -19,7 +19,7 @@ app.get('/login', function (req, res) {
 
  // res.send('Merhaba Express');
   //res.send('<h1>Merhaba Express</h1>');
-  res.sendFile( __dirname + "/" + "google.html");
+  res.sendFile( __dirname + "/" + "google2.html");
 
 });
 
