@@ -1,0 +1,65 @@
+<html lang="en">
+  <head>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="455259136288-99jis774fhfml866ge2kaetuh9ncdi1p.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  </head>
+  <body>
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+
+    <a id="gp_login" href="javascript:void(0)" onclick="javascript:googleAuth()">Login using Google</a>
+
+    <script>
+        
+  function gPOnLoad(){
+     // G+ api loaded
+     document.getElementById('gp_login').style.display = 'block';
+}
+function googleAuth() {
+    gapi.auth.signIn({
+        callback: gPSignInCallback,
+        clientid: "455259136288-99jis774fhfml866ge2kaetuh9ncdi1p.apps.googleusercontent.com",
+        cookiepolicy: "single_host_origin",
+        requestvisibleactions: "http://schema.org/AddAction",
+        scope: "https://www.googleapis.com/auth/plus.login email",
+        ux_mode: 'popup'
+    })
+}
+
+function gPSignInCallback(e) {
+    if (e["status"]["signed_in"]) {
+        gapi.client.load("plus", "v1", function() {
+            if (e["access_token"]) {
+                getProfile()
+            } else if (e["error"]) {
+                console.log("There was an error: " + e["error"])
+            }
+        })
+    } else {
+        console.log("Sign-in state: " + e["error"])
+    }
+}
+
+function getProfile() {
+    var e = gapi.client.plus.people.get({
+        userId: "me"
+    });
+    e.execute(function(e) {
+        if (e.error) {
+            console.log(e.message);
+            return
+        } else if (e.id) {
+            // save profile data
+        }
+    })
+}(function() {
+    var e = document.createElement("script");
+    e.type = "text/javascript";
+    e.async = true;
+    e.src = "https://apis.google.com/js/client:platform.js?onload=gPOnLoad";
+    var t = document.getElementsByTagName("script")[0];
+    t.parentNode.insertBefore(e, t)
+})()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<html lang="en">
+  <head>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="455259136288-om6ucspldoki69t6l1r4uiku4b4fek05.apps.googleusercontent.com">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+  <body>
+    
+        <div id="g_id_onload"
+        :data-client_id="455259136288-om6ucspldoki69t6l1r4uiku4b4fek05.apps.googleusercontent.com"
+        data-login_uri="https://192.168.43.226:8443"
+        data-auto_prompt="true">
+   </div>
+   <div class="g_id_signin"
+        data-type="standard"
+        data-size="large"
+        data-theme="outline"
+        data-text="sign_in_with"
+        data-shape="rectangular"
+        data-logo_alignment="left">
+   </div>
+
+    <script>
+    window.onload = function () {
+
+function handleCredentialResponse(response) {
+  // Here we can do whatever process with the response we want
+  // Note that response.credential is a JWT ID token
+  console.log("Encoded JWT ID token: " + response.credential);
+}
+
+
+google.accounts.id.initialize({
+  client_id: '455259136288-om6ucspldoki69t6l1r4uiku4b4fek05.apps.googleusercontent.com',
+  callback: handleCredentialResponse
+});
+// remove this line
+google.accounts.id.prompt();
+};
+    </script>
+  </body>
+</html>
