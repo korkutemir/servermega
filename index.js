@@ -24,7 +24,7 @@ app.use(limiter);
 
 //app.use(express.static(`${__dirname}`));
 //app.use("/static", express.static(__dirname + "/nodejs"));
-app.use("/nodejs",express.static(path.join(__dirname + '/nodejs')));
+app.use(express.static(path.join(__dirname, "assets")));
 app.use(express.json());
 //app.use(express.urlencoded());
 app.use(express.urlencoded({ extended: false }));
