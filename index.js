@@ -2,25 +2,25 @@ var fs = require('fs');
 var path=require("path");
 var http = require('http');
 var https = require('https');
-var privateKey  = fs.readFileSync('openssl/private.key', 'utf8');
-var certificate = fs.readFileSync('openssl/selfsigned.crt', 'utf8');
+//var privateKey  = fs.readFileSync('openssl/private.key', 'utf8');
+//var certificate = fs.readFileSync('openssl/selfsigned.crt', 'utf8');
 
-var credentials = {key: privateKey, cert: certificate};
+//var credentials = {key: privateKey, cert: certificate};
 var express = require('express');
-var cors=require("cors");
-var helmet=require("helmet");
-var rateLimit=require("express-rate-limit");
+//var cors=require("cors");
+//var helmet=require("helmet");
+//var rateLimit=require("express-rate-limit");
 var app = express();
 
-const limiter = rateLimit({
+/*const limiter = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
 	max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
 	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-})
+})*/
 
 // Apply the rate limiting middleware to all requests
-app.use(limiter);
+//app.use(limiter);
 
 //app.use(express.static(`${__dirname}`));
 //app.use("/static", express.static(__dirname + "/nodejs"));
@@ -30,8 +30,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 //app.use(express.bodyParser());
 //app.use(cookieParser());
-app.use(cors());
-app.options('*', cors());
+//app.use(cors());
+//app.options('*', cors());
 //app.use(helmet());
 //app.use(helmet({ contentSecurityPolicy: false, crossOriginEmbedderPolicy: false }));
 /*app.use(helmet.xssFilter());
@@ -86,12 +86,12 @@ var corsOptions={
 //var ip_1=192.168+"."+56.1;
 // your express configuration here
 
-app.get('/about',cors(corsOptions),function(req,res) {
+/*app.get('/about',cors(corsOptions),function(req,res) {
     res.sendFile( __dirname + "/" + "earth.html");
     console.log(req.socket.remoteAddress+ ","+req.connection.remoteAddress);
     console.log(req.params.id+","+req.app.get('views')+","+req.baseUrl+","+req.hostname+","+req.protocol);
     
-}); 
+}); */
 
 app.get('/megagen',function(req,res,next) {
     res.sendFile( __dirname + "/uCard-Html" + "/index.html");
@@ -115,7 +115,9 @@ app.post("/send_server/:id",function(req,res) {
     console.log(req.body);
 
 const MongoClient = require('mongodb').MongoClient;
-const URL = 'mongodb://localhost:27017';
+//const URL = 'mongodb://localhost:27017';
+const URL = 'mongodb+srv://megagen:megagen07@cluster0.p6cbt1r.mongodb.net/?authSource=admin';
+
 
 
 MongoClient.connect(URL, (err, client) => {
@@ -166,7 +168,9 @@ app.get('/megagen2/:id',function(req,res,next) {
     
 
     const MongoClient = require('mongodb').MongoClient;
-    const URL = 'mongodb://localhost:27017';
+  //  const URL = 'mongodb://localhost:27017';
+    const URL = 'mongodb+srv://megagen:megagen07@cluster0.p6cbt1r.mongodb.net/?authSource=admin';
+
     
     if(req.query.membership=="pro") {
     
@@ -468,11 +472,11 @@ app.get('/notification', function(req, res) {
   });
 
 var httpServer = http.createServer(app);
-var httpsServer = https.createServer(credentials, app); 
+//var httpsServer = https.createServer(credentials, app); 
 
-httpsServer.listen(8443,ip_1,function() {
+/*httpsServer.listen(8443,ip_1,function() {
     console.log("server 8443");
-}); 
+}); */
 
 httpServer.listen(8080,ip_1,function() {
     console.log("server 8080");
