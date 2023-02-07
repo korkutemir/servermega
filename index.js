@@ -147,9 +147,7 @@ app.all("/delek/:id",function(req,res) {
   console.log(req.query);
 });
 
-var wiki=require("./wiki");
 
-//app.use("/wiki",wiki);
 
 app.get('/megagen2/:id',function(req,res,next) {
    // res.sendFile( __dirname + "/" + "pwa.html");
