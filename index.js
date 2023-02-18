@@ -42,7 +42,7 @@ app.use((req, res, next) => {
 
 
 app.get('/megagen',function(req,res,next) {
-    res.sendFile( __dirname + "/uCard-Html" + "/index.html");
+    res.sendFile( __dirname + "/google2.html");
    // res.download('eko.pdf');
 }); 
 
