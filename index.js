@@ -2,50 +2,19 @@ var fs = require('fs');
 var path=require("path");
 var http = require('http');
 var https = require('https');
-//var privateKey  = fs.readFileSync('openssl/private.key', 'utf8');
-//var certificate = fs.readFileSync('openssl/selfsigned.crt', 'utf8');
 
-//var credentials = {key: privateKey, cert: certificate};
 var express = require('express');
-//var cors=require("cors");
-//var helmet=require("helmet");
-//var rateLimit=require("express-rate-limit");
+
 var app = express();
 
-/*const limiter = rateLimit({
-	windowMs: 15 * 60 * 1000, // 15 minutes
-	max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
-	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-})*/
-
-// Apply the rate limiting middleware to all requests
-//app.use(limiter);
 
 //app.use(express.static(`${__dirname}`));
 //app.use("/static", express.static(__dirname + "/nodejs"));
 app.use(express.static(path.join(__dirname, "assets")));
 app.use(express.json());
-//app.use(express.urlencoded());
+
 app.use(express.urlencoded({ extended: false }));
-//app.use(express.bodyParser());
-//app.use(cookieParser());
-//app.use(cors());
-//app.options('*', cors());
-//app.use(helmet());
-//app.use(helmet({ contentSecurityPolicy: false, crossOriginEmbedderPolicy: false }));
-/*app.use(helmet.xssFilter());
-app.use(helmet.referrerPolicy());
-app.use(helmet.permittedCrossDomainPolicies());
-app.use(helmet.originAgentCluster());
-app.use(helmet.noSniff());
-app.use(helmet.ieNoOpen());
-app.use(helmet.hsts());
-app.use(helmet.hidePoweredBy());
-app.use(helmet.frameguard());
-app.use(helmet.expectCt());
-app.use(helmet.dnsPrefetchControl());
-app.use(helmet.contentSecurityPolicy()); */
+
 
 app.use(function (req, res, next) {
     res.setHeader(
@@ -68,30 +37,9 @@ app.use((req, res, next) => {
   });
   
 
-var whitelist = ['http://192.168.1.166:8080', 'https://192.168.1.166:8443']
-/*var corsOptions = {
-     origin: (origin, callback) => {
-          if (whitelist.indexOf(origin) !== -1)
-               callback(null, true);
-          else
-              // callback(new Error("! ! !"));
-              callback(null,true);
-     }
-} */
 
-var corsOptions={
-    origin:'*'
-}
-//var ip_1=192.168+"."+43.114;
-//var ip_1=192.168+"."+56.1;
-// your express configuration here
 
-/*app.get('/about',cors(corsOptions),function(req,res) {
-    res.sendFile( __dirname + "/" + "earth.html");
-    console.log(req.socket.remoteAddress+ ","+req.connection.remoteAddress);
-    console.log(req.params.id+","+req.app.get('views')+","+req.baseUrl+","+req.hostname+","+req.protocol);
-    
-}); */
+
 
 app.get('/megagen',function(req,res,next) {
     res.sendFile( __dirname + "/uCard-Html" + "/index.html");
@@ -476,7 +424,7 @@ var httpServer = http.createServer(app);
     console.log("server 8443");
 }); */
 
-httpServer.listen(8080,ip_1,function() {
+httpServer.listen(8080,function() {
     console.log("server 8080");
 });
 
