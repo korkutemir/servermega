@@ -4,8 +4,6 @@ var http = require('http');
 var https = require('https');
 
 var express = require('express');
-const fileUpload = require('express-fileupload');
-
 
 var app = express();
 
@@ -14,9 +12,6 @@ var app = express();
 //app.use("/static", express.static(__dirname + "/nodejs"));
 app.use(express.static(path.join(__dirname, "assets")));
 app.use(express.json());
-
-app.use(fileUpload());
-
 
 app.use(express.urlencoded({ extended: false }));
 
@@ -42,26 +37,7 @@ app.use((req, res, next) => {
   });
   
 
-app.post('/upload', function(req, res) {
-  let sampleFile;
-  let uploadPath;
 
-  if (!req.files || Object.keys(req.files).length === 0) {
-    return res.status(400).send('No files were uploaded.');
-  }
-
-  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-  sampleFile = req.files.sampleFile;
-  uploadPath = __dirname + '/images/' + sampleFile.name;
-
-  // Use the mv() method to place the file somewhere on your server
-  sampleFile.mv(uploadPath, function(err) {
-    if (err)
-      return res.status(500).send(err);
-
-    res.send('File uploaded!');
-  });
-});
 
 
 
@@ -255,7 +231,7 @@ app.get('/megagen2/:id',function(req,res,next) {
          //  res.send({dizin_1,dizin_2});
           });
 
-          db.collection('st').find(sorgu_free, { projection: { _id: 0 } }).toArray(async (err, result) => {
+          db.collection('st').find(sorgu_free, { projection: { _id: 0 } }).toArray((err, result) => {
             if (err) throw err;
             console.log(result);
         
@@ -263,7 +239,7 @@ app.get('/megagen2/:id',function(req,res,next) {
         
            // client.close();
 
-          await dizin_3.push(result);
+           dizin_3.push(result);
 
            res.send({dizin_1,dizin_2,dizin_3});
           });
@@ -357,7 +333,7 @@ app.get('/megagen2/:id',function(req,res,next) {
     
                dizin_3.push(result);
   
-              res.send({dizin_1,dizin_2,dizin_3});
+               res.send({dizin_1,dizin_2,dizin_3});
               });
   
           
@@ -411,14 +387,14 @@ app.get('/megagen2/:id',function(req,res,next) {
             
                // client.close();
     
-             dizin_3.push(result);
+               dizin_3.push(result);
   
                res.send({dizin_1,dizin_2,dizin_3});
               });
        
   
    
-    
+  
           
           
           }); 
@@ -432,77 +408,6 @@ app.get('/megagen2/:id',function(req,res,next) {
        res.send("null");
    }
 }); 
-
-
-app.post("/send_server2/:id",function(req,res) {
-  // res.send({korkut:"emir"});
-   console.log(req.body);
-
-const MongoClient = require('mongodb').MongoClient;
-//const URL = 'mongodb://localhost:27017';
- const URL = 'mongodb+srv://megagen:megagen07@cluster0.p6cbt1r.mongodb.net/?authSource=admin';
-
-
-MongoClient.connect(URL, (err, client) => {
- if (err) throw err;
-
- const db = client.db('megagen');
-
-
-  var veriler_3=[req.body];
-
-  console.log(req.body.group);
-
-  
-
- db.collection(req.body.group).insertMany(veriler_3, (err, result) => {
-   if (err) throw err;
-   console.log(result.insertedCount + ' kayıt eklendi.');
-  // client.close();
- });
-
-});
-
-   
- 
-});
-
-
-app.post("/delete_server2/:id",function(req,res) {
-    // res.send({korkut:"emir"});
-     console.log(req.body);
-     console.log(new Date().toLocaleTimeString());
-  
-  
-     const MongoClient = require('mongodb').MongoClient;
-//const URL = 'mongodb://localhost:27017';
- const URL = 'mongodb+srv://megagen:megagen07@cluster0.p6cbt1r.mongodb.net/?authSource=admin';
-
-
-MongoClient.connect(URL, (err, client) => {
- if (err) throw err;
-
- const db = client.db('megagen');
-
-
-  var veriler_3=[req.body];
-
-  console.log(req.body.group);
-
-  for(var i=1;i<=veriler_3.length;i++) {
-      console.log(i);
-  }
-
- db.collection(req.body.group).deleteOne(req.body, (err, result) => {
-   if (err) throw err;
-   console.log(' model deleted.');
-  // client.close();
- });
-
-});
-   
-  });
-
 
 app.get('/notification', function(req, res) {
     const date = new Date();
