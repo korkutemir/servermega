@@ -18,6 +18,8 @@ app.use(express.json());
 app.use(fileUpload());
 
 
+
+
 app.use(express.urlencoded({ extended: false }));
 
 
@@ -36,6 +38,14 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", 'http://localhost:8080');
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+    next();
+  });
+
 app.use((req, res, next) => {
     res.setHeader('X-Content-Type-Options', 'nosniff');
     next();
@@ -52,7 +62,7 @@ app.post('/upload', function(req, res) {
 
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
   sampleFile = req.files.sampleFile;
-  uploadPath = __dirname + '/images/' + sampleFile.name;
+  uploadPath = 'https://localhost:8080/js/images/' + sampleFile.name;
 
   // Use the mv() method to place the file somewhere on your server
   sampleFile.mv(uploadPath, function(err) {
@@ -66,7 +76,7 @@ app.post('/upload', function(req, res) {
 
 
 app.get('/megagen',function(req,res,next) {
-    res.sendFile( __dirname + "/google2.html");
+    res.sendFile( __dirname + "/www/index.html");
    // res.download('eko.pdf');
 }); 
 
