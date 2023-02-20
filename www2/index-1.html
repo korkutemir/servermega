@@ -1,0 +1,1211 @@
+<!doctype html>
+<html class="sidebar-left-big-icons">
+
+<head>
+
+	<!-- Basic -->
+	<meta charset="UTF-8">
+
+	<title></title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Mobile Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>Kullanıcılar</title>
+	
+	<!-- Vendor CSS -->
+	<link rel="stylesheet" href="porto/vendor/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" href="porto/vendor/animate/animate.compat.css">
+	<link rel="stylesheet" href="porto/vendor/font-awesome/css/all.min.css" />
+	<link rel="stylesheet" href="porto/vendor/boxicons/css/boxicons.min.css" />
+	<link rel="stylesheet" href="porto/vendor/magnific-popup/magnific-popup.css" />
+	<link rel="stylesheet" href="porto/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css" />
+	<link rel="stylesheet" href="porto/vendor/jquery-ui/jquery-ui.css" />
+	<link rel="stylesheet" href="porto/vendor/jquery-ui/jquery-ui.theme.css" />
+	<link rel="stylesheet" href="porto/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" />
+	<link rel="stylesheet" href="porto/vendor/morris/morris.css" />
+	<link rel="stylesheet" href="porto/vendor/iziTots/css/iziToast.min.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" href="porto/css/theme.css" />
+
+	<!-- Skin CSS -->
+	<link rel="stylesheet" href="porto/css/skins/default.css" />
+
+	<!-- Theme Custom CSS -->
+	<link rel="stylesheet" href="porto/css/custom.css">
+
+	<!-- Head Libs -->
+	<script src="porto/vendor/modernizr/modernizr.js"></script>
+
+	<style>
+		.dataTables_empty {
+			display: none !important;
+		}
+
+		.header {
+			position: fixed;
+			z-index: 10000 !important;
+		}
+	::-webkit-scrollbar {
+		display: none;
+	}
+
+	#img1 {
+		position: absolute!important;
+		top:-3px;
+		left: 0;
+		height:63px ;
+		width: 152px;
+		margin:0 !important;
+	}
+
+	#ModalAdd {
+		z-index: 100000 !important;
+	}
+
+	#ModalDelete {
+		z-index: 100000 !important;
+	}
+	</style>
+
+</head>
+
+<body>
+
+	<script>
+		window.onload=function() {
+
+			var tbody=document.getElementById("tbody1");
+			var info=document.getElementById("datatable_info");
+			var counter=0;
+			model_delete_array=[];
+			
+
+function model_load() {
+                var request=new XMLHttpRequest();
+
+request.onload=function(response) {
+    var respons1=JSON.parse(request.responseText);
+    console.log(respons1);
+
+    for(var t=1;t<=respons1.dizin_1.length;t++) {
+        for(var k=1;k<=respons1.dizin_1[t-1].length;k++) {
+            console.log(respons1.dizin_1[t-1][k-1].name);
+			counter+=1;
+
+var model_array={
+	name:respons1.dizin_1[t-1][k-1].name,
+	group:"anyridge",
+	category:respons1.dizin_1[t-1][k-1].category,
+	image_url:respons1.dizin_1[t-1][k-1].image_url,
+	object_id:respons1.dizin_1[t-1][k-1].object_id
+}
+
+	var tr1=document.createElement("tr");
+	tr1.setAttribute("role","row");
+	tr1.setAttribute("class","odd");
+	var td1=document.createElement("td");
+	td1.setAttribute("width","30");
+	tr1.appendChild(td1);
+	var td_input=document.createElement("input");
+	td_input.setAttribute("type","checkbox");
+	td_input.setAttribute("name","checkboxRow1");
+	td_input.setAttribute("class","checkbox-style-1 p-relative top-2");
+	td_input.setAttribute("value","");
+	td_input.setAttribute("id","checkid");
+	td_input.setAttribute("model-name",respons1.dizin_1[t-1][k-1].name);
+	td_input.setAttribute("model-category",respons1.dizin_1[t-1][k-1].category);
+	td_input.setAttribute("model-group","anyridge");
+	td_input.setAttribute("model-image",respons1.dizin_1[t-1][k-1].image_url);
+	td_input.setAttribute("model-id",respons1.dizin_1[t-1][k-1].object_id);
+	td1.appendChild(td_input);
+	var td2=document.createElement("td");
+	td2.innerHTML=respons1.dizin_1[t-1][k-1].name;
+	tr1.appendChild(td2);
+	var td3=document.createElement("td");
+	td3.innerHTML="AnyRidge";
+	tr1.appendChild(td3);
+	var td4=document.createElement("td");
+	td4.innerHTML=respons1.dizin_1[t-1][k-1].category;
+	tr1.appendChild(td4);
+	var td5=document.createElement("td");
+	td5.innerHTML=respons1.dizin_1[t-1][k-1].image_url;
+	tr1.appendChild(td5);
+	var td6=document.createElement("td");
+	td6.innerHTML=respons1.dizin_1[t-1][k-1].object_id;
+	tr1.appendChild(td6);
+	tbody.appendChild(tr1);
+
+
+    }
+    }
+
+      for(var t=1;t<=respons1.dizin_2.length;t++) {
+        for(var k=1;k<=respons1.dizin_2[t-1].length;k++) {
+            console.log(respons1.dizin_2[t-1][k-1].name);
+counter+=1;
+
+			var tr2=document.createElement("tr");
+	tr2.setAttribute("role","row");
+	tr2.setAttribute("class","odd");
+	var td1_2=document.createElement("td");
+	td1_2.setAttribute("width","30");
+	tr2.appendChild(td1_2);
+	var td2_input=document.createElement("input");
+	td2_input.setAttribute("type","checkbox");
+	td2_input.setAttribute("name","checkboxRow1");
+	td2_input.setAttribute("class","checkbox-style-1 p-relative top-2");
+	td2_input.setAttribute("value","");
+	td2_input.setAttribute("id","checkid");
+	td2_input.setAttribute("model-name",respons1.dizin_2[t-1][k-1].name);
+	td2_input.setAttribute("model-category",respons1.dizin_2[t-1][k-1].category);
+	td2_input.setAttribute("model-group","anyone");
+	td2_input.setAttribute("model-image",respons1.dizin_2[t-1][k-1].image_url);
+	td2_input.setAttribute("model-id",respons1.dizin_2[t-1][k-1].object_id);
+	td1_2.appendChild(td2_input);
+	var td2_2=document.createElement("td");
+	td2_2.innerHTML=respons1.dizin_2[t-1][k-1].name;
+	tr2.appendChild(td2_2);
+	var td3_2=document.createElement("td");
+	td3_2.innerHTML="AnyOne";
+	tr2.appendChild(td3_2);
+	var td4_2=document.createElement("td");
+	td4_2.innerHTML=respons1.dizin_2[t-1][k-1].category;
+	tr2.appendChild(td4_2);
+	var td5_2=document.createElement("td");
+	td5_2.innerHTML=respons1.dizin_2[t-1][k-1].image_url;
+	tr2.appendChild(td5_2);
+	var td6_2=document.createElement("td");
+	td6_2.innerHTML=respons1.dizin_2[t-1][k-1].object_id;
+	tr2.appendChild(td6_2);
+	tbody.appendChild(tr2);
+    }
+    }
+
+      for(var t=1;t<=respons1.dizin_3.length;t++) {
+        for(var k=1;k<=respons1.dizin_3[t-1].length;k++) {
+            console.log(respons1.dizin_3[t-1][k-1].name);
+counter+=1;
+       
+	   var tr3=document.createElement("tr");
+	tr3.setAttribute("role","row");
+	tr3.setAttribute("class","odd");
+	var td1_3=document.createElement("td");
+	td1_3.setAttribute("width","30");
+	tr3.appendChild(td1_3);
+	var td3_input=document.createElement("input");
+	td3_input.setAttribute("type","checkbox");
+	td3_input.setAttribute("name","checkboxRow1");
+	td3_input.setAttribute("class","checkbox-style-1 p-relative top-2");
+	td3_input.setAttribute("value","");
+	td3_input.setAttribute("id","checkid");
+	td3_input.setAttribute("model-name",respons1.dizin_3[t-1][k-1].name);
+	td3_input.setAttribute("model-category",respons1.dizin_3[t-1][k-1].category);
+	td3_input.setAttribute("model-group","st");
+	td3_input.setAttribute("model-image",respons1.dizin_3[t-1][k-1].image_url);
+	td3_input.setAttribute("model-id",respons1.dizin_3[t-1][k-1].object_id);
+	td1_3.appendChild(td3_input);
+	var td2_3=document.createElement("td");
+	td2_3.innerHTML=respons1.dizin_3[t-1][k-1].name;
+	tr3.appendChild(td2_3);
+	var td3_3=document.createElement("td");
+	td3_3.innerHTML="ST";
+	tr3.appendChild(td3_3);
+	var td4_3=document.createElement("td");
+	td4_3.innerHTML=respons1.dizin_3[t-1][k-1].category;
+	tr3.appendChild(td4_3);
+	var td5_3=document.createElement("td");
+	td5_3.innerHTML=respons1.dizin_3[t-1][k-1].image_url;
+	tr3.appendChild(td5_3);
+	var td6_3=document.createElement("td");
+	td6_3.innerHTML=respons1.dizin_3[t-1][k-1].object_id;
+	tr3.appendChild(td6_3);
+	tbody.appendChild(tr3);
+
+    }
+    }
+
+   // console.log(respons1.dizin_1[0][0].name);
+	console.log(Object.keys(respons1.dizin_1).length);
+
+
+ 
+
+}
+
+request.onloadend=function() {
+	document.querySelectorAll("[id=checkid]").forEach(function(elements) {
+		elements.onchange=function() {
+			if(this.checked==true) { 
+			var model_array=JSON.stringify({
+	name:this.getAttribute("model-name"),
+	group:this.getAttribute("model-group"),
+	category:this.getAttribute("model-category"),
+	image_url:this.getAttribute("model-image"),
+	object_id:this.getAttribute("model-id")
+});
+console.log(model_array);
+
+model_delete_array.push(model_array);
+console.log(model_delete_array);
+console.log(JSON.parse(model_delete_array[0]).group);
+var b1=model_delete_array.findIndex(obj => JSON.parse(obj).group=="st");
+console.log(b1);
+
+
+/*Array.prototype.getIndexOf = function(el) {
+
+var arr = this;
+
+for (var i=0; i<arr.length; i++){
+   console.log(model_delete_array[0].group);
+   if(arr[i].group==el){
+	 return i;
+   }
+   
+}
+
+return -1;
+
+}
+
+alert(model_delete_array.getIndexOf("st")); */
+
+
+
+for(var i3=1;i3<=model_delete_array.lengt;i3++) {
+	if(model_delete_array[i-1]==JSON.stringify({"name":"Implant System","group":"st","category":"…","object_id":"ae7c279228e549ed9c38311539667f5e"})) {
+		alert("eko");
+	}
+}
+}
+	else {
+
+				var model_array=JSON.stringify({
+	name:this.getAttribute("model-name"),
+	group:this.getAttribute("model-group"),
+	category:this.getAttribute("model-category"),
+	image_url:this.getAttribute("model-image"),
+	object_id:this.getAttribute("model-id")
+});
+console.log(JSON.parse(model_array).name);
+var b1=model_delete_array.findIndex(obj => JSON.parse(obj).name==JSON.parse(model_array).name && JSON.parse(obj).object_id==JSON.parse(model_array).object_id && JSON.parse(obj).group==JSON.parse(model_array).group);
+console.log(b1);
+model_delete_array.splice(b1,1);
+console.log(model_delete_array);
+	}
+		}
+	});
+
+
+
+
+
+
+(function ($) {
+    'use strict';
+    var ecommerceListDataTableInit = function () {
+
+        var $ecommerceListTable = $('#datatable');
+
+        $ecommerceListTable.dataTable({
+            dom: '<"row justify-content-between"<"col-auto"><"col-auto">><"table-responsive"t>ip',
+            columnDefs: [
+                {
+                    targets: 0,
+                    orderable: false
+                }
+            ],
+            pageLength: 10,
+            order: [],
+            language: {
+              //  "emptyTable": "Tabloda herhangi bir veri mevcut değil",
+                "info": "_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor",
+               // "infoEmpty": "Kayıt yok",
+                "infoFiltered": "(_MAX_ kayıt içerisinden bulunan)",
+                "infoThousands": ".",
+                "lengthMenu": "Sayfada _MENU_ kayıt göster",
+                "loadingRecords": "Yükleniyor...",
+                "processing": "İşleniyor...",
+                "search": "Ara:",
+               // "zeroRecords": "Eşleşen kayıt bulunamadı",
+                "paginate": {
+                    "first": "İlk",
+                    "last": "Son",
+                    "next": "Sonraki",
+                    "previous": "Önceki"
+                },
+                "aria": {
+                    "sortAscending": ": artan sütun sıralamasını aktifleştir",
+                    "sortDescending": ": azalan sütun sıralamasını aktifleştir"
+                },
+                "select": {
+                    "rows": {
+                        "_": "%d kayıt seçildi",
+                        "1": "1 kayıt seçildi"
+                    },
+                    "cells": {
+                        "1": "1 hücre seçildi",
+                        "_": "%d hücre seçildi"
+                    },
+                    "columns": {
+                        "1": "1 sütun seçildi",
+                        "_": "%d sütun seçildi"
+                    }
+                },
+                "autoFill": {
+                    "cancel": "İptal",
+                    "fillHorizontal": "Hücreleri yatay olarak doldur",
+                    "fillVertical": "Hücreleri dikey olarak doldur",
+                    "fill": "Bütün hücreleri <i>%d<\/i> ile doldur"
+                },
+                "buttons": {
+                    "collection": "Koleksiyon <span class=\"ui-button-icon-primary ui-icon ui-icon-triangle-1-s\"><\/span>",
+                    "colvis": "Sütun görünürlüğü",
+                    "colvisRestore": "Görünürlüğü eski haline getir",
+                    "copySuccess": {
+                        "1": "1 satır panoya kopyalandı",
+                        "_": "%ds satır panoya kopyalandı"
+                    },
+                    "copyTitle": "Panoya kopyala",
+                    "csv": "CSV",
+                    "excel": "Excel",
+                    "pageLength": {
+                        "-1": "Bütün satırları göster",
+                        "_": "%d satır göster"
+                    },
+                    "pdf": "PDF",
+                    "print": "Yazdır",
+                    "copy": "Kopyala",
+                    "copyKeys": "Tablodaki veriyi kopyalamak için CTRL veya u2318 + C tuşlarına basınız. İptal etmek için bu mesaja tıklayın veya escape tuşuna basın.",
+                    "createState": "Şuanki Görünümü Kaydet",
+                    "removeAllStates": "Tüm Görünümleri Sil",
+                    "removeState": "Aktif Görünümü Sil",
+                    "renameState": "Aktif Görünümün Adını Değiştir",
+                    "savedStates": "Kaydedilmiş Görünümler",
+                    "stateRestore": "Görünüm -&gt; %d",
+                    "updateState": "Aktif Görünümün Güncelle"
+                },
+                "searchBuilder": {
+                    "add": "Koşul Ekle",
+                    "button": {
+                        "0": "Arama Oluşturucu",
+                        "_": "Arama Oluşturucu (%d)"
+                    },
+                    "condition": "Koşul",
+                    "conditions": {
+                        "date": {
+                            "after": "Sonra",
+                            "before": "Önce",
+                            "between": "Arasında",
+                            "empty": "Boş",
+                            "equals": "Eşittir",
+                            "not": "Değildir",
+                            "notBetween": "Dışında",
+                            "notEmpty": "Dolu"
+                        },
+                        "number": {
+                            "between": "Arasında",
+                            "empty": "Boş",
+                            "equals": "Eşittir",
+                            "gt": "Büyüktür",
+                            "gte": "Büyük eşittir",
+                            "lt": "Küçüktür",
+                            "lte": "Küçük eşittir",
+                            "not": "Değildir",
+                            "notBetween": "Dışında",
+                            "notEmpty": "Dolu"
+                        },
+                        "string": {
+                            "contains": "İçerir",
+                            "empty": "Boş",
+                            "endsWith": "İle biter",
+                            "equals": "Eşittir",
+                            "not": "Değildir",
+                            "notEmpty": "Dolu",
+                            "startsWith": "İle başlar",
+                            "notContains": "İçermeyen",
+                            "notStartsWith": "Başlamayan",
+                            "notEndsWith": "Bitmeyen"
+                        },
+                        "array": {
+                            "contains": "İçerir",
+                            "empty": "Boş",
+                            "equals": "Eşittir",
+                            "not": "Değildir",
+                            "notEmpty": "Dolu",
+                            "without": "Hariç"
+                        }
+                    },
+                    "data": "Veri",
+                    "deleteTitle": "Filtreleme kuralını silin",
+                    "leftTitle": "Kriteri dışarı çıkart",
+                    "logicAnd": "ve",
+                    "logicOr": "veya",
+                    "rightTitle": "Kriteri içeri al",
+                    "title": {
+                        "0": "Arama Oluşturucu",
+                        "_": "Arama Oluşturucu (%d)"
+                    },
+                    "value": "Değer",
+                    "clearAll": "Filtreleri Temizle"
+                },
+                "searchPanes": {
+                    "clearMessage": "Hepsini Temizle",
+                    "collapse": {
+                        "0": "Arama Bölmesi",
+                        "_": "Arama Bölmesi (%d)"
+                    },
+                    "count": "{total}",
+                    "countFiltered": "{shown}\/{total}",
+                    "emptyPanes": "Arama Bölmesi yok",
+                    "loadMessage": "Arama Bölmeleri yükleniyor ...",
+                    "title": "Etkin filtreler - %d",
+                    "showMessage": "Tümünü Göster",
+                    "collapseMessage": "Tümünü Gizle"
+                },
+                "thousands": ".",
+                "datetime": {
+                    "amPm": [
+                        "öö",
+                        "ös"
+                    ],
+                    "hours": "Saat",
+                    "minutes": "Dakika",
+                    "next": "Sonraki",
+                    "previous": "Önceki",
+                    "seconds": "Saniye",
+                    "unknown": "Bilinmeyen",
+                    "weekdays": {
+                        "6": "Paz",
+                        "5": "Cmt",
+                        "4": "Cum",
+                        "3": "Per",
+                        "2": "Çar",
+                        "1": "Sal",
+                        "0": "Pzt"
+                    },
+                    "months": {
+                        "9": "Ekim",
+                        "8": "Eylül",
+                        "7": "Ağustos",
+                        "6": "Temmuz",
+                        "5": "Haziran",
+                        "4": "Mayıs",
+                        "3": "Nisan",
+                        "2": "Mart",
+                        "11": "Aralık",
+                        "10": "Kasım",
+                        "1": "Şubat",
+                        "0": "Ocak"
+                    }
+                },
+                "decimal": ",",
+                "editor": {
+                    "close": "Kapat",
+                    "create": {
+                        "button": "Yeni",
+                        "submit": "Kaydet",
+                        "title": "Yeni kayıt oluştur"
+                    },
+                    "edit": {
+                        "button": "Düzenle",
+                        "submit": "Güncelle",
+                        "title": "Kaydı düzenle"
+                    },
+                    "error": {
+                        "system": "Bir sistem hatası oluştu (Ayrıntılı bilgi)"
+                    },
+                    "multi": {
+                        "info": "Seçili kayıtlar bu alanda farklı değerler içeriyor. Seçili kayıtların hepsinde bu alana aynı değeri atamak için buraya tıklayın; aksi halde her kayıt bu alanda kendi değerini koruyacak.",
+                        "noMulti": "Bu alan bir grup olarak değil ancak tekil olarak düzenlenebilir.",
+                        "restore": "Değişiklikleri geri al",
+                        "title": "Çoklu değer"
+                    },
+                    "remove": {
+                        "button": "Sil",
+                        "confirm": {
+                            "_": "%d adet kaydı silmek istediğinize emin misiniz?",
+                            "1": "Bu kaydı silmek istediğinizden emin misiniz?"
+                        },
+                        "submit": "Sil",
+                        "title": "Kayıtları sil"
+                    }
+                },
+                "stateRestore": {
+                    "creationModal": {
+                        "button": "Kaydet",
+                        "columns": {
+                            "search": "Kolon Araması",
+                            "visible": "Kolon Görünümü"
+                        },
+                        "name": "Görünüm İsmi",
+                        "order": "Sıralama",
+                        "paging": "Sayfalama",
+                        "scroller": "Kaydırma (Scrool)",
+                        "search": "Arama",
+                        "searchBuilder": "Arama Oluşturucu",
+                        "select": "Seçimler",
+                        "title": "Yeni Görünüm Oluştur",
+                        "toggleLabel": "Kaydedilecek Olanlar"
+                    },
+                    "duplicateError": "Bu Görünüm Daha Önce Tanımlanmış",
+                    "emptyError": "Görünüm Boş Olamaz",
+                    "emptyStates": "Herhangi Bir Görünüm Yok",
+                    "removeConfirm": "Görünümü Silmek İstediğinize Eminminisiniz?",
+                    "removeError": "Görünüm Silinemedi",
+                    "removeJoiner": "ve",
+                    "removeSubmit": "Sil",
+                    "removeTitle": "Görünüm Sil",
+                    "renameButton": "Değiştir",
+                    "renameLabel": "Görünüme Yeni İsim Ver -&gt; %s:",
+                    "renameTitle": "Görünüm İsmini Değiştir"
+                },
+                paginate: {
+                    previous: '<i class="fas fa-chevron-left"></i>',
+                    next: '<i class="fas fa-chevron-right"></i>'
+                }
+            },
+            //end 
+            drawCallback: function () {
+
+                // Move dataTables info to footer of table
+                $ecommerceListTable
+                    .closest('.dataTables_wrapper')
+                    .find('.dataTables_info')
+                    .appendTo($ecommerceListTable.closest('.datatables-header-footer-wrapper').find('.results-info-wrapper'));
+
+                // Move dataTables pagination to footer of table
+                $ecommerceListTable
+                    .closest('.dataTables_wrapper')
+                    .find('.dataTables_paginate')
+                    .appendTo($ecommerceListTable.closest('.datatables-header-footer-wrapper').find('.pagination-wrapper'));
+
+                $ecommerceListTable.closest('.datatables-header-footer-wrapper').find('.pagination').addClass('pagination-modern pagination-modern-spacing justify-content-center');
+
+            }
+        });
+        // Link "Show" select for change the "pageLength" of dataTable
+        $(document).on('change', '.results-per-page', function () {
+            var $this = $(this),
+                $dataTable = $this.closest('.datatables-header-footer-wrapper').find('.dataTable').DataTable();
+
+            $dataTable.page.len($this.val()).draw();
+        });
+        // Link "Search" field to show results based in the term entered (the "Filter By" is considered to filter the results)
+        $(document).on('keyup', '.search-term', function () {
+            var $this = $(this),
+                $filterBy = $this.closest('.datatables-header-footer-wrapper').find('.filter-by'),
+                $dataTable = $this.closest('.datatables-header-footer-wrapper').find('.dataTable').DataTable();
+
+            if ($filterBy.val() == 'all') {
+                $dataTable.search($this.val()).draw();
+                alert($this.val().draw());
+            } else {
+                $dataTable.column(parseInt($filterBy.val())).search($this.val()).draw();
+            }
+        }); 
+
+        // Trigger "keyup" event when "filter-by" changes
+        $(document).on('change', '.filter-by', function () {
+            var $this = $(this),
+                $searchField = $this.closest('.datatables-header-footer-wrapper').find('.search-term');
+
+            $searchField.trigger('keyup');
+        });
+        // Select All
+        $ecommerceListTable.find('.select-all').on('change', function () {
+            if (this.checked) {
+                $ecommerceListTable.find('input[type="checkbox"]:not(.select-all)').prop('checked', true);
+            } else {
+                $ecommerceListTable.find('input[type="checkbox"]:not(.select-all)').prop('checked', false);
+            }
+        })
+    };
+    ecommerceListDataTableInit();
+}(jQuery));
+
+
+$(document).on('click', '[data-bs-dismiss="modal"]', function(){
+   model_delete_array=[];
+   document.getElementById("select-all-send").checked=false;
+});
+
+
+
+iziToast.settings({
+    timeout: 3000, // default timeout
+    resetOnHover: true,
+    // icon: '', // icon class
+    transitionIn: 'flipInX',
+    transitionOut: 'flipOutX',
+    position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter, center
+    onOpen: function () {
+        console.log('callback abriu!');
+    },
+    onClose: function () {
+        console.log("callback fechou!");
+    }
+});
+
+
+function showSuccessToast() {
+    $('#ModalAdd').modal('hide');
+
+    iziToast.success({ 
+        timeout: 5000,
+        icon: 'fas fa-check',
+        title: 'Eklendi',
+        message: 'İşlem başarılı bir şekilde gerçekleşti!'
+    });
+}
+
+function showUpdateToast() {
+    $('#ModalEdit').modal('hide');
+
+    iziToast.success({ 
+        timeout: 5000,
+        icon: 'fas fa-check',
+        title: 'Güncellendi',
+        message: 'İşlem başarılı bir şekilde gerçekleşti!'
+    });
+}
+function showDeleteToast() {
+    $('#ModalDelete').modal('hide');
+
+    iziToast.success({ 
+        timeout: 5000,
+        icon: 'fas fa-check',
+        title: 'Silindi',
+        message: 'İşlem başarılı bir şekilde gerçekleşti!'
+    });
+}
+
+function showErrorToast() {
+    iziToast.error({ 
+        timeout: 5000,
+        icon: 'fas fa-times',
+        title: 'Hata',
+        message: 'İşlem başarısız oldu!'
+    });
+}
+
+
+
+
+/*$(document).on('click', '[data-bs-toggle="modal"]', function(){
+   alert("ewekj");
+});*/
+
+document.getElementById("ModalDelete").onclick=function() {
+	model_delete_array=[];
+
+		document.querySelectorAll("[id=checkid]").forEach(function(elements) {
+		elements.checked=false;
+});
+
+document.getElementById("select-all-send").checked=false;
+}
+
+document.getElementById("ModalAdd").onclick=function() {
+	model_delete_array=[];
+
+		document.querySelectorAll("[id=checkid]").forEach(function(elements) {
+		elements.checked=false;
+});
+
+document.getElementById("select-all-send").checked=false;
+}
+
+}
+
+request.open("GET","https://mega.cyclic.app/megagen2/megagen_id?membership=pro",true);
+request.send(null);
+			};
+			
+			model_load();
+           
+
+var txtMail=document.getElementById("txtMail");
+var txtAuthority=document.getElementById("txtAuthority");
+var txtAuthority2=document.getElementById("txtAuthority2");
+var txtMail2=document.getElementById("txtMail2");
+var txtMail3=document.getElementById("txtMail3");
+
+
+
+
+
+            document.getElementById("send_server").onclick=function() {
+
+console.log(txtMail.value);
+console.log(txtMail2.value);
+console.log(txtMail3.value); 
+console.log(txtAuthority.value);
+console.log(txtAuthority2.value);
+
+
+
+
+  var send_server1=new XMLHttpRequest();
+
+ send_server1.open("POST","https://mega.cyclic.app/send_server2/megagen_server?server",true);
+ send_server1.setRequestHeader( "Content-Type", "application/json" );
+//   var data1 = JSON.stringify({"name_surname":"","email": "hey@mail.com", "password": "101010"});
+ var data1 = JSON.stringify({"name":txtMail.value,"group":txtAuthority.value,"category":txtAuthority2.value,"image_url":txtMail2.value,"object_id":txtMail3.value,"membership":"pro"});
+ send_server1.send(data1);
+
+    $('#ModalAdd').modal('hide');
+
+iziToast.success({ 
+	timeout: 3000,
+	icon: 'fas fa-check',
+	title: 'Eklendi',
+	message: 'İşlem başarılı bir şekilde gerçekleşti!'
+});
+
+window.setInterval(function() {
+window.location.reload();
+},3000);
+
+}
+
+document.getElementById("delete1").onclick=function() {
+
+
+if(model_delete_array.length !==0) {
+
+//var send_servert=new XMLHttpRequest();
+
+//send_servert.open("POST","http://192.168.146.1:8080/delete_server2/megagen_server?server",true);
+//send_servert.setRequestHeader( "Content-Type", "application/json" );
+//send_servert.setRequestHeader('Content-length',"2");
+
+
+ for(var i=1;i<=model_delete_array.length;i++) {
+	 console.log(i);
+	 var send_servert=new XMLHttpRequest();
+	 send_servert.open("POST","https://mega.cyclic.app/delete_server2/megagen_server?server",true);
+send_servert.setRequestHeader( "Content-Type", "application/json" );
+	send_servert.send(model_delete_array[i-1]);
+} 
+
+
+
+//send_servert.send(model_delete_array[0]);
+
+//send_server1.send(null);
+
+ $('#ModalDelete').modal('hide');
+
+iziToast.success({ 
+	timeout: 3000,
+	icon: 'fas fa-check',
+	title: 'Deleted',
+	message: 'model deleted successfuly'
+})
+
+window.setInterval(function() {
+window.location.reload();
+},3000);
+
+}
+
+}
+
+document.getElementById("model-delete-close").onclick=function() {
+	model_delete_array=[];
+
+	document.querySelectorAll("[id=checkid]").forEach(function(elements) {
+		elements.checked=false;
+});
+
+console.log(model_delete_array);
+
+}
+
+
+document.getElementById("send_server_close").onclick=function() {
+
+txtMail.value="";
+txtMail2.value="";
+txtMail3.value="";
+txtAuthority.value="select group name";
+txtAuthority2.value="select category name";
+
+
+}
+
+
+		document.getElementById("select-all-send").onclick=function() {
+			if(this.checked==true) {
+				model_delete_array=[];
+				document.querySelectorAll("[id=checkid]").forEach(function(elements) {
+				
+					var model_array2=JSON.stringify({
+	name:elements.getAttribute("model-name"),
+	group:elements.getAttribute("model-group"),
+	category:elements.getAttribute("model-category"),
+	image_url:elements.getAttribute("model-image"),
+	object_id:elements.getAttribute("model-id")
+});
+
+model_delete_array.push(model_array2);
+
+				});
+console.log(model_delete_array.length);
+			}
+
+			else {
+				model_delete_array=[];
+			}
+		}
+	
+
+		}
+	</script>
+
+	<section class="body">
+		<!-- start: header -->
+		<header class="header">
+			<div class="logo-container">
+				<a href="/" class="logo">
+					<img src="porto/img/logo.png" id="img1" style="background:black;" width="130" height="45" alt="Porto Admin" />
+				</a>
+				<div class="d-md-none toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html"
+					data-fire-event="sidebar-left-opened">
+					<i class="fa-solid fa-bars" aria-label="Toggle sidebar"></i>
+				</div>
+			</div>
+			<div class="header-right">
+				<span class="separator"></span>
+				<div id="userbox" class="userbox">
+					<a href="#" data-bs-toggle="dropdown">
+						<figure class="profile-picture">
+							<img src="porto/img/!logged-user.jpg" alt="Joseph Doe" class="rounded-circle"
+								data-lock-picture="img/!logged-user.jpg" />
+						</figure>
+						<div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
+							<span class="name">Emir Korkut</span>
+							<span class="role">developer</span>
+						</div>
+
+						<i class="fa custom-caret"></i>
+					</a>
+					<div class="dropdown-menu">
+						<ul class="list-unstyled mb-2">
+							<li class="divider"></li>
+							<li>
+								<a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i
+										class="bx bx-user-circle"></i> My Profile</a>
+							</li>
+							<li>
+								<a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i
+										class="bx bx-lock"></i> Lock Screen</a>
+							</li>
+							<li>
+								<a role="menuitem" tabindex="-1" href="pages-signin.html"><i
+										class="bx bx-power-off"></i> Logout</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="inner-wrapper">
+			<aside id="sidebar-left" class="sidebar-left">
+				<div class="sidebar-header">
+					<div class="sidebar-toggle d-none d-md-block" data-toggle-class="sidebar-left-collapsed"
+						data-target="html" data-fire-event="sidebar-left-toggle">
+						<i class="fas fa-bars" aria-label="Toggle sidebar"></i>
+					</div>
+				</div>
+				<div class="nano">
+					<div class="nano-content">
+						<nav id="menu" class="nav-main" role="navigation">
+							<ul class="nav nav-main">
+								<li class="nav-parent nav-expanded nav-active">
+									<a class="nav-link" href="#">
+										<i class="fa-solid fa-cube"></i>
+										<span>Models</span>
+									</a>
+								</li>
+								<li class="nav-parent">
+									<a class="nav-link" href="news.html">
+										<i class="fa-solid fa-user-plus"></i>
+										<span>Device Add</span>
+									</a>
+								</li>
+								<li class="nav-parent">
+									<a class="nav-link" href="media-galery.html">
+										<i class="fa-solid fa-envelopes"></i>
+										<span>Mail Server</span>
+									</a>
+								</li>
+								<li class="nav-parent">
+									<a class="nav-link" href="news.html">
+										<i class="fa-solid fa-laptop-mobile"></i>
+										<span>Firebase Notification</span>
+									</a>
+								</li>
+							
+							
+							</ul>
+						</nav>
+					</div>
+				</div>
+
+			</aside>
+			<!-- end: sidebar -->
+			<section role="main" class="content-body">
+				<header class="page-header"></header>
+				<!-- start: page -->
+				<div class="row">
+					<div class="col">
+						<div class="card card-modern">
+							<div class="card-body">
+								<div class="datatables-header-footer-wrapper">
+									<!-- start -->
+									<div class="datatable-header">
+										<div class="row align-items-center mb-3">
+											<div class="col-12 col-lg-auto mb-3 mb-lg-0">
+												<a data-bs-toggle="modal" data-bs-target="#ModalAdd"
+													class="btn btn-primary btn-sm font-weight-semibold  modal-with-zoom-anim ws-normal btn-py-2 px-4">
+													<i class="fa-solid fa-plus me-1"></i> Add Model
+												</a>
+												<a data-bs-toggle="modal" data-bs-target="#ModalDelete"
+													class="btn btn-danger btn-sm font-weight-semibold   btn-py-2 px-4">
+													<i class="fa-solid fa-trash me-1"></i> Delete Selected 
+												</a>
+											</div>
+
+											<div class="col-8 col-lg-auto ms-auto ml-auto mb-3 mb-lg-0" style="visibility: hidden !important;">
+												<div class="d-flex align-items-lg-center flex-column flex-lg-row">
+													<label class="ws-nowrap me-3 mb-0">Filtre:</label>
+													<select class="form-control select-style-1 filter-by"
+														name="filter-by">
+														<option value="all" selected>Hepsi</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-4 col-lg-auto ps-lg-1 mb-3 mb-lg-0" style="visibility:hidden !important;">
+												<div class="d-flex align-items-lg-center flex-column flex-lg-row">
+													<label class="ws-nowrap me-3 mb-0">Göster:</label>
+													<select class="form-control select-style-1 results-per-page"
+														name="results-per-page">
+														<option value="12" selected>12</option>
+														<option value="24">24</option>
+														<option value="36">36</option>
+														<option value="100">100</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-12 col-lg-auto ps-lg-1">
+												<div class="search search-style-1 search-style-1-lg mx-lg-auto">
+													<div class="input-group">
+														<input type="text" class="search-term form-control"
+															name="search-term" id="search-term"
+															placeholder="Search..">
+														<button class="btn btn-default" type="submit">
+															<i class="bx bx-search"></i>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end  -->
+									<table
+										class="table table-ecommerce-simple table-borderless table-striped mb-0 border"
+										id="datatable" style="min-width: 640px;">
+
+										<thead>
+											<tr>
+												<th width="3%">
+													<input type="checkbox" name="select-all" id="select-all-send"
+														class="select-all checkbox-style-1 p-relative top-2" value="" />
+												</th>
+												<th width="12%"><i class="fa-solid fa-circle-dot  me-1"></i>name</th>
+												<th width="18%"><i class="fa-solid fa-circle-dot me-1"></i>group</th>
+												<th width="18%"><i class="fa-solid fa-circle-dot me-1"></i>category</th>
+												<th width="15%"><i class="fa-solid fa-circle-dot me-1"></i>image</th>
+												<th width="10%"><i class="fa-solid fa-circle-dot me-1"></i>object ID</th>
+											</tr>
+										</thead>
+										<tbody id="tbody1">
+									
+										</tbody>
+									</table>
+									<hr class="solid mt-1 opacity-4">
+									<div class="datatable-footer">
+										<div class="row align-items-center justify-content-between mt-3">
+											<div class="col-md-auto order-1 mb-3 mb-lg-0">
+												<div class="d-flex align-items-stretch">
+
+												</div>
+											</div>
+											<div class="col-lg-auto text-center order-3 order-lg-2">
+												<div class="results-info-wrapper"></div>
+											</div>
+											<div class="col-lg-auto order-2 order-lg-3 mb-3 mb-lg-0">
+												<div class="pagination-wrapper"></div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end: page -->
+			</section>
+		</div>
+	</section>
+	<!-- modal start -->
+	<div class="modal fade" id="ModalAdd" tabindex="-1">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header py-3">
+					<h1 class="modal-title fs-5 mt-0" id="exampleModalLabel">Add Model</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<form>
+					<div class="modal-body">
+						<div class="mb-3">
+							<label for="txtMail" class="form-label">model name</label>
+							<input type="text" class="form-control" id="txtMail">
+						</div>
+						<div class="mb-3">
+							<label for="txtAuthority" class="form-label">group</label>
+							<select class="form-select" id="txtAuthority" >
+								<option selected > select group name</option>
+								<option value="anyridge">Anyridge</option>
+								<option value="anyone">AnyOne</option>
+								<option value="st">ST</option>
+								<option value="BlueDiamond">BlueDiamond</option>
+							</select>
+						</div>
+						<div class="mb-3">
+							<label for="txtAuthority" class="form-label">category</label>
+							<select class="form-select" id="txtAuthority2">
+								<option selected> select category name</option>
+								<option value="Surgical Kit">Surgical Kit</option>
+								<option value="Custom Abutment">Custom Abutment</option>
+								<option value="Dental Implant">Dental Implant</option>
+							</select>
+						</div>
+						<div class="mb-3">
+							<label for="txtMail" class="form-label">image url</label>
+							<input type="text" class="form-control" id="txtMail2">
+						</div>
+						<div class="mb-3">
+							<label for="txtMail" class="form-label">Object ID</label>
+							<input type="text" class="form-control" id="txtMail3">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" id="send_server_close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary px-4" onclick="showSuccessToast()" id="send_server">Add <i
+								class="fa-solid fa-plus"></i></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- star  -->
+	<div class="modal fade" id="ModalEdit" tabindex="-1">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header py-3">
+					<h1 class="modal-title fs-5 mt-0" id="exampleModalLabel">Kullanıcı Düzenle</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<form>
+					<div class="modal-body">
+						<div class="mb-3">
+							<label for="txtMail" class="form-label">E-mail</label>
+							<input type="email" class="form-control" id="txtMail">
+						</div>
+						<div class="mb-3">
+							<label for="txtPassword" class="form-label">Şifre</label>
+							<input type="password" class="form-control" id="txtPassword">
+						</div>
+						<div class="mb-3">
+							<label for="txtAuthority" class="form-label">E-mail</label>
+							<select class="form-select" id="txtAuthority">
+								<option selected>Lütfen Bir Yetki Seçin</option>
+								<option value="1">Yazı İşleri Müdürü</option>
+								<option value="2">Muhabir</option>
+								<option value="3">Yazar</option>
+							</select>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+						<button type="button" class="btn btn-primary px-4" onclick="showUpdateToast()">Kaydet <i
+								class="fa-solid fa-floppy-disk ms-1"></i></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- end  -->
+	<div class="modal fade" id="ModalDelete" tabindex="-1">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header bg-danger text-white py-3">
+					<h1 class="modal-title fs-5 mt-0" id="exampleModalLabel">Delete Model</h1>
+					<button type="button" class="btn-close text-white" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body bg-warning text-white d-flex align-items-center">
+					<i class="fa-solid fa-triangle-exclamation fs-1 me-3"></i> Are you Sure! delete model?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary btn-sm" id="model-delete-close" data-bs-dismiss="modal">close</button>
+					<button type="button" class="btn btn-primary btn-sm" id="delete1" onclick="showDeleteToast()">delete <i
+							class="fa-solid fa-trash"></i></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- modal end  -->
+
+
+	<!-- Vendor -->
+	<script src="porto/vendor/jquery/jquery.js"></script>
+	<script src="porto/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+	<script src="porto/vendor/popper/umd/popper.min.js"></script>
+	<script src="porto/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="porto/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="porto/vendor/common/common.js"></script>
+	<script src="porto/vendor/nanoscroller/nanoscroller.js"></script>
+	<script src="porto/vendor/magnific-popup/jquery.magnific-popup.js"></script>
+	<script src="porto/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+	<script src="porto/vendor/iziTots/js/iziToast.min.js"></script>
+
+	<!-- Theme Base, Components and Settings -->
+	<script src="porto/js/theme.js"></script>
+
+	<!-- Theme Custom -->
+<!--	<script src="js/custom.js"></script>  -->
+
+	<!-- Theme Initialization Files -->
+	<script src="porto/js/theme.init.js"></script>
+
+	<!-- Examples -->
+	<script src="porto/js/examples/examples.dashboard.js"></script>
+
+	<!-- Specific Page Vendor -->
+	<script src="porto/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+	<script src="porto/vendor/datatables/media/js/dataTables.bootstrap5.min.js"></script>
+<!--	<script src="js/dataTable.js"></script> -->
+
+</body>
+
+</html>
