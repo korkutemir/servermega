@@ -85,10 +85,7 @@ app.get('/megagen-content',function(req,res,next) {
  // res.download('eko.pdf');
 });
 
-app.get('/mega2',function(req,res,next) {
-  res.sendFile( __dirname + "/www/index-1.html");
- // res.download('eko.pdf');
-});
+
 
 app.get('/proccess',function(req,res) {
     res.send({"name":process.pid});
