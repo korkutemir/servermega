@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <link rel="manifest" href="js/manifest.json" />
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+
+    </head>
+    <body>
+        <script>
+            window.onload=function() {
+                if('serviceWorker' in navigator) {
+                    navigator.serviceWorker.register("js/serviceWorker.js").then(function() {
+                        console.log("serviceWorker");
+                    }).catch(function(error) {
+                        console.log("errorr :"+error);
+                    });
+                }
+                alert(location.protocol);
+            }
+            </script>
+            <pre>KORKUT EMİR EKO</pre>
+            <code>korkut emir EKO</code>
+            <article>korktu emir EKO</article>
+    </body>
+</html>
