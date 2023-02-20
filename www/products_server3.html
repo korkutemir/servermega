@@ -296,6 +296,8 @@ request.send(null);
             var exampleFormControlTextarea1=document.getElementById("exampleFormControlTextarea1 form-control-lg");
 
             document.getElementById("send_server").onclick=function() {
+           
+
 
               if(exampleFormControlInput2.value.match(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)) {
                 
@@ -307,13 +309,26 @@ request.send(null);
             //   var data1 = JSON.stringify({"name_surname":"","email": "hey@mail.com", "password": "101010"});
                var data1 = JSON.stringify({"name_surname":exampleFormControlInput1.value,"email":exampleFormControlInput2.value,"message":exampleFormControlTextarea1.value});
                send_server1.send(data1);
+                
+               $('#ContentModal').modal('hide');
 
+                exampleFormControlInput1.value="";
+                exampleFormControlInput2.value="";
+                exampleFormControlTextarea1.value="";
               }
               else {
                   alert("email not invalid");
               }
+
             }
             
+            $(document).on('click', '[data-bs-dismiss="modal"]', function(){
+                
+                exampleFormControlInput1.value="";
+                exampleFormControlInput2.value="";
+                exampleFormControlTextarea1.value="";
+});
+
           document.onkeydown=function(event) {
               if(event.key=="y") {
                   document.getElementById("delek-21").style.display="block";
