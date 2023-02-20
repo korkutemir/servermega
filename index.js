@@ -75,7 +75,7 @@ app.post('/upload', function(req, res) {
 
 
 
-app.get('/megagen',function(req,res,next) {
+app.get('/',function(req,res,next) {
     res.sendFile( __dirname + "/www/index.html");
    // res.download('eko.pdf');
 }); 
