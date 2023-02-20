@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Megagen Kiosk | Products</title>
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="assets/css/fontawasome/css/all.min.css" rel="stylesheet">
+    <!-- Aos Animation -->
+    <link href="assets/aos/aos.css" rel="stylesheet">
+    <!-- My Style  -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <script>
+        window.onload=function() {
+            document.getElementById("AccordionAnyRidge").click();
+        }
+    </script>
+</head>
+
+<body style="background-image: url('assets/img/bg.png');">
+    <section>
+        <div class="container-megagen header-col">
+            <header data-aos="fade-down" class="header">
+                <div class="menu-button-col">
+                    <button class="menu-button bg-transparent border-0" id="menuButton">
+                        <i class="fa-regular fa-bars menu-button-icon"></i>
+                        <span class="menu-button-text">MENU</span>
+                    </button>
+                </div>
+                <div class="logo-col">
+                    <a href="index.html" class="logo">
+                        <img src="assets/img/logo.png" alt="logo.png">
+                    </a>
+                </div>
+                <div class="language-col">
+
+                    <div class="radio_container">
+                        <input type="radio" name="radio" id="one">
+                        <label for="one"><img src="assets/img/icon/turkey.png" class="flag-icon" alt="eng.png">
+                            TR
+                        </label>
+                        <input type="radio" name="radio" id="two">
+                        <label for="two"><img src="assets/img/icon/korea.png" class="flag-icon" alt="korea.png">
+                            KR
+                        </label>
+                        <input type="radio" name="radio" id="three" checked>
+                        <label for="three"><img src="assets/img/icon/eng.png" class="flag-icon" alt="eng.png"> EN</label>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </section>
+
+    <main>
+        <!-- star -->
+        <section>
+            <div class="container-megagen">
+                <div class="content" data-aos="fade-up">
+                    <!-- start -->
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-flex">
+                            <div class="accordin-col-sidebar">
+                                <!-- item start -->
+                                <div class="accordion-item mb-3">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" type="button" id="AccordionAnyRidge"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                            aria-expanded="false" onclick="AccordionVisableItem(0,this, 0)"
+                                            aria-controls="flush-collapseOne">
+                                            <i class="fa-regular fa-cube color-yellow-text me-2"></i>
+                                            <span class="text-white-space">AnyRidge® Products</span>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse "
+                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body accordion-yellow">
+                                            <ul>
+                                                <li class="dropdown-btn li-all-AnyRidge-x active"
+                                                    onclick="AccordionVisableItem(0, 0)">
+                                                    <a href="javascript:void(0);">ALL AnyRidge® Products</a>
+                                                </li>
+                                                <li class="dropdown-btn li-AnyRidge-0"
+                                                    onclick="AccordionDown(this, 0, 0)">
+                                                    <a href="javascript:void(0);">AnyRidge® Dental Implant</a>
+                                                </li>
+                                                <li class="dropdown-btn li-AnyRidge-1"
+                                                    onclick="AccordionDown(this, 0, 1)">
+                                                    <a href="javascript:void(0);">AnyRidge® Custom Abutment</a>
+                                                </li>
+                                                <li class="dropdown-btn li-AnyRidge-2"
+                                                    onclick="AccordionDown(this, 0, 2)">
+                                                    <a href="javascript:void(0);">AnyRidge® Surgical Kit</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end -->
+
+
+                                <!-- item start -->
+                                <div class="accordion-item mb-3">
+                                    <h2 class="accordion-header" id="flush-headingTwo">
+                                        <button class="accordion-button  collapsed" type="button" id="AccordionAnyOne"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+                                            aria-expanded="false" onclick="AccordionVisableItem(this, 1)"
+                                            aria-controls="flush-collapseTwo">
+                                            <i class="fa-regular fa-cube color-red-text me-2"></i>
+                                            <span class="text-white-space">AnyOne® Products</span>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseTwo" class="accordion-collapse collapse "
+                                        aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body accordion-danger">
+                                            <ul>
+                                                <li class="dropdown-btn li-all-AnyOne-x active" onclick="AccordionVisableItem(1, 0)">
+                                                    <a href="javascript:void(0);">ALL AnyOne® Products</a>
+                                                </li>
+                                                <li class="dropdown-btn li-AnyOne-0"
+                                                    onclick="AccordionDown(this, 1, 0)">
+                                                    <a href="javascript:void(0);">AnyOne® Dental Implant</a>
+                                                </li>
+                                                <li class="dropdown-btn li-AnyOne-1"
+                                                    onclick="AccordionDown(this, 1, 1)">
+                                                    <a href="javascript:void(0);">AnyOne® Custom Abutment</a>
+                                                </li>
+                                                <li class="dropdown-btn li-AnyOne-2"
+                                                    onclick="AccordionDown(this, 1, 2)">
+                                                    <a href="javascript:void(0);">AnyOne® Surgical Kit</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end -->
+
+                                <!-- item start -->
+                                <div class="accordion-item mb-3">
+                                    <h2 class="accordion-header" id="flush-headingThree">
+                                        <button class="accordion-button collapsed" type="button" id="AccordionST"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
+                                            aria-expanded="false" onclick="AccordionVisableItem(this, 2)"
+                                            aria-controls="flush-collapseThree">
+                                            <i class="fa-regular fa-cube color-purple-text me-2"></i>
+                                            <span class="text-white-space">ST™ Products</span>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                        aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body accordion-purple">
+                                            <ul>
+                                                <li class="dropdown-btn li-all-ST-x active" onclick="AccordionVisableItem(2, 0)">
+                                                    <a href="javascript:void(0);">ALL ST™ Products</a>
+                                                </li>
+                                                <li class="dropdown-btn li-ST-0" onclick="AccordionDown(this, 2, 0)"
+                                                    aria-expanded="false">
+                                                    <a href="javascript:void(0);">ST™ Dental Implant</a>
+                                                </li>
+                                                <li class="dropdown-btn li-ST-1" onclick="AccordionDown(this, 2, 1)"
+                                                    aria-expanded="false">
+                                                    <a href="javascript:void(0);">ST™ Custom Abutment</a>
+                                                </li>
+                                                <li class="dropdown-btn li-ST-2" onclick="AccordionDown(this, 2, 2)"
+                                                    aria-expanded="false">
+                                                    <a href="javascript:void(0);">ST™ Surgical Kit</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end  -->
+
+                                <button class="btn-contact" data-bs-toggle="modal" data-bs-target="#ContactModal">
+                                    <i class="fa-solid fa-envelope"></i> <span class="text-white-space">Contact</span>
+                                    <!-- <div class="w-100 "><i class="fa-solid fa-left-long float-end"></i></div> -->
+                                    
+                                </button>
+
+                            </div>
+                            <div class="accordin-col-content side-product-content">
+                                <div class="product-col filters-content">
+                                    <div class="row grid g-xl-3 g-lg-2 g-md-2">
+                                        <!-- start -->
+                                        <div class="col-xl-4 col-lg-6 col-md-6 all AnyRidge-col AnyRidge-implant">
+                                            <div class="product-item mt-0 mb-lg-1 mb-md-1">
+                                                <a href="AnyridgeDentalImplant.html">
+                                                    <span class="bg-product"
+                                                        style="background-image: url('assets/img/3d/1.jpg') ;"></span>
+                                                    <div class="type">
+                                                        <i class="fa-regular fa-cube me-2"></i>
+                                                        <span>3D</span>
+                                                    </div>
+                                                    <div class="product-name-col">
+                                                        AnyRidge® Dental Implant
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 all AnyRidge-col AnyRidge-implant">
+                                            <div class="product-item mt-0 mb-lg-1 mb-md-1">
+                                                <a href="AnyridgeCrossSection.html">
+                                                    <span class="bg-product"
+                                                        style="background-image: url('assets/img/3d/2.jpg');"></span>
+                                                    <div class="type">
+                                                        <i class="fa-regular fa-cube me-2"></i>
+                                                        <span>3D</span>
+                                                    </div>
+                                                    <div class="product-name-col">
+                                                        AnyRidge® Cross Section
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 all AnyRidge-col AnyRidge-implant">
+                                            <div class="product-item mt-0 mb-lg-1 mb-md-1">
+                                                <a href="AnyridgeSection.html">
+                                                    <span class="bg-product"
+                                                        style="background-image: url('assets/img/3d/6.jpg');"></span>
+                                                    <div class="type">
+                                                        <i class="fa-regular fa-cube me-2"></i>
+                                                        <span>3D</span>
+                                                    </div>
+                                                    <div class="product-name-col">
+                                                        AnyRidge® Section
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 all AnyRidge-col AnyRidge-implant">
+                                            <div class="product-item mt-0 mb-lg-1 mb-md-1">
+                                                <a href="AnyridgeSizes.html">
+                                                    <span class="bg-product"
+                                                        style="background-image: url('assets/img/3d/8.jpg');"></span>
+                                                    <div class="type">
+                                                        <i class="fa-regular fa-cube me-2"></i>
+                                                        <span>3D</span>
+                                                    </div>
+                                                    <div class="product-name-col">
+                                                        AnyRidge® Sizes
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="col-xl-4 col-lg-6 col-md-6 all AnyRidge-col AnyRidge-abutment">
+                                            <div class="product-item mt-0 mb-lg-1 mb-md-1">
+                                                <a href="AnyridgeCustomAbutment.html">
+                                                    <span class="bg-product"    
+                                                        style="background-image: url('assets/img/3d/4.jpg');"></span>
+                                                    <div class="type">
+                                                        <i class="fa-regular fa-cube me-2"></i>
+                                                        <span>3D</span>
+                                                    </div>
+                                                    <div class="product-name-col">
+                                                        AnyRidge® Custom Abutment
+                                                        
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+        
+                                        <div class="col-xl-4 col-lg-6 col-md-6 all AnyRidge-col AnyRidge-abutment">
+                                            <div class="product-item mt-0 mb-lg-1 mb-md-1">
+                                                <a href="AbutmentOptions.html">
+                                                    <span class="bg-product"
+                                                        style="background-image: url('assets/img/3d/8.jpg');"></span>
+                                                    <div class="type">
+                                                        <i class="fa-regular fa-cube me-2"></i>
+                                                        <span>3D</span>
+                                                    </div>
+                                                    <div class="product-name-col">
+                                                        AnyRidge® Options
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 all AnyRidge-col AnyRidge-surgical">
+                                            <div class="product-item mt-0 mb-lg-1 mb-md-1">
+                                                <a href="AnyridgeSurgicalKit.html">
+                                                    <span class="bg-product"
+                                                        style="background-image: url('assets/img/3d/3.jpg');"></span>
+                                                    <div class="type">
+                                                        <i class="fa-regular fa-cube me-2"></i>
+                                                        <span>3D</span>
+                                                    </div>
+                                                    <div class="product-name-col">
+                                                        AnyRidge® Surgical Kit
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- end -->
+                                        <!-- start -->
+                                        <div class="col-xl-4 col-lg-6 col-md-6 all AnyOne-col AnyOne-implant">
+                                            <div class="product-item mt-0 mb-lg-1 mb-md-1">
+                                                <a href="AnyOneAllFamily.html">
+                                                    <span class="bg-product"
+                                                        style="background-image: url('assets/img/3d/7.jpg');"></span>
+                                                    <div class="type">
+                                                        <i class="fa-regular fa-cube me-2"></i>
+                                                        <span>3D</span>
+                                                    </div>
+                                                    <div class="product-name-col">
+                                                        AnyOne® All Family
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 all AnyOne-col AnyOne-implant">
+                                            <div class="product-item mt-0 mb-lg-1 mb-md-1">
+                                                <a href="AnyoneDentalImplant.html">
+                                                    <span class="bg-product"
+                                                        style="background-image: url('assets/img/3d/14.jpg');"></span>
+                                                    <div class="type">
+                                                        <i class="fa-regular fa-cube me-2"></i>
+                                                        <span>3D</span>
+                                                    </div>
+                                                    <div class="product-name-col">
+                                                        AnyOne® Dental Implant
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 all AnyOne-col AnyOne-implant">
+                                            <div class="product-item mt-0 mb-lg-1 mb-md-1">
+                                                <a href="AnyoneCrossSection.html">
+                                                    <span class="bg-product"
+                                                        style="background-image: url('assets/img/3d/15.jpg');"></span>
+                                                    <div class="type">
+                                                        <i class="fa-regular fa-cube me-2"></i>
+                                                        <span>3D</span>
+                                                    </div>
+                                                    <div class="product-name-col">
+                                                        AnyOne® Cross Section
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- end -->
+                                        <!-- start -->
+                                        <div class="col-xl-4 col-lg-6 col-md-6 all ST-col ST-implant">
+                                            <div class="product-item mt-0 mb-lg-1 mb-md-1">
+                                                <a href="STImplantSistemi.html">
+                                                    <span class="bg-product"
+                                                        style="background-image: url('assets/img/3d/10.jpg');"></span>
+                                                    <div class="type">
+                                                        <i class="fa-regular fa-cube me-2"></i>
+                                                        <span>3D</span>
+                                                    </div>
+                                                    <div class="product-name-col">
+                                                        ST™ Implant System
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 all ST-col ST-implant">
+                                            <div class="product-item mt-0 mb-lg-1 mb-md-1">
+                                                <a href="STImplant.html">
+                                                    <span class="bg-product"
+                                                        style="background-image: url('assets/img/3d/12.jpg');"></span>
+                                                    <div class="type">
+                                                        <i class="fa-regular fa-cube me-2"></i>
+                                                        <span>3D</span>
+                                                    </div>
+                                                    <div class="product-name-col">
+                                                        ST™ Implant  
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-6 all ST-col ST-surgical">
+                                            <div class="product-item mt-0 mb-lg-1 mb-md-1">
+                                                <a href="STCerrahiKit.html">
+                                                    <span class="bg-product"
+                                                        style="background-image: url('assets/img/3d/11.jpg');"></span>
+                                                    <div class="type">
+                                                        <i class="fa-regular fa-cube me-2"></i>
+                                                        <span>3D</span>
+                                                    </div>
+                                                    <div class="product-name-col">
+                                                        ST™ Surgical Kit
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- end -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- start -->
+                </div>
+            </div>
+        </section>
+        <!-- end -->
+        <!-- star -->
+        <section>
+            <div class="container-megagen">
+                <div class="footer-megagen">
+                    <div class="powered-by">© 2023 MEGA’GEN. All rights reserved.</div>
+                </div>
+            </div>
+        </section>
+        <!-- end -->
+        </div>
+    </main>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="ContactModal" tabindex="-1" aria-labelledby="ContactModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content color-black-bg border">
+                <div class="modal-header px-4 py-4">
+                    <img src="assets/img/logo.png" style="width: 150px;" alt="">
+                    <button type="button" class="text-white bg-transparent border-0" data-bs-dismiss="modal"
+                        aria-label="Close"><i class="fa-regular fa-xmark fs-4"></i></button>
+                </div>
+                <div class="modal-body px-4">
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label text-white">Name & Surname</label>
+                        <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput2" class="form-label text-white">Email address</label>
+                        <input type="email" class="form-control form-control-lg" id="exampleFormControlInput2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label text-white">Message</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1 form-control-lg"
+                            rows="3"></textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer px-4">
+                    <button type="button" class=" btn color-red-bg py-2 px-5 btn-contact-send "
+                        data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn color-yellow-bg py-2 px-5 btn-contact-send">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Bootstrap JS -->
+    <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
+    <!-- jqery JS  -->
+    <script type="text/javascript" src="assets/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+    <!-- Aos Animation JS -->
+    <script type="text/javascript" src="assets/aos/aos.js"></script>
+    <!-- My JS -->
+    <script type="text/javascript" src="assets/js/script.js"></script>
+    <script type="text/javascript" src="assets/js/filter.js"></script>
+</body>
+
+</html>

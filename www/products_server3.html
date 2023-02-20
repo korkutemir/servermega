@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Megagen Kiosk | Products</title>
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="assets/css/fontawasome/css/all.min.css" rel="stylesheet">
+    <!-- Aos Animation -->
+    <link href="assets/aos/aos.css" rel="stylesheet">
+    <!-- My Style  -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <style>
+        .ST-implant{display: block !important;}.ST-abutment{display: block !important;}.ST-surgical{display: block !important;}
+
+ 
+
+    </style>
+            <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js"></script> 
+       <!--   <script type="text/javascript" src="sketchfab.js"></script>-->
+ 
+    <script>
+       // const {ipcRenderer} = require('electron');
+        window.onload=function() {
+
+  //window.ipcRenderer.send('channel', data);
+
+window.ipcRenderer.once('uuid', (event, arg) => {
+    alert(arg);
+  });
+
+  window.ipcRenderer.send("korkut");
+
+            var collapsed_1=false; 
+            var collapsed_2=false; 
+            var collapsed_3=false; 
+              var push_center=document.getElementById("push-center");
+
+            
+              
+
+               var div1_anyone,div1_anyridge,div1_st;
+
+               
+
+
+            var dizin_length=0;
+            (function() {
+                var request=new XMLHttpRequest();
+
+request.onload=function(response) {
+    var respons1=JSON.parse(request.responseText);
+    console.log(respons1);
+
+    for(var t=1;t<=respons1.dizin_1.length;t++) {
+        for(var k=1;k<=respons1.dizin_1[t-1].length;k++) {
+            console.log(respons1.dizin_1[t-1][k-1].name);
+
+            var div1_anyridge=document.createElement("div");
+div1_anyridge.setAttribute("class","col-xl-4 col-lg-6 col-md-6 all AnyRidge-col AnyRidge-implant");
+div1_anyridge.setAttribute("id","anyridge_elements");
+div1_anyridge.style.display="block";
+div1_anyridge.setAttribute("object_id",respons1.dizin_1[t-1][k-1].object_id);
+div1_anyridge.setAttribute("category",respons1.dizin_1[t-1][k-1].category);
+var div2=document.createElement("div");
+div2.setAttribute("class","product-item mt-0 mb-lg-1 mb-md-1");
+div1_anyridge.appendChild(div2);
+var a1=document.createElement("a");
+a1.setAttribute("href","#");
+div2.appendChild(a1);
+var span1=document.createElement("span");
+span1.setAttribute("class","bg-product");
+span1.setAttribute("style","background-image: url("+respons1.dizin_1[t-1][k-1].image_url+") ;");
+a1.appendChild(span1);
+var div3=document.createElement("div");
+div3.setAttribute("class","type");
+var i1=document.createElement("i");
+i1.setAttribute("class","fa-regular fa-cube me-2");
+div3.appendChild(i1);
+var span2=document.createElement("span");
+span2.innerHTML="3D";
+div3.appendChild(span2);
+a1.appendChild(div3);
+var div4=document.createElement("div");
+div4.setAttribute("class","product-name-col");
+div4.innerHTML="AnyRidge® "+respons1.dizin_1[t-1][k-1].name;
+a1.appendChild(div4);
+push_center.appendChild(div1_anyridge);
+    }
+    }
+
+      for(var t=1;t<=respons1.dizin_2.length;t++) {
+        for(var k=1;k<=respons1.dizin_2[t-1].length;k++) {
+            console.log(respons1.dizin_2[t-1][k-1].name);
+
+            var div1_anyone=document.createElement("div");
+div1_anyone.setAttribute("class","col-xl-4 col-lg-6 col-md-6 all AnyRidge-col AnyRidge-implant");
+div1_anyone.setAttribute("id","anyone_elements");
+div1_anyone.style.display="none";
+div1_anyone.setAttribute("object_id",respons1.dizin_2[t-1][k-1].object_id);
+div1_anyone.setAttribute("category",respons1.dizin_2[t-1][k-1].category);
+var div2=document.createElement("div");
+div2.setAttribute("class","product-item mt-0 mb-lg-1 mb-md-1");
+div1_anyone.appendChild(div2);
+var a1=document.createElement("a");
+a1.setAttribute("href","#");
+div2.appendChild(a1);
+var span1=document.createElement("span");
+span1.setAttribute("class","bg-product");
+span1.setAttribute("style","background-image: url("+respons1.dizin_2[t-1][k-1].image_url+") ;");
+a1.appendChild(span1);
+var div3=document.createElement("div");
+div3.setAttribute("class","type");
+var i1=document.createElement("i");
+i1.setAttribute("class","fa-regular fa-cube me-2");
+div3.appendChild(i1);
+var span2=document.createElement("span");
+span2.innerHTML="3D";
+div3.appendChild(span2);
+a1.appendChild(div3);
+var div4=document.createElement("div");
+div4.setAttribute("class","product-name-col");
+div4.innerHTML="AnyOne® "+respons1.dizin_2[t-1][k-1].name;
+a1.appendChild(div4);
+push_center.appendChild(div1_anyone);
+    }
+    }
+
+      for(var t=1;t<=respons1.dizin_3.length;t++) {
+        for(var k=1;k<=respons1.dizin_3[t-1].length;k++) {
+            console.log(respons1.dizin_3[t-1][k-1].name);
+
+                        var div1_st=document.createElement("div");
+div1_st.setAttribute("class","col-xl-4 col-lg-6 col-md-6 all AnyRidge-col AnyRidge-implant");
+div1_st.setAttribute("id","st_elements");
+div1_st.style.display="none";
+div1_st.setAttribute("object_id",respons1.dizin_3[t-1][k-1].object_id);
+div1_st.setAttribute("category",respons1.dizin_3[t-1][k-1].category);
+var div2=document.createElement("div");
+div2.setAttribute("class","product-item mt-0 mb-lg-1 mb-md-1");
+div1_st.appendChild(div2);
+var a1=document.createElement("a");
+a1.setAttribute("href","#");
+div2.appendChild(a1);
+var span1=document.createElement("span");
+span1.setAttribute("class","bg-product");
+span1.setAttribute("style","background-image: url("+respons1.dizin_3[t-1][k-1].image_url+") ;");
+a1.appendChild(span1);
+var div3=document.createElement("div");
+div3.setAttribute("class","type");
+var i1=document.createElement("i");
+i1.setAttribute("class","fa-regular fa-cube me-2");
+div3.appendChild(i1);
+var span2=document.createElement("span");
+span2.innerHTML="3D";
+div3.appendChild(span2);
+a1.appendChild(div3);
+var div4=document.createElement("div");
+div4.setAttribute("class","product-name-col");
+div4.innerHTML="ST™ "+respons1.dizin_3[t-1][k-1].name;
+a1.appendChild(div4);
+push_center.appendChild(div1_st);
+
+    }
+    }
+
+   // console.log(respons1.dizin_1[0][0].name);
+    console.log(Object.keys(respons1.dizin_1).length);
+
+ 
+
+
+}
+
+request.onloadend=function() {
+    document.querySelectorAll('[id=anyridge_elements]').forEach(function(elements) {
+                        elements.onclick=function() {
+                       //     window.localStorage.setItem("object_id",this.getAttribute("object_id"));
+                        //    window.localStorage.setItem("last_location","products_server.html");
+                            document.getElementById("delek-21").style.display="block";
+                            actionSkfb(this.getAttribute("object_id"));
+                            //* yer değistir bu ikisini *
+                        }
+                    });
+                    document.querySelectorAll('[id=anyone_elements]').forEach(function(elements) {
+                        elements.onclick=function() {
+                        //    window.localStorage.setItem("object_id",this.getAttribute("object_id"));
+                         //   window.localStorage.setItem("last_location","products2_server.html");
+                            document.getElementById("delek-21").style.display="block";
+                            actionSkfb(this.getAttribute("object_id"));
+                        }
+                    });
+                    document.querySelectorAll('[id=st_elements]').forEach(function(elements) {
+                        elements.onclick=function() {
+                          //  window.localStorage.setItem("object_id",this.getAttribute("object_id"));
+                          //  window.localStorage.setItem("last_location","products3_server.html");
+                            document.getElementById("delek-21").style.display="block";
+                            actionSkfb(this.getAttribute("object_id"));
+                        }
+                    });
+
+   
+
+}
+
+request.open("GET","https://mega.cyclic.app/megagen2/megagen_id?membership=pro",true);
+request.send(null);
+            })();
+           
+        
+
+         
+      
+            document.getElementById("AccordionAnyRidge").onclick=function() {
+             
+               if(collapsed_1==false) {
+                document.querySelectorAll('[id=anyridge_elements]').forEach(function(elements) {
+                        elements.style.display="block";
+                    });
+                document.querySelectorAll('[id=anyone_elements]').forEach(function(elements) {
+                        elements.style.display="none";
+                    });
+                    document.querySelectorAll('[id=st_elements]').forEach(function(elements) {
+                        elements.style.display="none";
+                    });
+                    collapsed_2=false;
+                    collapsed_1=true;
+                    collapsed_3=false;
+               }
+               else {
+                   collapsed_1=false;
+                   document.querySelectorAll('[id=anyridge_elements]').forEach(function(elements) {
+                        elements.style.display="none";
+                    });
+               }
+                    
+            }
+
+                document.getElementById("AccordionAnyOne").onclick=function() {
+               if(collapsed_2==false) {
+                document.querySelectorAll('[id=anyone_elements]').forEach(function(elements) {
+                        elements.style.display="block";
+                    });
+
+                document.querySelectorAll('[id=anyridge_elements]').forEach(function(elements) {
+                        elements.style.display="none";
+                    });
+                    document.querySelectorAll('[id=st_elements]').forEach(function(elements) {
+                        elements.style.display="none";
+                    });
+                    collapsed_2=true;
+                    collapsed_1=false;
+                    collapsed_3=false;
+               }
+               else {
+                   collapsed_2=false;
+                   document.querySelectorAll('[id=anyone_elements]').forEach(function(elements) {
+                        elements.style.display="none";
+                    });
+                   
+               }
+                    
+            }
+
+                    document.getElementById("AccordionST").onclick=function() {
+               if(collapsed_3==false) {
+                document.querySelectorAll('[id=st_elements]').forEach(function(elements) {
+                        elements.style.display="block";
+                    });
+
+                document.querySelectorAll('[id=anyridge_elements]').forEach(function(elements) {
+                        elements.style.display="none";
+                    });
+                    document.querySelectorAll('[id=anyone_elements]').forEach(function(elements) {
+                        elements.style.display="none";
+                    });
+                    collapsed_2=false;
+                    collapsed_1=false;
+                    collapsed_3=true;
+               }
+               else {
+                   collapsed_3=false;
+                   document.querySelectorAll('[id=st_elements]').forEach(function(elements) {
+                        elements.style.display="none";
+                    });
+                   
+               }
+                    
+            }
+            document.getElementById("AccordionAnyRidge").click();
+
+         
+
+            var exampleFormControlInput1=document.getElementById("exampleFormControlInput1");
+            var exampleFormControlInput2=document.getElementById("exampleFormControlInput2");
+            var exampleFormControlTextarea1=document.getElementById("exampleFormControlTextarea1 form-control-lg");
+
+            document.getElementById("send_server").onclick=function() {
+
+              if(exampleFormControlInput2.value.match(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)) {
+                
+
+                var send_server1=new XMLHttpRequest();
+
+               send_server1.open("POST","https://mega.cyclic.app/send_server/megagen_server?server",true);
+               send_server1.setRequestHeader( "Content-Type", "application/json" );
+            //   var data1 = JSON.stringify({"name_surname":"","email": "hey@mail.com", "password": "101010"});
+               var data1 = JSON.stringify({"name_surname":exampleFormControlInput1.value,"email":exampleFormControlInput2.value,"message":exampleFormControlTextarea1.value});
+               send_server1.send(data1);
+
+              }
+              else {
+                  alert("email not invalid");
+              }
+            }
+            
+          document.onkeydown=function(event) {
+              if(event.key=="y") {
+                  document.getElementById("delek-21").style.display="block";
+              }
+          }
+
+          document.getElementsByClassName("button-close")[0].onclick=function() {
+            document.getElementById("delek-21").style.display="none";
+           
+          }
+
+          document.getElementById("all_anyridge").onclick=function() {
+              this.style.color="#14150e";
+                this.style.background="#F2C94C";
+             
+            document.querySelectorAll('[id=anyridge_elements]').forEach(function(elements) {
+                        elements.style.display="block";
+                    });
+          }
+
+                  document.getElementById("dental_anyridge").onclick=function() {
+                    this.style.color="#14150e";
+                this.style.background="#F2C94C";
+           
+            document.querySelectorAll('[id=anyridge_elements]').forEach(function(elements) {
+                        if(elements.getAttribute("category")=="Dental Implant") {
+                            elements.style.display="block";
+                        }
+                        else {
+                            elements.style.display="none";
+                        }
+                    });
+          }
+
+                   document.getElementById("custom_anyridge").onclick=function() {
+                    this.style.color="#14150e";
+                this.style.background="#F2C94C";
+        
+            document.querySelectorAll('[id=anyridge_elements]').forEach(function(elements) {
+                        if(elements.getAttribute("category")=="Custom Abutment") {
+                            elements.style.display="block";
+                        }
+                        else {
+                            elements.style.display="none";
+                        }
+                    });
+          }
+
+                   document.getElementById("kit_anyridge").onclick=function() {
+                    this.style.color="#14150e";
+                this.style.background="#F2C94C";
+           
+            document.querySelectorAll('[id=anyridge_elements]').forEach(function(elements) {
+                        if(elements.getAttribute("category")=="Surgical Kit") {
+                            elements.style.display="block";
+                        }
+                        else {
+                            elements.style.display="none";
+                        }
+                    });
+          }
+
+                    document.getElementById("all_anyone").onclick=function() {
+                    this.style.color="#14150e";
+                this.style.background="#F2C94C";
+           
+            document.querySelectorAll('[id=anyone_elements]').forEach(function(elements) {
+                elements.style.display="block";                       
+                     
+                    });
+          }
+
+                 document.getElementById("dental_anyone").onclick=function() {
+                    this.style.color="#14150e";
+                this.style.background="#F2C94C";
+           
+            document.querySelectorAll('[id=anyone_elements]').forEach(function(elements) {
+                        if(elements.getAttribute("category")=="Dental Implant") {
+                            elements.style.display="block";
+                        }
+                        else {
+                            elements.style.display="none";
+                        }
+                    });
+          }
+
+               document.getElementById("custom_anyone").onclick=function() {
+                    this.style.color="#14150e";
+                this.style.background="#F2C94C";
+           
+            document.querySelectorAll('[id=anyone_elements]').forEach(function(elements) {
+                        if(elements.getAttribute("category")=="Custom Abutment") {
+                            elements.style.display="block";
+                        }
+                        else {
+                            elements.style.display="none";
+                        }
+                    });
+          }
+
+               document.getElementById("kit_anyone").onclick=function() {
+                    this.style.color="#14150e";
+                this.style.background="#F2C94C";
+           
+            document.querySelectorAll('[id=anyone_elements]').forEach(function(elements) {
+                        if(elements.getAttribute("category")=="Surgical Kit") {
+                            elements.style.display="block";
+                        }
+                        else {
+                            elements.style.display="none";
+                        }
+                    });
+          }
+
+                  document.getElementById("all_st").onclick=function() {
+                    this.style.color="#14150e";
+                this.style.background="#F2C94C";
+           
+            document.querySelectorAll('[id=st_elements]').forEach(function(elements) {
+                elements.style.display="block";                       
+                     
+                    });
+          }
+
+               document.getElementById("dental_st").onclick=function() {
+                    this.style.color="#14150e";
+                this.style.background="#F2C94C";
+           
+            document.querySelectorAll('[id=st_elements]').forEach(function(elements) {
+                        if(elements.getAttribute("category")=="Dental Implant") {
+                            elements.style.display="block";
+                        }
+                        else {
+                            elements.style.display="none";
+                        }
+                    });
+          }
+
+               document.getElementById("custom_st").onclick=function() {
+                    this.style.color="#14150e";
+                this.style.background="#F2C94C";
+           
+            document.querySelectorAll('[id=st_elements]').forEach(function(elements) {
+                        if(elements.getAttribute("category")=="Custom Abutment") {
+                            elements.style.display="block";
+                        }
+                        else {
+                            elements.style.display="none";
+                        }
+                    });
+          }
+
+              document.getElementById("kit_st").onclick=function() {
+                    this.style.color="#14150e";
+                this.style.background="#F2C94C";
+           
+            document.querySelectorAll('[id=st_elements]').forEach(function(elements) {
+                        if(elements.getAttribute("category")=="Surgical Kit") {
+                            elements.style.display="block";
+                        }
+                        else {
+                            elements.style.display="none";
+                        }
+                    });
+          }
+
+
+
+
+
+
+
+
+ var annotion_div=document.getElementById("annotion");
+
+var visibility_change=false;
+
+// window.screen.orientation.lock('portrait');
+
+/* document.getElementsByClassName("exit")[0].onclick=function() {
+ window.history.back();
+}  */
+
+
+
+   
+var version = '1.12.1';
+var iframe = document.getElementById('api-frame');
+
+if (!iframe) {
+console.log('no target');
+}
+
+if (!window.Sketchfab) {
+console.log('no Sketchfab library');
+}
+
+var client = new window.Sketchfab(version, iframe);
+var imgBLogo; // Code to create textureimage for pastille from svg
+
+
+function actionSkfb(uid) {
+    visibility_change=false;
+    annotion_div.style.visibility="hidden";
+// initialize
+var error = function error() {
+console.error('Sketchfab API error');
+};
+
+var success = function success(api) {
+api.start(function () {
+
+ 
+
+
+  /////////////////
+  api.addEventListener('viewerready', function () {
+
+    api.addEventListener('annotationBlur', function(index) {
+// alert('Leaving annotation'+index);
+});
+
+      
+
+api.getAnimations(function(err, animations) {
+if (!err) {
+    window.console.log(animations);
+}
+});
+
+
+  
+
+var ty1=10;
+
+api.getNodeMap(function(err, nodes) {
+if (!err) {
+    
+    console.log(nodes);
+    var a=JSON.stringify(nodes);
+    var b=JSON.parse(a)
+
+
+
+api.hide(137, function(err) {
+if (!err) {
+    window.console.log('Hid node'); // 114
+}
+});
+
+    console.log(Object.keys(b).length);
+    for(var k=0;k<=20;k++) {
+        if(b[k]==undefined) {
+            console.log("hata");
+        }
+        else {
+            console.log(b[k]);
+          /* api.hide(b[k].instanceID, function(err) {
+if (!err) {
+    window.console.log('Hid node'+b[k].instanceID); // 114
+} 
+}); */
+           /* if(b[k].instanceID) {
+                console.log(b[k].instanceID);
+            }
+            else {
+                console.log("isntanceYOK");
+            } */   /* api.hide(b[k].instanceID, function(err) {
+if (!err) {
+    window.console.log('Hid node'+b[k].instanceID); // 114
+} 
+}); */
+           /* if(b[k].instanceID) {
+                console.log(b[k].instanceID);
+            }
+            else {
+                console.log("isntanceYOK");
+            } */
+        }
+    }
+    window.console.log(b[1]); // [ ... ]
+}
+});
+
+api.getMaterialList(function(err, materials) {
+if (!err) {
+    window.console.log(materials);
+}
+})
+
+
+
+api.updateAnnotation(4, {
+title: '',
+content: ''
+}, function(err, information) {
+if (!err) {
+    window.console.log(information);
+}
+});
+api.updateAnnotation(1, {
+title: '',
+content: ''
+}, function(err, information) {
+if (!err) {
+    window.console.log(information);
+}
+});
+api.updateAnnotation(2, {
+title: '',
+content: ''
+}, function(err, information) {
+if (!err) {
+    window.console.log(information);
+}
+});
+api.updateAnnotation(3, {
+title: '',
+content: ''
+}, function(err, information) {
+if (!err) {
+    window.console.log(information);
+}
+});
+
+api.getAnnotation(3, function(err, information) {
+if (!err) {
+    window.console.log(information);
+}
+});
+api.hideAnnotationTooltips(function(err) {
+if (!err) {
+    window.console.log('Hiding annotation tooltip');
+}
+});
+
+var korkut=document.getElementsByClassName("korkut")[0];
+var img=document.getElementsByTagName("img")[0];
+var p=document.getElementsByTagName("p")[0];
+var iframe_youtube=document.getElementById("iframe-youtube");
+var title_h4=document.getElementById("title-h4");
+//  var annotion_div=document.getElementById("annotion");
+
+var text1="Over 10 years of clinically-proven excellent, rapid & long-lasting osseointegration Nano bone matrix layer of Ca2+ -incorporated S-L-A surface";
+var text2="Offer progressive bone condensing, ridge expansion, maximized compressive force resistance and minimized shear force pruduciton";
+var text3="1mm trimmable margin gives restorative flexibility without changing B-L dimension";
+var text4="Easy to place & always guaranteed excellent initial stability";
+
+var sayi=-1;
+
+//var visibility_change=false;
+
+api.addEventListener('annotationSelect', function(index) {
+console.log('Selected annotation'+index);
+
+
+
+
+if(index==-1) {
+
+}
+else if(index==0) {
+
+if(visibility_change==false) {
+    annotion_div.style.visibility="visible";
+    visibility_change=true;
+}
+
+
+ annotion_div.style.left="200px";
+annotion_div.style.bottom="100px";
+
+title_h4.innerHTML="1. Part Information";
+p.innerHTML=text1;
+// korkut.style.width="26%";
+// img.src="imp5.png";
+iframe_youtube.src="https://www.youtube.com/embed/12OE9n-VCRE";
+  
+
+
+
+}
+else if(index==1) {
+
+     if(visibility_change==false) {
+    annotion_div.style.visibility="visible";
+    visibility_change=true;
+}
+
+annotion_div.style.left="1000px";
+annotion_div.style.bottom="50px";
+
+title_h4.innerHTML="2. Part Information";
+p.innerHTML=text2;
+// korkut.style.width="26%";
+// img.src="imp4.png";
+
+  iframe_youtube.src="https://www.youtube.com/embed/Y_vvcorrv4Q";
+
+}
+else if(index==2) {
+
+     if(visibility_change==false) {
+    annotion_div.style.visibility="visible";
+    visibility_change=true;
+}
+
+
+annotion_div.style.left="1000px";
+annotion_div.style.top="400px";
+
+title_h4.innerHTML="3. Part Information";
+p.innerHTML=text3;
+// korkut.style.width="26%";
+// img.src="imp3.png";
+
+  iframe_youtube.src="https://www.youtube.com/embed/RWqX9vBOir8";
+
+}
+else if(index==3) {
+
+     if(visibility_change==false) {
+    annotion_div.style.visibility="visible";
+    visibility_change=true;
+}
+
+annotion_div.style.left="900px";
+annotion_div.style.top="200px";
+
+title_h4.innerHTML="4. Part Information";
+p.innerHTML=text4;
+// korkut.style.width="26%";
+// img.src="imp2.png";
+
+  iframe_youtube.src="https://www.youtube.com/embed/B_qlOlIfsb8";
+
+}
+else if(index==4) {
+
+p.innerHTML=text5;
+// korkut.style.width="26%";
+// img.src="imp.png";
+
+}
+
+
+
+});
+
+
+
+document.getElementById("play").onclick=function() {
+api.getAnimations(function(err, animations) {
+if (!err) {
+  console.log(animations);
+    var firstAnimationUID = animations[0][0];
+    api.setCurrentAnimationByUID(firstAnimationUID, function(err) {
+        if (!err) {
+            window.console.log('Set animation track to'+ firstAnimationUID);
+
+            api.showAnnotation(0, function(err, index) {
+if (!err) {
+    window.console.log('Showing annotation', index + 1);
+}
+});
+api.showAnnotation(1, function(err, index) {
+if (!err) {
+    window.console.log('Showing annotation', index + 1);
+}
+});
+
+api.showAnnotation(2, function(err, index) {
+if (!err) {
+    window.console.log('Showing annotation', index + 1);
+}
+}); 
+
+api.showAnnotation(3, function(err, index) {
+if (!err) {
+    window.console.log('Showing annotation', index + 1);
+}
+});
+
+api.showAnnotation(4, function(err, index) {
+if (!err) {
+    window.console.log('Showing annotation', index + 1);
+}
+}); 
+
+api.showAnnotation(5, function(err, index) {
+if (!err) {
+    window.console.log('Showing annotation', index + 1);
+}
+});
+api.showAnnotation(6, function(err, index) {
+if (!err) {
+    window.console.log('Showing annotation', index + 1);
+}
+});
+api.showAnnotation(7, function(err, index) {
+if (!err) {
+    window.console.log('Showing annotation', index + 1);
+}
+});
+
+
+
+
+        }
+    });
+      api.play(function(err) {
+if (!err) {
+    window.console.log('Animation playing');
+} 
+}); 
+}
+});
+
+
+
+}
+
+
+document.getElementById("pause").onclick=function() {
+api.getAnimations(function(err, animations) {
+if (!err) {
+  console.log(animations);
+    var firstAnimationUID2 = animations[0][1];
+    api.setCurrentAnimationByUID(firstAnimationUID2, function(err) {
+        if (!err) {
+            window.console.log('Set animation track to'+ firstAnimationUID2);
+            api.hideAnnotation(0, function(err, index) {
+if (!err) {
+    window.console.log('Hiding annotation', index + 1);
+}
+});
+api.hideAnnotation(1, function(err, index) {
+if (!err) {
+    window.console.log('Hiding annotation', index + 1);
+}
+});
+api.hideAnnotation(2, function(err, index) {
+if (!err) {
+    window.console.log('Hiding annotation', index + 1);
+}
+});
+api.hideAnnotation(3, function(err, index) {
+if (!err) {
+    window.console.log('Hiding annotation', index + 1);
+}
+});
+api.hideAnnotation(4, function(err, index) {
+if (!err) {
+    window.console.log('Hiding annotation', index + 1);
+}
+});
+api.hideAnnotation(5, function(err, index) {
+if (!err) {
+    window.console.log('Hiding annotation', index + 1);
+}
+});
+api.hideAnnotation(6, function(err, index) {
+if (!err) {
+    window.console.log('Hiding annotation', index + 1);
+}
+});
+api.hideAnnotation(7, function(err, index) {
+if (!err) {
+    window.console.log('Hiding annotation', index + 1);
+}
+});
+        }
+    });
+      api.play(function(err) {
+if (!err) {
+    window.console.log('Animation playing');
+} 
+}); 
+}
+});
+}
+var timeFactor=1.0;
+
+
+
+
+
+
+
+
+
+ 
+
+   
+
+  });
+});
+};
+
+client.init(uid, {
+success: success,
+error: error,
+autostart: 1,
+preload: 0,
+ui_infos: 0,
+ui_inspector: 0,
+ui_settings: 0,
+ui_vr: 0,
+ui_general_controls: 1,
+ui_help: 0,
+ui_watermark_link: 0,
+ui_watermark: 0,
+ui_hint: 1,
+ui_stop: 0,
+ui_controls: 1,
+transparent: 1,
+ui_fullscreen:0
+});
+}
+
+
+
+
+
+
+var direction = "";
+var oldx = 0;
+var oldy = 0;
+mousemovemethod = function (e) {
+//   alert("eko");
+
+if (e.pageX > oldx && e.pageY == oldy) {
+direction="East";
+}
+else if (e.pageX == oldx && e.pageY > oldy) {
+direction="South";
+}
+else if (e.pageX == oldx && e.pageY < oldy) {
+direction="North";
+}
+else if (e.pageX < oldx && e.pageY == oldy) {
+direction="West";
+}
+
+// console.log(direction);
+
+oldx = e.pageX;
+oldy = e.pageY;
+
+}
+
+document.addEventListener('pointerdown', mousemovemethod);
+
+document.getElementById("close-annotion").onclick=function() {
+
+annotion_div.style.visibility="hidden";
+
+visibility_change=false;
+
+}
+
+        
+        }
+    </script>
+</head>
+
+<body style="background-image: url('assets/img/bg.png');">
+    <section>
+        <div class="container-megagen header-col">
+            <header data-aos="fade-down" class="header">
+                <div class="menu-button-col">
+                    <button class="menu-button bg-transparent border-0" id="menuButton">
+                        <i class="fa-regular fa-bars menu-button-icon"></i>
+                        <span class="menu-button-text">MENU</span>
+                    </button>
+                </div>
+                <div class="logo-col">
+                    <a href="index.html" class="logo">
+                        <img src="assets/img/logo.png" alt="logo.png">
+                    </a>
+                </div>
+                <div class="language-col">
+
+                    <div class="radio_container">
+                        <input type="radio" name="radio" id="one">
+                        <label for="one"><img src="assets/img/icon/turkey.png" class="flag-icon" alt="eng.png">
+                            TR
+                        </label>
+                        <input type="radio" name="radio" id="two">
+                        <label for="two"><img src="assets/img/icon/korea.png" class="flag-icon" alt="korea.png">
+                            KR
+                        </label>
+                        <input type="radio" name="radio" id="three" checked>
+                        <label for="three"><img src="assets/img/icon/eng.png" class="flag-icon" alt="eng.png"> EN</label>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </section>
+
+    <main>
+        <!-- star -->
+        <section>
+            <div class="container-megagen">
+                <div class="content" data-aos="fade-up">
+                    <!-- start -->
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-flex">
+                            <div class="accordin-col-sidebar">
+                                <!-- item start -->
+                                <div class="accordion-item mb-3">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" type="button" id="AccordionAnyRidge"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                            aria-expanded="false" onclick="AccordionVisableItem(this, 0)"
+                                            aria-controls="flush-collapseOne">
+                                            <i class="fa-regular fa-cube color-yellow-text me-2"></i>
+                                            <span class="text-white-space">AnyRidge® Products</span>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse "
+                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body accordion-yellow">
+                                            <ul>
+                                                <li class="dropdown-btn li-all-AnyRidge-x active"
+                                                    onclick="AccordionVisableItem(0, 0)" id="all_anyridge">
+                                                    <a href="javascript:void(0);">ALL AnyRidge® Products</a>
+                                                </li>
+                                                <li class="dropdown-btn li-AnyRidge-0"
+                                                    onclick="AccordionDown(this, 0, 0)" id="dental_anyridge">
+                                                    <a href="javascript:void(0);">AnyRidge® Dental Implant</a>
+                                                </li>
+                                                <li class="dropdown-btn li-AnyRidge-1"
+                                                    onclick="AccordionDown(this, 0, 1)" id="custom_anyridge">
+                                                    <a href="javascript:void(0);">AnyRidge® Custom Abutment</a>
+                                                </li>
+                                                <li class="dropdown-btn li-AnyRidge-2"
+                                                    onclick="AccordionDown(this, 0, 2)" id="kit_anyridge">
+                                                    <a href="javascript:void(0);">AnyRidge® Surgical Kit</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end -->
+
+
+                                <!-- item start -->
+                                <div class="accordion-item mb-3">
+                                    <h2 class="accordion-header" id="flush-headingTwo">
+                                        <button class="accordion-button  collapsed" type="button" id="AccordionAnyOne"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+                                            aria-expanded="false" onclick="AccordionVisableItem(this, 1)"
+                                            aria-controls="flush-collapseTwo">
+                                            <i class="fa-regular fa-cube color-red-text me-2"></i>
+                                            <span class="text-white-space">AnyOne® Products</span>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseTwo" class="accordion-collapse collapse "
+                                        aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body accordion-danger">
+                                            <ul>
+                                                <li class="dropdown-btn li-all-AnyOne-x active" onclick="AccordionVisableItem(1, 0)" id="all_anyone">
+                                                    <a href="javascript:void(0);">ALL AnyOne® Products</a>
+                                                </li>
+                                                <li class="dropdown-btn li-AnyOne-0"
+                                                    onclick="AccordionDown(this, 1, 0)" id="dental_anyone">
+                                                    <a href="javascript:void(0);">AnyOne® Dental Implant</a>
+                                                </li>
+                                                <li class="dropdown-btn li-AnyOne-1"
+                                                    onclick="AccordionDown(this, 1, 1)" id="custom_anyone">
+                                                    <a href="javascript:void(0);">AnyOne® Custom Abutment</a>
+                                                </li>
+                                                <li class="dropdown-btn li-AnyOne-2"
+                                                    onclick="AccordionDown(this, 1, 2)" id="kit_anyone">
+                                                    <a href="javascript:void(0);">AnyOne® Surgical Kit</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end -->
+
+                                <!-- item start -->
+                                <div class="accordion-item mb-3">
+                                    <h2 class="accordion-header" id="flush-headingThree">
+                                        <button class="accordion-button collapsed" type="button" id="AccordionST"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
+                                            aria-expanded="false" onclick="AccordionVisableItem(this, 2)"
+                                            aria-controls="flush-collapseThree">
+                                            <i class="fa-regular fa-cube color-purple-text me-2"></i>
+                                            <span class="text-white-space">ST™ Products</span>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                        aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body accordion-purple">
+                                            <ul>
+                                                <li class="dropdown-btn li-all-ST-x active" onclick="AccordionVisableItem(2, 0)" id="all_st">
+                                                    <a href="javascript:void(0);">ALL ST™ Products</a>
+                                                </li>
+                                                <li class="dropdown-btn li-ST-0" onclick="AccordionDown(this, 2, 0)"
+                                                    aria-expanded="false" id="dental_st">
+                                                    <a href="javascript:void(0);">ST™ Dental Implant</a>
+                                                </li>
+                                                <li class="dropdown-btn li-ST-1" onclick="AccordionDown(this, 2, 1)"
+                                                    aria-expanded="false" id="custom_st">
+                                                    <a href="javascript:void(0);">ST™ Custom Abutment</a>
+                                                </li>
+                                                <li class="dropdown-btn li-ST-2" onclick="AccordionDown(this, 2, 2)"
+                                                    aria-expanded="false" id="kit_st">
+                                                    <a href="javascript:void(0);">ST™ Surgical Kit</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end  -->
+
+                                <button class="btn-contact" data-bs-toggle="modal" data-bs-target="#ContactModal">
+                                    <i class="fa-solid fa-envelope"></i> <span class="text-white-space">Contact</span>
+                                    <!-- <div class="w-100 "><i class="fa-solid fa-left-long float-end"></i></div> -->
+                                    
+                                </button>
+
+                            </div>
+                            <div class="accordin-col-content side-product-content">
+                                <div class="product-col filters-content">
+                                    <div class="row grid g-xl-3 g-lg-2 g-md-2" id="push-center">
+                                        <!-- start -->
+                                  
+                             
+        
+                                 
+                                        <!-- end -->
+                                        <!-- start -->
+                                  
+                                     
+                                        <!-- end -->
+                                        <!-- start -->
+                               
+                                        <!-- end -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- start -->
+                </div>
+            </div>
+        </section>
+        <!-- end -->
+        <!-- star -->
+        <section>
+            <div class="container-megagen">
+                <div class="footer-megagen">
+                    <div class="powered-by">© 2023 MEGA’GEN. All rights reserved.</div>
+                </div>
+            </div>
+        </section>
+        <!-- end -->
+        </div>
+    </main>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="ContactModal" tabindex="-1" aria-labelledby="ContactModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content color-black-bg border">
+                <div class="modal-header px-4 py-4">
+                    <img src="assets/img/logo.png" style="width: 150px;" alt="">
+                    <button type="button" class="text-white bg-transparent border-0" data-bs-dismiss="modal"
+                        aria-label="Close"><i class="fa-regular fa-xmark fs-4"></i></button>
+                </div>
+                <div class="modal-body px-4">
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label text-white">Name & Surname</label>
+                        <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput2" class="form-label text-white">Email address</label>
+                        <input type="email" class="form-control form-control-lg" id="exampleFormControlInput2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label text-white">Message</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1 form-control-lg"
+                            rows="3"></textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer px-4">
+                    <button type="button" class=" btn color-red-bg py-2 px-5 btn-contact-send "
+                        data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="send_server" class="btn color-yellow-bg py-2 px-5 btn-contact-send">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        #delek-21 {
+            position: absolute;
+            left:0;
+            top:0;
+            min-width: 100%;
+            min-height: 100%;
+            display: none;
+            overflow: hidden;
+            background: black;
+          
+        }
+     
+                            #annotion {
+                                position: absolute;
+                                z-index: 10000;
+                                height: 400px;
+                                width: 350px;
+                                top:200px;
+                                right: 200px;
+                                background: rgb(4, 77, 4);
+                                opacity: 1;
+                                border-radius: 10px;
+                                border:none;
+                                overflow: hidden;
+                                visibility: hidden;
+                            }
+                            #annotion-info {
+                                position: relative;
+                                left:0;
+                                margin-top:10px;
+                                margin-bottom: 10px;
+                                height: 380px;
+                                width: 350px;
+                                background: white;
+                                opacity: 1;
+                                line-break: auto;
+                                word-wrap: break-word;
+                               overflow: hidden;
+                               display: block;
+                         
+                                
+                            }
+                            #annotion i {
+                                position: absolute;
+                                top:20px;
+                                right: 15px;
+                                color:black;
+                                z-index: 1000;
+                                font-size: 20px;
+                            }
+                            #annotion-info h4 {
+                                position: relative;
+                                top:50px;
+                                left:15px;
+                            }
+
+                            #annotion-info p {
+                                position: relative;
+                                margin-top:30px;
+                                left:15px;
+                               
+                            }
+
+                            #annotion-info iframe {
+                                position: static;
+                                bottom:0;
+                            
+                            }
+                        </style>
+  
+    <div id="delek-21">
+        <div class="model-area d-flex justify-content-center align-items-center w-100">
+            <a href="#" class="button-close">
+                <i class="fa-solid fa-xmark"></i>
+            </a>
+            <iframe src="" id="api-frame"  style="width: 100%;height: 100vh;"></iframe>
+            <div id="annotion">
+                    <i id="close-annotion" class="fa-solid fa-xmark"></i>
+                <div id="annotion-info">
+                    <h4 id="title-h4"><b>3. Part Information</b></h4><br>
+                    <p>Offer progressive bone condensing, ridge expansion, maximized compressive force resistance and minimized shear force pruduciton</p>
+                    <iframe id="iframe-youtube" width="350" height="210"
+    src="https://www.youtube.com/embed/12OE9n-VCRE">
+    </iframe>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    <!-- Bootstrap JS -->
+    <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
+    <!-- jqery JS  -->
+    <script type="text/javascript" src="assets/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+    <!-- Aos Animation JS -->
+    <script type="text/javascript" src="assets/aos/aos.js"></script>
+    <!-- My JS -->
+    <script type="text/javascript" src="assets/js/script.js"></script>
+    <script type="text/javascript" src="assets/js/filter.js"></script>
+</body>
+
+</html>

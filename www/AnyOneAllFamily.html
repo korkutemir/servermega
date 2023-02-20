@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Megagen Kiosk | AnyOne® All Family</title>
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="assets/css/fontawasome/css/all.min.css" rel="stylesheet">
+    <!-- Aos Animation -->
+    <link href="assets/aos/aos.css" rel="stylesheet">
+    <!-- My Style  -->
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+        <script type="text/javascript" src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js"></script>
+
+
+        <script>
+        
+                window.onload=function() {
+                
+                  // window.screen.orientation.lock('portrait');
+                
+                  /* document.getElementsByClassName("exit")[0].onclick=function() {
+                     window.history.back();
+                   }  */
+                
+                
+                
+                        // Sketchfab Viewer API: customize annotation appearance
+                var version = '1.12.1';
+                var uid = '65c11a990ffd4903a2bfc3cd82e226f6';
+                var uid2='fccac05a741e4bbe9f1025c691f79c8b';
+                var iframe = document.getElementById('api-frame');
+                
+                if (!iframe) {
+                  console.log('no target');
+                }
+                
+                if (!window.Sketchfab) {
+                  console.log('no Sketchfab library');
+                }
+                
+                var client = new window.Sketchfab(version, iframe);
+                var imgBLogo; // Code to create textureimage for pastille from svg
+                
+                function computePastilles(wCanvas, hCanvas, bgColor, bgBorderColor, fgColor, fgBorderColor, text, numHotspot, wPastille, hPastille) {
+                  var wSize = wPastille / 10.0;
+                  var col = wCanvas / wSize;
+                  var row = hCanvas / wSize;
+                  var padding = 2;
+                  var w = wSize - padding;
+                  var cx;
+                  var cy = w * 0.5; //var cy = 24;
+                
+                  var ty = cy + 8;
+                  var pastille = '';
+                  var num = 0;
+                
+                  for (var i = 0; i < row; i++) {
+                    cx = wSize * 0.5;
+                
+                    for (var k = 0; k < col; k++) {
+                      num++;
+                      var letters = text === 0 ? num : text[num];
+                      var circle = "<circle cx=\"".concat(cx, "\"\n            cy=\"").concat(cy, "\"\n            r=\"30\"\n            fill=\"").concat(bgColor, "\"\n            stroke=\"").concat(bgBorderColor, "\"\n            stroke-width=\"5\"/>");
+                      var textVG = "<text font-size=\"26\"\n          stroke=\"".concat(fgBorderColor, "\"\n          fill=\"").concat(fgColor, "\"\n          font-family=\"sans-serif\"\n    font-size=\"30px\"\n  color=\"blue\"\n     text-anchor=\"middle\"\n          alignment-baseline=\"baseline\"\n          x=\"").concat(cx, "\"\n          y=\"").concat(ty, "\">").concat(letters, "</text>");
+                      pastille += circle + textVG;
+                      cx += wSize;
+                    }
+                
+                    cy += wSize;
+                    ty += wSize;
+                  }
+                
+                  var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                  s.setAttribute('version', '1.1');
+                  s.setAttribute('baseProfile', 'full');
+                  s.setAttribute('width', wPastille);
+                  s.setAttribute('height', hPastille);
+                  s.setAttribute('background',"blue");
+                  s.setAttribute('viewBox', "0 0 ".concat(wPastille, " ").concat(hPastille));
+                  s.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+                  s.innerHTML = pastille; // make it base64
+                
+                  var svg64 = btoa(s.outerHTML);
+                  var b64Start = 'data:image/svg+xml;base64,';
+                  var image64 = b64Start + svg64;
+                  var textureOptions = {
+                    url: image64,
+                    colNumber: col,
+                    padding: padding,
+                    iconSize: w
+                  };
+                  return textureOptions;
+                }
+                
+                function getNewPastilleURL(bgColor, bgBorderColor, fgColor, fgBorderColor, text, numHotspot, w, h) {
+                  var imageData;
+                  imageData = computePastilles(w, h, bgColor, bgBorderColor, fgColor, fgBorderColor, text, numHotspot, w, h);
+                  return imageData;
+                }
+                
+                function actionSkfb(uid) {
+                  // initialize
+                  var error = function error() {
+                    console.error('Sketchfab API error');
+                  };
+                
+                  var success = function success(api) {
+                    api.start(function () {
+                
+                     
+                
+                 
+                      /////////////////
+                      api.addEventListener('viewerready', function () {
+                
+                        api.addEventListener('annotationBlur', function(index) {
+                   // alert('Leaving annotation'+index);
+                });
+                
+                          
+                
+                api.getAnimations(function(err, animations) {
+                    if (!err) {
+                        window.console.log(animations);
+                    }
+                });
+                
+                
+                          api.removeAnnotation(2, function(err) {
+                    if (!err) {
+                        window.console.log('Removed annotation');
+                    }
+                });
+                api.removeAnnotation(5, function(err) {
+                    if (!err) {
+                        window.console.log('Removed annotation');
+                    }
+                });
+                api.removeAnnotation(3, function(err) {
+                    if (!err) {
+                        window.console.log('Removed annotation');
+                    }
+                });
+                
+                var ty1=10;
+                
+                api.getNodeMap(function(err, nodes) {
+                    if (!err) {
+                        
+                        console.log(nodes);
+                        var a=JSON.stringify(nodes);
+                        var b=JSON.parse(a)
+                
+                /*document.onkeypress=function(event) {
+                    if(event.key=="l") {
+                        ty1++;
+                        console.log("l");
+                        api.hide('0503ebb1-3c1d-416f-96ca-d2201790b95d', function(err) {
+                    if (!err) {
+                        window.console.log('Hid node'+ty1); // 114
+                    }
+                });
+                    }
+                    else if(event.key=="p") {
+                        api.setCameraLookAt([-1081.7104890064968, 123.68286217226785, 583.2315405384181], [0,10,0], 4.3, function(err) {
+                    if (!err) {
+                        window.console.log('Camera moved');
+                    }
+                });
+                
+                    }
+                    else if(event.key=="o") {
+                        api.translate(18, [100, 500, 100], {
+                    duration: 1.0,
+                    easing: 'easeOutQuad'
+                }, function(err, translateTo) {
+                    if (!err) {
+                        window.console.log('Object has been translated to', translateTo);
+                    }
+                });
+                
+                    }
+                    else if(event.key=="u") {
+                        api.rotate(18, [Math.PI, 200, 0, 0], {
+                    duration: 1.0,
+                    easing: 'easeOutQuad'
+                }, function(err, rotateTo) {
+                    if (!err) {
+                        window.console.log('Object has been rotated according to', rotateTo);
+                    }
+                });
+                
+                
+                    }
+                }*/
+                
+                api.hide(137, function(err) {
+                    if (!err) {
+                        window.console.log('Hid node'); // 114
+                    }
+                });
+                
+                        console.log(Object.keys(b).length);
+                        for(var k=0;k<=20;k++) {
+                            if(b[k]==undefined) {
+                                console.log("hata");
+                            }
+                            else {
+                                console.log(b[k]);
+                              /* api.hide(b[k].instanceID, function(err) {
+                    if (!err) {
+                        window.console.log('Hid node'+b[k].instanceID); // 114
+                    } 
+                }); */
+                               /* if(b[k].instanceID) {
+                                    console.log(b[k].instanceID);
+                                }
+                                else {
+                                    console.log("isntanceYOK");
+                                } */
+                            }
+                        }
+                        window.console.log(b[1]); // [ ... ]
+                    }
+                });
+                
+                api.getMaterialList(function(err, materials) {
+                    if (!err) {
+                        window.console.log(materials);
+                    }
+                })
+                
+                   api.getCameraLookAt(function(err, camera) {
+                    console.log(camera.position); // [x, y, z]
+                    console.log(camera.target); // [x, y, z]
+                
+                           api.createAnnotation(
+                    [-21.87715837798519, 630.1050493172421, 525.7732469539001],
+                    [0,0,0],
+                    camera.position,
+                    camera.target,
+                    '',
+                    '',
+                    function(err, index) {
+                        if (!err) {
+                            window.console.log('Created new annotatation'+index + 1);
+                            
+                        }
+                    }
+                );
+                });
+                
+                api.updateAnnotation(0, {
+                    title: '',
+                    content: ''
+                }, function(err, information) {
+                    if (!err) {
+                        window.console.log(information);
+                    }
+                });
+                
+                api.getAnnotation(3, function(err, information) {
+                    if (!err) {
+                        window.console.log(information);
+                    }
+                });
+                api.hideAnnotationTooltips(function(err) {
+                    if (!err) {
+                        window.console.log('Hiding annotation tooltip');
+                    }
+                });
+                
+                var korkut=document.getElementsByClassName("korkut")[0];
+                var img=document.getElementsByTagName("img")[0];
+                var p=document.getElementsByTagName("p")[0];
+                
+                var text1="A dental implant (also known as an endosseous implant or fixture) is a prosthesis that interfaces with the bone of the jaw or skull to support a dental prosthesis such as a crown, bridge, denture, or facial prosthesis or to act as an orthodontic anchor. The basis for modern dental implants is a biologic process called osseointegration, in which materials such as titanium or zirconia form an intimate bond to bone. The implant fixture is first placed so that it is likely to osseointegrate, then a dental prosthetic is added. A variable amount of healing time is required for osseointegration before either the ";
+                var text2="Success or failure of implants depends on the health of the person receiving the treatment, drugs which affect the chances of osseointegration, and the health of the tissues in the mouth. The amount of stress that will be put on the implant and fixture during normal function is also evaluated. Planning the position and number of implants is key to the long-term health of the prosthetic since biomechanical forces created during chewing can be significant. The position of implants is determined by the position and angle of adjacent teeth, by lab simulations or by using computed tomography with CAD/CAM ";
+                var text3="The final prosthetic can be either fixed, where a person cannot remove the denture or teeth from their mouth, or removable, where they can remove the prosthetic. In each case an abutment is attached to the implant fixture. Where the prosthetic is fixed, the crown, bridge or denture is fixed to the abutment either with lag screws or with dental cement. Where the prosthetic is removable, a corresponding adapter is placed in the prosthetic so that the two pieces can be secured together.";
+                var text4="The risks and complications related to implant therapy divide into those that occur during surgery (such as excessive bleeding or nerve injury), those that occur in the first six months (such as infection and failure to osseointegrate) and those that occur long-term (such as peri-implantitis and mechanical failures). In the presence of healthy tissues, a well-integrated implant with appropriate biomechanical loads can have 5-year plus survival rates from 93 to 98 percent";
+                var text5="The primary use of dental implants is to support dental prosthetics (i.e. false teeth). Modern dental implants[9] make use of osseointegration, the biologic process where bone fuses tightly to the surface of specific materials such as titanium and some ceramics. The integration of implant and bone can support physical loads for decades without failure."
+                var sayi=-1;
+                
+                api.addEventListener('annotationSelect', function(index) {
+                    console.log('Selected annotation'+index);
+                
+                
+                
+                
+                if(index==-1) {
+                
+                }
+                else if(index==0) {
+                    
+                    p.innerHTML=text1;
+                    korkut.style.width="26%";
+                    img.src="imp5.png";
+                  
+                      
+                    
+                    
+                 
+                }
+                else if(index==1) {
+                  
+                    p.innerHTML=text2;
+                    korkut.style.width="26%";
+                    img.src="imp4.png";
+                   
+                }
+                else if(index==2) {
+                   
+                    p.innerHTML=text3;
+                    korkut.style.width="26%";
+                    img.src="imp3.png";
+                   
+                }
+                else if(index==3) {
+                  
+                    p.innerHTML=text4;
+                    korkut.style.width="26%";
+                    img.src="imp2.png";
+                 
+                }
+                else if(index==4) {
+                  
+                    p.innerHTML=text5;
+                    korkut.style.width="26%";
+                    img.src="imp.png";
+                
+                }
+                
+                
+                    
+                });
+                
+                
+                
+                document.getElementById("play").onclick=function() {
+                    api.getAnimations(function(err, animations) {
+                    if (!err) {
+                      console.log(animations);
+                        var firstAnimationUID = animations[0][0];
+                        api.setCurrentAnimationByUID(firstAnimationUID, function(err) {
+                            if (!err) {
+                                window.console.log('Set animation track to'+ firstAnimationUID);
+                
+                                api.showAnnotation(0, function(err, index) {
+                    if (!err) {
+                        window.console.log('Showing annotation', index + 1);
+                    }
+                });
+                api.showAnnotation(1, function(err, index) {
+                    if (!err) {
+                        window.console.log('Showing annotation', index + 1);
+                    }
+                });
+                
+                  api.showAnnotation(2, function(err, index) {
+                    if (!err) {
+                        window.console.log('Showing annotation', index + 1);
+                    }
+                }); 
+                
+                api.showAnnotation(3, function(err, index) {
+                    if (!err) {
+                        window.console.log('Showing annotation', index + 1);
+                    }
+                });
+                
+                 api.showAnnotation(4, function(err, index) {
+                    if (!err) {
+                        window.console.log('Showing annotation', index + 1);
+                    }
+                }); 
+                
+                api.showAnnotation(5, function(err, index) {
+                    if (!err) {
+                        window.console.log('Showing annotation', index + 1);
+                    }
+                });
+                api.showAnnotation(6, function(err, index) {
+                    if (!err) {
+                        window.console.log('Showing annotation', index + 1);
+                    }
+                });
+                api.showAnnotation(7, function(err, index) {
+                    if (!err) {
+                        window.console.log('Showing annotation', index + 1);
+                    }
+                });
+                
+                
+                
+                
+                            }
+                        });
+                          api.play(function(err) {
+                    if (!err) {
+                        window.console.log('Animation playing');
+                    } 
+                }); 
+                    }
+                });
+                
+                
+                
+                }
+                
+                
+                document.getElementById("pause").onclick=function() {
+                    api.getAnimations(function(err, animations) {
+                    if (!err) {
+                      console.log(animations);
+                        var firstAnimationUID2 = animations[0][1];
+                        api.setCurrentAnimationByUID(firstAnimationUID2, function(err) {
+                            if (!err) {
+                                window.console.log('Set animation track to'+ firstAnimationUID2);
+                                api.hideAnnotation(0, function(err, index) {
+                    if (!err) {
+                        window.console.log('Hiding annotation', index + 1);
+                    }
+                });
+                api.hideAnnotation(1, function(err, index) {
+                    if (!err) {
+                        window.console.log('Hiding annotation', index + 1);
+                    }
+                });
+                api.hideAnnotation(2, function(err, index) {
+                    if (!err) {
+                        window.console.log('Hiding annotation', index + 1);
+                    }
+                });
+                api.hideAnnotation(3, function(err, index) {
+                    if (!err) {
+                        window.console.log('Hiding annotation', index + 1);
+                    }
+                });
+                api.hideAnnotation(4, function(err, index) {
+                    if (!err) {
+                        window.console.log('Hiding annotation', index + 1);
+                    }
+                });
+                api.hideAnnotation(5, function(err, index) {
+                    if (!err) {
+                        window.console.log('Hiding annotation', index + 1);
+                    }
+                });
+                api.hideAnnotation(6, function(err, index) {
+                    if (!err) {
+                        window.console.log('Hiding annotation', index + 1);
+                    }
+                });
+                api.hideAnnotation(7, function(err, index) {
+                    if (!err) {
+                        window.console.log('Hiding annotation', index + 1);
+                    }
+                });
+                            }
+                        });
+                          api.play(function(err) {
+                    if (!err) {
+                        window.console.log('Animation playing');
+                    } 
+                }); 
+                    }
+                });
+                }
+                var timeFactor=1.0;
+                
+                /*document.onkeyup=function(event) {
+                    if(event.key=="u") {
+                    
+                        api.addEventListener('animationEnded', function () {
+                        timeFactor *= -1;
+                        api.setSpeed(timeFactor);
+                        console.log('animationEnded', timeFactor);
+                      });
+                    
+                    }
+                }*/
+                
+                
+                
+                
+                
+                        var url = '';
+                        document.getElementById('white').addEventListener('click', function () {
+                          //url = getNewPastilleURL('rgba(255,255,255,0.75)', 'black', 'black', 'none', 0, 50, 512, 256);
+                          url = getNewPastilleURL('rgba(0,0,0,0.50)', 'white', 'white', 'none', 0, 50, 512, 256);
+                          api.setAnnotationsTexture(url, function () {});
+                        });
+                        document.getElementById('100').addEventListener('click', function () {
+                          url = getNewPastilleURL('rgba(255,255,255,0.75)', 'black', 'black', 'none', 0, 100, 512, 512);
+                          api.setAnnotationsTexture(url, function () {});
+                        });
+                        document.getElementById('200').addEventListener('click', function () {
+                          url = getNewPastilleURL('rgba(255,255,255,0.75)', 'black', 'black', 'none', 0, 200, 512, 1024);
+                          api.setAnnotationsTexture(url, function () {});
+                        }); // start on 1 so "aa....
+                
+                        document.getElementById('text').addEventListener('click', function () {
+                          url = getNewPastilleURL('rgba(255,255,255,1.0)', 'black', 'black', 'none', 'aabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', 50, 512, 256);
+                          api.setAnnotationsTexture(url, function () {});
+                        });
+                        document.getElementById('discreet').addEventListener('click', function () {
+                          url = getNewPastilleURL('rgba(255,255,255,0.0)', 'black', 'black', 'none', 0, 50, 512, 256);
+                          api.setAnnotationsTexture(url, function () {});
+                        });
+                        document.getElementById('invisible').addEventListener('click', function () {
+                          url = getNewPastilleURL('rgba(0,0,0,0)', 'rgba(0,0,0,0)', 'rgba(0,0,0,0)', 'rgba(0,0,0,0)', 0, 50, 512, 256);
+                          api.setAnnotationsTexture(url, function () {});
+                        });
+                        document.getElementById('red').addEventListener('click', function () {
+                          url = getNewPastilleURL('rgba(255,0,0,1.0)', 'BLUE', 'green', 'white', 0, 50, 512, 256);
+                          api.setAnnotationsTexture(url, function () {});
+                        });
+                        document.getElementById('logos').addEventListener('click', function () {
+                          api.setAnnotationsTexture({
+                            url: imgBLogo,
+                            padding: 2,
+                            iconSize: 48,
+                            colNumber: 10
+                          }, function () {});
+                        });
+                      });
+                    });
+                  };
+                
+                  client.init(uid, {
+                    success: success,
+                    error: error,
+                    autostart: 1,
+                    preload: 0,
+                    ui_infos: 0,
+                    ui_inspector: 0,
+                    ui_settings: 0,
+                    ui_vr: 0,
+                    ui_general_controls: 1,
+                    ui_help: 0,
+                    ui_watermark_link: 0,
+                    ui_watermark: 0,
+                    ui_hint: 1,
+                    ui_stop: 0,
+                    ui_controls: 1,
+                    transparent: 1,
+                    ui_fullscreen:0
+                  });
+                }
+                
+                
+                //actionSkfb(uid3); //////////////////////////////////
+                // GUI Code
+                //////////////////////////////////
+                
+                var uid3="c423bb5e06ce4147b9483b370c77dc03";
+                var uid4="333ce3d64ad54f00b53d0041daf8b666";
+                var uid5="8ca82d377b834871a5a0caaf17f62df4";
+                var uid6="b15cfd0c9f2843b38f5f3790d9950922";
+                var uid7="a1a8be178aaa49f58b96525427d93e24";
+                var uid8="ab2297f2d1b24f54958606a335685258";
+                var uid9="144f739638d94f0ba9cd6c00499ca633";
+                var uid10="36f47118f079428e97710875099b8b2e";
+                var uid11="d379f1cf621245e0bd737ad8bf9c3e10";
+                var uid12="9a71a88b6484446fa8f9b2d95478e95d";
+                var uid13="ae7c279228e549ed9c38311539667f5e";
+                var uid14="17e0816ab5ec432fbbe4ab3233f31af2";
+                var uid15="a5e606e7ca9b4a50b69a9e04b1ba834a";
+                
+                actionSkfb(uid10);
+                
+                
+                document.onkeydown=function(event) {
+                if(event.key=="n") {
+                   actionSkfb(uid3);
+                }
+                else if(event.key=="m") {
+                    actionSkfb(uid4);
+                }
+                else if(event.key=="b") {
+                    actionSkfb(uid5);
+                }
+                else if(event.key=="e") {
+                  window.history.back();
+                }
+                }
+                
+                document.getElementById("dental1").onclick=function() {
+                    actionSkfb(uid3)
+                }
+                document.getElementById("dental2").onclick=function() {
+                    actionSkfb(uid4)
+                }
+                document.getElementById("dental3").onclick=function() {
+                    actionSkfb(uid5)
+                }
+                document.getElementById("dental4").onclick=function() {
+                    actionSkfb(uid6)
+                }
+                document.getElementById("dental5").onclick=function() {
+                    actionSkfb(uid7)
+                }
+                document.getElementById("dental6").onclick=function() {
+                    actionSkfb(uid8)
+                }
+                document.getElementById("dental7").onclick=function() {
+                    actionSkfb(uid9)
+                }
+                document.getElementById("dental8").onclick=function() {
+                    actionSkfb(uid10)
+                }
+                document.getElementById("dental9").onclick=function() {
+                    actionSkfb(uid11)
+                }
+                document.getElementById("dental10").onclick=function() {
+                    actionSkfb(uid12)
+                }
+                
+                document.getElementById("dental11").onclick=function() {
+                    actionSkfb(uid13)
+                }
+                document.getElementById("dental12").onclick=function() {
+                    actionSkfb(uid3)
+                }
+                document.getElementById("dental13").onclick=function() {
+                    actionSkfb(uid3)
+                }
+                }
+                
+                /*function initGui() {
+                  var controls = document.getElementById('controls');
+                  var buttonsText = "\n        <button id=\"white\">white</button>\n        <button id=\"100\">100</button>\n        <button id=\"200\">200</button>\n        <button id=\"text\">text</button>\n        <button id=\"red\">red</button>\n        <button id=\"invisible\">invisible</button>\n        <button id=\"discreet\">discreet</button>\n        <button id=\"logos\">logos</button>\n       ";
+                  //controls.innerHTML = buttonsText;
+                }
+                
+                initGui(); *///////////////////////////////////
+                // GUI Code end
+                //////////////////////////////////
+                        </script>
+
+<style>
+        button {
+            outline: none;
+        }
+        a {
+            outline: none;
+        }
+    </style>
+
+    <div class="model-area d-flex justify-content-center align-items-center w-100">
+        <a href="products2.html" onclick="history.back()" class="button-close">
+            <i class="fa-solid fa-xmark"></i>
+        </a>
+        <iframe src="" id="api-frame"  style="width: 100%;height: 100vh;"></iframe>
+    </div>
+
+
+
+
+   <!-- <div class="sidebar" id="draggable">
+        <div class="explanatory-text">Currently Viewed</div>
+        <div class="explanatory-title">AnyOne® All Family</div>
+        <div class="sidebar-box">
+            <h5 class="title">3. Part Information</h5>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit possimus quas ex
+            voluptates sit culpa laboriosam impedit excepturi, molestias ipsa. <br><br> Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Deleniti.
+        </div>
+        <button class="combine-btn"><i class="fa-solid fa-down-left-and-up-right-to-center me-2"></i>
+            Combine ALL</button>
+        <br>
+        <button class="smash-btn">
+            <i class="fa-solid fa-up-right-and-down-left-from-center me-2"></i> Smash ALL
+        </button>
+
+        <div class="group-btn">
+            <button class="btn-box">1</button>
+            <button class="btn-box">2</button>
+            <button class="btn-box active">3</button>
+            <button class="btn-box">4</button>
+            <button class="btn-box">5</button>
+        </div>
+    </div> -->
+
+
+
+    <!-- Bootstrap JS -->
+    <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
+    <!-- jqery JS  -->
+    <script type="text/javascript" src="assets/js/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#draggable").draggable();
+        });
+    </script> -->
+</body>
+
+</html>
