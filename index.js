@@ -559,17 +559,19 @@ app.get('/notification', function(req, res) {
 
         console.log(result.length);
       for(var i=1;i<=result.length;i++) {
-         
+         for(var k=1;k<=result[i-1].desktop_uuid.length;k++) {
+           console.log(result[i-1].desktop_uuid[k-1]);
+         }
           console.log(i);
           console.log(result[i-1].desktop_uuid);
           console.log(req.query.desktop_uuid);
           
-          if(result[i-1].desktop_uuid===req.query.desktop_uuid) {
+          if(result[i-1].desktop_uuid==req.query.desktop_uuid) {
             
       device();
           }
 
-        else if(result[i-1].mobil_uuid===req.query.mobil_uuid) {
+        else if(result[i-1].mobil_uuid==req.query.mobil_uuid) {
             
             device();
                 }
