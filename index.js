@@ -555,7 +555,7 @@ app.get('/notification', function(req, res) {
       const db = client.db('megagen');
       db.collection('deviceid').find(req.query, { projection: { _id: 0 } }).toArray((err, result) => {
         if (err) throw err;
-        console.log("RESULT :"+result[0].username);
+        //console.log("RESULT :"+result[0].username);
 
         console.log(result.length);
       for(var i=1;i<=result.length;i++) {
