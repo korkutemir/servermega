@@ -562,6 +562,7 @@ app.get('/notification', function(req, res) {
           } 
           console.log(result[i].username);
           console.log(i);
+          console.log(result[i].desktop_uuid);
         }
     
       device();
