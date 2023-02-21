@@ -552,7 +552,7 @@ app.get('/notification', function(req, res) {
       const db = client.db('megagen');
       db.collection('deviceid').find(req.query.deviceid, { projection: { _id: 0 } }).toArray((err, result) => {
         if (err) throw err;
-        console.log(result);
+        console.log("RESULT :"+result);
     
       device();
      
