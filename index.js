@@ -556,8 +556,8 @@ app.get('/notification', function(req, res) {
 
         console.log(result.length);
       for(var i=0;i<=result.length;i++) {
-          console.log(result[i].desktop_uuid[0]);
-          console.log(result[i].mobil_uuid[0]);
+          console.log(result[0].desktop_uuid[0]);
+          console.log(result[0].mobil_uuid[0]);
 
         }
     
