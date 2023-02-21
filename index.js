@@ -562,12 +562,12 @@ app.get('/notification', function(req, res) {
          
           console.log(i);
           
-          if(result[i-1].desktop_uuid==req.query.desktop_uuid) {
+          if(result[i-1].desktop_uuid===req.query.desktop_uuid) {
             
       device();
           }
 
-        else if(result[i-1].mobil_uuid==req.query.mobil_uuid) {
+        else if(result[i-1].mobil_uuid===req.query.mobil_uuid) {
             
             device();
                 }
