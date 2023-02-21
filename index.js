@@ -532,6 +532,9 @@ app.get('/notification', function(req, res) {
     // res.download('eko.pdf');
  
     console.log(req.query);
+    console.log(req.query.deviceid);
+
+
  
     var dizin_1=[];
     var dizin_2=[];
@@ -556,13 +559,11 @@ app.get('/notification', function(req, res) {
 
         console.log(result.length);
       for(var i=0;i<=result.length;i++) {
-          for(var k=0;k<=result[i].mobil_uuid.length;k++) {
-            console.log(result[i].desktop_uuid[k]);
-          console.log(result[i].mobil_uuid[k]);
-          } 
+         
           console.log(result[i].username);
           console.log(i);
           console.log(result[i].desktop_uuid.length);
+          
         }
     
       device();
