@@ -558,9 +558,8 @@ app.get('/notification', function(req, res) {
         console.log("RESULT :"+result[0].username);
 
         console.log(result.length);
-      for(var i=-1;i<=result.length;i++) {
+      for(var i=0;i<=result.length;i++) {
          
-          console.log(result[i].username);
           console.log(i);
           if(result[i].desktop_uuid==req.query.desktop_uuid) {
             
