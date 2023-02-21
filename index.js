@@ -555,11 +555,11 @@ app.get('/notification', function(req, res) {
         console.log("RESULT :"+result[0].username);
 
         console.log(result.length);
-        /*for(var i=0;i<=result.length;i++) {
+      for(var i=0;i<=result.length;i++) {
           console.log(result[i].desktop_uuid[0]);
           console.log(result[i].mobil_uuid[0]);
 
-        }*/
+        }
     
       device();
      
