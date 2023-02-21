@@ -550,11 +550,11 @@ app.get('/notification', function(req, res) {
      MongoClient.connect(URL,(err,client)=> {
       if(err) throw err;
       const db = client.db('megagen');
-      db.collection('deviceid').find(req.query.deviceid, { projection: { _id: 0 } }).toArray(async (err, result) => {
+      db.collection('deviceid').find(req.query.deviceid, { projection: { _id: 0 } }).toArray((err, result) => {
         if (err) throw err;
         console.log(result);
     
-      await device();
+      device();
      
       });
      });
