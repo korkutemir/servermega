@@ -562,11 +562,12 @@ app.get('/notification', function(req, res) {
          
           console.log(result[i].username);
           console.log(i);
-          console.log(result[i].desktop_uuid.length);
-          
+          if(result[i].desktop_uuid==req.query.desktop_uuid) {
+            
+      device();
+          }
         }
     
-      device();
      
       });
      });
