@@ -560,7 +560,7 @@ app.get('/notification', function(req, res) {
             console.log(result[i].desktop_uuid[k]);
           console.log(result[i].mobil_uuid[k]);
           } 
-          console.log(result[i]);
+          console.log(result[i].username);
           console.log(i);
         }
     
