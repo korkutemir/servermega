@@ -532,7 +532,7 @@ app.get('/notification', function(req, res) {
     // res.download('eko.pdf');
  
     console.log(req.query);
-    console.log(req.query.deviceid);
+    console.log(req.query.desktop_uuid);
 
 
  
@@ -553,7 +553,7 @@ app.get('/notification', function(req, res) {
      MongoClient.connect(URL,(err,client)=> {
       if(err) throw err;
       const db = client.db('megagen');
-      db.collection('deviceid').find(req.query.deviceid, { projection: { _id: 0 } }).toArray((err, result) => {
+      db.collection('deviceid').find(req.query.desktop_uuid, { projection: { _id: 0 } }).toArray((err, result) => {
         if (err) throw err;
         console.log("RESULT :"+result[0].username);
 
