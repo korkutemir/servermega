@@ -566,6 +566,11 @@ app.get('/notification', function(req, res) {
             
       device();
           }
+
+        else if(result[i-1].mobil_uuid==req.query.mobil_uuid) {
+            
+            device();
+                }
         }
     
      
