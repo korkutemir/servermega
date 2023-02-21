@@ -561,8 +561,6 @@ app.get('/notification', function(req, res) {
       for(var i=1;i<=result.length;i++) {
          for(var k=1;k<=result[i-1].desktop_uuid.length;k++) {
            console.log(result[i-1].desktop_uuid[k-1]);
-
-
            if(result[i-1].desktop_uuid[k-1]==req.query.desktop_uuid) {
             
             device();
@@ -571,8 +569,8 @@ app.get('/notification', function(req, res) {
               else if(result[i-1].mobil_uuid[k-1]==req.query.mobil_uuid) {
                   
                   device();
-                      }
               }
+           
          }
          /* console.log(i);
           console.log(result[i-1].desktop_uuid);
