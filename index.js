@@ -556,10 +556,10 @@ app.get('/notification', function(req, res) {
 
         console.log(result.length);
       for(var i=0;i<=result.length;i++) {
-         /* for(var k=0;k<=result[i].desktop_uuid.length;k++) {
-            console.log(result[i].desktop_uuid[k-1]);
-          console.log(result[i-1].mobil_uuid[k-1]);
-          } */
+          for(var k=0;k<=result[i].desktop_uuid.length;k++) {
+            console.log(result[i].desktop_uuid[k]);
+          console.log(result[i].mobil_uuid[k]);
+          } 
           console.log(result[i]);
           console.log(i);
         }
