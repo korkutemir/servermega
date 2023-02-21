@@ -564,12 +564,262 @@ app.get('/notification', function(req, res) {
           
           if(result[i-1].desktop_uuid===req.query.desktop_uuid) {
             
-      device();
+            MongoClient.connect(URL, (err, client) => {
+              if (err) throw err;
+            
+              const db = client.db('megagen');
+              let sorgu_pro = {membership:"pro"};
+              let sorgu_premium = {membership:"premium"};
+              let sorgu_free = {membership:"free"};
+              var sorgu3=req.query;
+              let sorgu_2={name:"Section"}
+              db.collection('anyridge').find(sorgu_pro, { projection: { _id: 0 } }).toArray((err, result) => {
+                if (err) throw err;
+                console.log(result);
+            
+               // res.send(result);
+            
+               // client.close();
+    
+               dizin_1.push(result);
+              });
+    
+              db.collection('anyridge').find(sorgu_premium, { projection: { _id: 0 } }).toArray((err, result) => {
+                if (err) throw err;
+                console.log(result);
+            
+               // res.send(result);
+            
+               // client.close();
+    
+               dizin_1.push(result);
+              });
+    
+              db.collection('anyridge').find(sorgu_free, { projection: { _id: 0 } }).toArray((err, result) => {
+                if (err) throw err;
+                console.log(result);
+            
+              //  res.send(result);
+            
+               // client.close();
+    
+               dizin_1.push(result);
+    
+              // res.send(dizin_1);
+              });
+    
+              db.collection('anyone').find(sorgu_pro, { projection: { _id: 0 } }).toArray((err, result) => {
+                if (err) throw err;
+                console.log(result);
+            
+              //  res.send(result);
+            
+               // client.close();
+    
+               dizin_2.push(result);
+    
+             //  res.send(dizin_1);
+              });
+    
+              db.collection('anyone').find(sorgu_premium, { projection: { _id: 0 } }).toArray((err, result) => {
+                if (err) throw err;
+                console.log(result);
+            
+              //  res.send(result);
+            
+               // client.close();
+    
+               dizin_2.push(result);
+    
+             //  res.send(dizin_1);
+              });
+    
+              db.collection('anyone').find(sorgu_free, { projection: { _id: 0 } }).toArray((err, result) => {
+                if (err) throw err;
+                console.log(result);
+            
+              //  res.send(result);
+            
+               // client.close();
+    
+               dizin_2.push(result);
+    
+             //  res.send({dizin_1,dizin_2});
+              });
+    
+              db.collection('st').find(sorgu_pro, { projection: { _id: 0 } }).toArray((err, result) => {
+                if (err) throw err;
+                console.log(result);
+            
+              //  res.send(result);
+            
+               // client.close();
+    
+               dizin_3.push(result);
+    
+             //  res.send({dizin_1,dizin_2});
+              });
+    
+              db.collection('st').find(sorgu_premium, { projection: { _id: 0 } }).toArray((err, result) => {
+                if (err) throw err;
+                console.log(result);
+            
+              //  res.send(result);
+            
+               // client.close();
+    
+               dizin_3.push(result);
+    
+             //  res.send({dizin_1,dizin_2});
+              });
+    
+              db.collection('st').find(sorgu_free, { projection: { _id: 0 } }).toArray(async (err, result) => {
+                if (err) throw err;
+                console.log(result);
+            
+              //  res.send(result);
+            
+               // client.close();
+    
+              await dizin_3.push(result);
+    
+               res.send({dizin_1,dizin_2,dizin_3});
+              });
+    
+            
+            
+            }); 
+
           }
 
         else if(result[i-1].mobil_uuid===req.query.mobil_uuid) {
             
-            device();
+          MongoClient.connect(URL, (err, client) => {
+            if (err) throw err;
+          
+            const db = client.db('megagen');
+            let sorgu_pro = {membership:"pro"};
+            let sorgu_premium = {membership:"premium"};
+            let sorgu_free = {membership:"free"};
+            var sorgu3=req.query;
+            let sorgu_2={name:"Section"}
+            db.collection('anyridge').find(sorgu_pro, { projection: { _id: 0 } }).toArray((err, result) => {
+              if (err) throw err;
+              console.log(result);
+          
+             // res.send(result);
+          
+             // client.close();
+  
+             dizin_1.push(result);
+            });
+  
+            db.collection('anyridge').find(sorgu_premium, { projection: { _id: 0 } }).toArray((err, result) => {
+              if (err) throw err;
+              console.log(result);
+          
+             // res.send(result);
+          
+             // client.close();
+  
+             dizin_1.push(result);
+            });
+  
+            db.collection('anyridge').find(sorgu_free, { projection: { _id: 0 } }).toArray((err, result) => {
+              if (err) throw err;
+              console.log(result);
+          
+            //  res.send(result);
+          
+             // client.close();
+  
+             dizin_1.push(result);
+  
+            // res.send(dizin_1);
+            });
+  
+            db.collection('anyone').find(sorgu_pro, { projection: { _id: 0 } }).toArray((err, result) => {
+              if (err) throw err;
+              console.log(result);
+          
+            //  res.send(result);
+          
+             // client.close();
+  
+             dizin_2.push(result);
+  
+           //  res.send(dizin_1);
+            });
+  
+            db.collection('anyone').find(sorgu_premium, { projection: { _id: 0 } }).toArray((err, result) => {
+              if (err) throw err;
+              console.log(result);
+          
+            //  res.send(result);
+          
+             // client.close();
+  
+             dizin_2.push(result);
+  
+           //  res.send(dizin_1);
+            });
+  
+            db.collection('anyone').find(sorgu_free, { projection: { _id: 0 } }).toArray((err, result) => {
+              if (err) throw err;
+              console.log(result);
+          
+            //  res.send(result);
+          
+             // client.close();
+  
+             dizin_2.push(result);
+  
+           //  res.send({dizin_1,dizin_2});
+            });
+  
+            db.collection('st').find(sorgu_pro, { projection: { _id: 0 } }).toArray((err, result) => {
+              if (err) throw err;
+              console.log(result);
+          
+            //  res.send(result);
+          
+             // client.close();
+  
+             dizin_3.push(result);
+  
+           //  res.send({dizin_1,dizin_2});
+            });
+  
+            db.collection('st').find(sorgu_premium, { projection: { _id: 0 } }).toArray((err, result) => {
+              if (err) throw err;
+              console.log(result);
+          
+            //  res.send(result);
+          
+             // client.close();
+  
+             dizin_3.push(result);
+  
+           //  res.send({dizin_1,dizin_2});
+            });
+  
+            db.collection('st').find(sorgu_free, { projection: { _id: 0 } }).toArray(async (err, result) => {
+              if (err) throw err;
+              console.log(result);
+          
+            //  res.send(result);
+          
+             // client.close();
+  
+            await dizin_3.push(result);
+  
+             res.send({dizin_1,dizin_2,dizin_3});
+            });
+  
+          
+          
+          }); 
+
                 }
         }
     
@@ -577,7 +827,7 @@ app.get('/notification', function(req, res) {
       });
      });
      
-    function  device() {
+    /*function  device() {
      
        
          
@@ -707,7 +957,7 @@ app.get('/notification', function(req, res) {
          
          }); 
  
-     }
+    }*/
  
   
  
