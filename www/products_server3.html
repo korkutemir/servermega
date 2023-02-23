@@ -233,6 +233,12 @@ request.send(null);
                         elements.style.display="none";
                     });
                }
+
+                      document.getElementById("all_anyridge").setAttribute("class","dropdown-btn li-AnyRidge-x active");
+                  document.getElementById("custom_anyridge").setAttribute("class","dropdown-btn li-Anyridge-1");
+                  document.getElementById("kit_anyridge").setAttribute("class","dropdown-btn li-Anyridge-2");
+                  document.getElementById("dental_anyridge").setAttribute("class","dropdown-btn li-Anyridge-0");
+
                     
             }
 
@@ -259,6 +265,12 @@ request.send(null);
                     });
                    
                }
+
+                         document.getElementById("all_anyone").setAttribute("class","dropdown-btn li-AnyOne-0 active");
+                  document.getElementById("custom_anyone").setAttribute("class","dropdown-btn li-AnyOne-1");
+                  document.getElementById("kit_anyone").setAttribute("class","dropdown-btn li-AnyOne-2");
+                  document.getElementById("dental_anyone").setAttribute("class","dropdown-btn li-AnyOne-0");
+
                     
             }
 
@@ -285,6 +297,12 @@ request.send(null);
                     });
                    
                }
+
+                         document.getElementById("all_st").setAttribute("class","dropdown-btn li-ST-x active");
+                  document.getElementById("custom_st").setAttribute("class","dropdown-btn li-ST-1");
+                  document.getElementById("kit_st").setAttribute("class","dropdown-btn li-ST-2");
+                  document.getElementById("dental_st").setAttribute("class","dropdown-btn li-ST-0");
+
                     
             }
             document.getElementById("AccordionAnyRidge").click();
@@ -341,8 +359,11 @@ request.send(null);
           }
 
           document.getElementById("all_anyridge").onclick=function() {
-              this.style.color="#14150e";
-                this.style.background="#F2C94C";
+            this.setAttribute("class","dropdown-btn li-AnyRidge-x active");
+                  document.getElementById("custom_anyridge").setAttribute("class","dropdown-btn li-Anyridge-1");
+                  document.getElementById("kit_anyridge").setAttribute("class","dropdown-btn li-Anyridge-2");
+                  document.getElementById("dental_anyridge").setAttribute("class","dropdown-btn li-Anyridge-0");
+
              
             document.querySelectorAll('[id=anyridge_elements]').forEach(function(elements) {
                         elements.style.display="block";
@@ -350,8 +371,11 @@ request.send(null);
           }
 
                   document.getElementById("dental_anyridge").onclick=function() {
-                    this.style.color="#14150e";
-                this.style.background="#F2C94C";
+                    this.setAttribute("class","dropdown-btn li-AnyRidge-0 active");
+                  document.getElementById("custom_anyridge").setAttribute("class","dropdown-btn li-Anyridge-1");
+                  document.getElementById("kit_anyridge").setAttribute("class","dropdown-btn li-Anyridge-2");
+                  document.getElementById("all_anyridge").setAttribute("class","dropdown-btn li-Anyridge-x");
+
            
             document.querySelectorAll('[id=anyridge_elements]').forEach(function(elements) {
                         if(elements.getAttribute("category")=="Dental Implant") {
@@ -364,8 +388,11 @@ request.send(null);
           }
 
                    document.getElementById("custom_anyridge").onclick=function() {
-                    this.style.color="#14150e";
-                this.style.background="#F2C94C";
+                    this.setAttribute("class","dropdown-btn li-AnyRidge-1 active");
+                  document.getElementById("all_anyridge").setAttribute("class","dropdown-btn li-Anyridge-x");
+                  document.getElementById("kit_anyridge").setAttribute("class","dropdown-btn li-Anyridge-2");
+                  document.getElementById("dental_anyridge").setAttribute("class","dropdown-btn li-Anyridge-0");
+
         
             document.querySelectorAll('[id=anyridge_elements]').forEach(function(elements) {
                         if(elements.getAttribute("category")=="Custom Abutment") {
@@ -378,8 +405,12 @@ request.send(null);
           }
 
                    document.getElementById("kit_anyridge").onclick=function() {
-                    this.style.color="#14150e";
-                this.style.background="#F2C94C";
+                    this.setAttribute("class","dropdown-btn li-AnyRidge-2 active");
+                  document.getElementById("custom_anyridge").setAttribute("class","dropdown-btn li-Anyridge-1");
+                  document.getElementById("all_anyridge").setAttribute("class","dropdown-btn li-Anyridge-x");
+                  document.getElementById("dental_anyridge").setAttribute("class","dropdown-btn li-Anyridge-0");
+
+
            
             document.querySelectorAll('[id=anyridge_elements]').forEach(function(elements) {
                         if(elements.getAttribute("category")=="Surgical Kit") {
@@ -392,8 +423,11 @@ request.send(null);
           }
 
                     document.getElementById("all_anyone").onclick=function() {
-                    this.style.color="#14150e";
-                this.style.background="#F2C94C";
+                        this.setAttribute("class","dropdown-btn li-AnyOne-0 active");
+                  document.getElementById("custom_anyone").setAttribute("class","dropdown-btn li-AnyOne-1");
+                  document.getElementById("kit_anyone").setAttribute("class","dropdown-btn li-AnyOne-2");
+                  document.getElementById("dental_anyone").setAttribute("class","dropdown-btn li-AnyOne-0");
+
            
             document.querySelectorAll('[id=anyone_elements]').forEach(function(elements) {
                 elements.style.display="block";                       
@@ -402,8 +436,12 @@ request.send(null);
           }
 
                  document.getElementById("dental_anyone").onclick=function() {
-                    this.style.color="#14150e";
-                this.style.background="#F2C94C";
+                    this.setAttribute("class","dropdown-btn li-AnyRidge-0 active");
+                  document.getElementById("custom_anyone").setAttribute("class","dropdown-btn li-AnyRidge-1");
+                  document.getElementById("kit_anyone").setAttribute("class","dropdown-btn li-AnyRidge-2");
+                  document.getElementById("all_anyone").setAttribute("class","dropdown-btn li-AnyRidge-x");
+
+
            
             document.querySelectorAll('[id=anyone_elements]').forEach(function(elements) {
                         if(elements.getAttribute("category")=="Dental Implant") {
@@ -416,8 +454,11 @@ request.send(null);
           }
 
                document.getElementById("custom_anyone").onclick=function() {
-                    this.style.color="#14150e";
-                this.style.background="#F2C94C";
+                this.setAttribute("class","dropdown-btn li-AnyRidge-0 active");
+                  document.getElementById("dental_anyone").setAttribute("class","dropdown-btn li-AnyRidge-0");
+                  document.getElementById("kit_anyone").setAttribute("class","dropdown-btn li-AnyRidge-2");
+                  document.getElementById("all_anyone").setAttribute("class","dropdown-btn li-AnyRidge-x");
+
            
             document.querySelectorAll('[id=anyone_elements]').forEach(function(elements) {
                         if(elements.getAttribute("category")=="Custom Abutment") {
@@ -430,8 +471,12 @@ request.send(null);
           }
 
                document.getElementById("kit_anyone").onclick=function() {
-                    this.style.color="#14150e";
-                this.style.background="#F2C94C";
+                this.setAttribute("class","dropdown-btn li-AnyRidge-0 active");
+                  document.getElementById("custom_anyone").setAttribute("class","dropdown-btn li-AnyRidge-1");
+                  document.getElementById("dental_anyone").setAttribute("class","dropdown-btn li-AnyRidge-0");
+                  document.getElementById("all_anyone").setAttribute("class","dropdown-btn li-AnyRidge-x");
+
+
            
             document.querySelectorAll('[id=anyone_elements]').forEach(function(elements) {
                         if(elements.getAttribute("category")=="Surgical Kit") {
@@ -444,8 +489,12 @@ request.send(null);
           }
 
                   document.getElementById("all_st").onclick=function() {
-                    this.style.color="#14150e";
-                this.style.background="#F2C94C";
+                    this.setAttribute("class","dropdown-btn li-ST-x active");
+                  document.getElementById("custom_st").setAttribute("class","dropdown-btn li-ST-1");
+                  document.getElementById("kit_st").setAttribute("class","dropdown-btn li-ST-2");
+                  document.getElementById("dental_st").setAttribute("class","dropdown-btn li-ST-0");
+
+
            
             document.querySelectorAll('[id=st_elements]').forEach(function(elements) {
                 elements.style.display="block";                       
@@ -454,8 +503,11 @@ request.send(null);
           }
 
                document.getElementById("dental_st").onclick=function() {
-                    this.style.color="#14150e";
-                this.style.background="#F2C94C";
+                this.setAttribute("class","dropdown-btn li-all-ST-0 active");
+                  document.getElementById("custom_st").setAttribute("class","dropdown-btn li-all-ST-1");
+                  document.getElementById("kit_st").setAttribute("class","dropdown-btn li-all-ST-2");
+                  document.getElementById("all_st").setAttribute("class","dropdown-btn li-all-ST-x");
+
            
             document.querySelectorAll('[id=st_elements]').forEach(function(elements) {
                         if(elements.getAttribute("category")=="Dental Implant") {
@@ -468,8 +520,12 @@ request.send(null);
           }
 
                document.getElementById("custom_st").onclick=function() {
-                    this.style.color="#14150e";
-                this.style.background="#F2C94C";
+                this.setAttribute("class","dropdown-btn li-all-ST-1 active");
+                  document.getElementById("dental_st").setAttribute("class","dropdown-btn li-all-ST-0");
+                  document.getElementById("kit_st").setAttribute("class","dropdown-btn li-all-ST-2");
+                  document.getElementById("all_st").setAttribute("class","dropdown-btn li-all-ST-x");
+
+           
            
             document.querySelectorAll('[id=st_elements]').forEach(function(elements) {
                         if(elements.getAttribute("category")=="Custom Abutment") {
@@ -482,8 +538,12 @@ request.send(null);
           }
 
               document.getElementById("kit_st").onclick=function() {
-                    this.style.color="#14150e";
-                this.style.background="#F2C94C";
+                this.setAttribute("class","dropdown-btn li-all-ST-2 active");
+                  document.getElementById("dental_st").setAttribute("class","dropdown-btn li-all-ST-0");
+                  document.getElementById("custom_st").setAttribute("class","dropdown-btn li-all-ST-1");
+                  document.getElementById("all_st").setAttribute("class","dropdown-btn li-all-ST-x");
+
+           
            
             document.querySelectorAll('[id=st_elements]').forEach(function(elements) {
                         if(elements.getAttribute("category")=="Surgical Kit") {

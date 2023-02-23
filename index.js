@@ -11,9 +11,9 @@ const fileUpload = require('express-fileupload');
 
 var app = express();
 
-app.use(cors());
+//app.use(cors());
 
-app.use(helmet());
+//app.use(helmet());
 
 
 //app.use(express.static(`${__dirname}`));
