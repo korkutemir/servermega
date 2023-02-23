@@ -1,3 +1,4 @@
+require("dotenv").config();
 var fs = require('fs');
 var path=require("path");
 var http = require('http');
@@ -738,6 +739,7 @@ app.get('/notification', function(req, res) {
  
    
  }); 
+ var port=process.env.PORT || 8080;
 
 
 var httpServer = http.createServer(app);
@@ -747,7 +749,7 @@ var httpServer = http.createServer(app);
     console.log("server 8443");
 }); */
 
-httpServer.listen(8080,function() {
+httpServer.listen(port,function() {
     console.log("server 8080");
 });
 
