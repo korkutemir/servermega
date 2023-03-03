@@ -20,6 +20,7 @@ app.use(cors({
 
 //app.use(helmet());
 
+console.log("korkut");
 
 //app.use(express.static(`${__dirname}`));
 //app.use("/static", express.static(__dirname + "/nodejs"));
