@@ -84,8 +84,8 @@ app.post('/upload', function(req, res) {
 });
 
 app.get("/pid",function(req,res) {
-    res.send(os.cpus().length);
-  //  console.log(require("os").cpus().length);
+    //res.send(os.cpus().length);
+   console.log(os.cpus().length);
 });
 
 app.get('/',function(req,res,next) {
