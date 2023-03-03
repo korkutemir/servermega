@@ -5,7 +5,6 @@ var http = require('http');
 var https = require('https');
 var cors=require("cors");
 var helmet=require("helmet");
-var os=require("os");
 
 var express = require('express');
 const fileUpload = require('express-fileupload');
@@ -13,10 +12,7 @@ const fileUpload = require('express-fileupload');
 
 var app = express();
 
-app.use(cors({
-    origin:["https://mega.cyclic.app","https://emir.herokuapp.com","com.megagen"]
-    
-}));
+//app.use(cors());
 
 //app.use(helmet());
 
@@ -49,12 +45,7 @@ app.use(function (req, res, next) {
     next();
 }); 
 
-app.use(function(req,res,next){
-  if(req.headers['x-forwarded-proto']!='https')
-    res.redirect('https://emir.herokuapp.com/'+req.url);
-  else
-    next() /* Continue to other routes if we're not redirecting */
-})
+
 
 app.use((req, res, next) => {
     res.setHeader('X-Content-Type-Options', 'nosniff');
@@ -83,10 +74,7 @@ app.post('/upload', function(req, res) {
   });
 });
 
-app.get("/pid",function(req,res) {
-    res.send(os.cpus().length);
-  //  console.log(require("os").cpus().length);
-});
+
 
 app.get('/',function(req,res,next) {
     res.sendFile( __dirname + "/www/index.html");
@@ -275,7 +263,7 @@ app.get('/megagen2/:id',function(req,res,next) {
          //  res.send({dizin_1,dizin_2});
           });
 
-          db.collection('st').find(sorgu_premium, { projection: { _id: 0 } }).toArray(async (err, result) => {
+          db.collection('st').find(sorgu_premium, { projection: { _id: 0 } }).toArray((err, result) => {
             if (err) throw err;
             console.log(result);
         
@@ -283,7 +271,7 @@ app.get('/megagen2/:id',function(req,res,next) {
         
            // client.close();
 
-          await dizin_3.push(result);
+           dizin_3.push(result);
 
          //  res.send({dizin_1,dizin_2});
           });
@@ -296,12 +284,12 @@ app.get('/megagen2/:id',function(req,res,next) {
         
            // client.close();
 
-           dizin_3.push(result);
+          await dizin_3.push(result);
 
-         await res.send({dizin_1,dizin_2,dizin_3});
+           res.send({dizin_1,dizin_2,dizin_3});
           });
-            
-           
+
+        
         
         }); 
 
