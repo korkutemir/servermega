@@ -1,0 +1,145 @@
+<html>
+  <head>
+    <title>Simple ThreeJS Overlay View</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+   
+    <style>
+        /* 
+ * Always set the map height explicitly to define the size of the div element
+ * that contains the map. 
+ */
+#map {
+  height: 100%;
+}
+
+/* 
+ * Optional: Makes the sample page fill the window. 
+ */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  pointer-events: none;
+}
+#map a {
+  display: none !important;
+}
+#map .gmnoprint {
+  display: none !important;
+}
+    </style>
+<!--<script src="https://unpkg.com/three/build/three.min.js"></script>
+<script src="https://unpkg.com/@googlemaps/three/dist/index.min.js"></script> -->
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three/build/three.module.js",
+      "@googlemaps/three": "https://unpkg.com/@googlemaps/three/dist/index.esm.js",
+      "GLTFLoader":"https://unpkg.com/three/examples/jsm/loaders/GLTFLoader.js",
+      "OrbitControls":"https://unpkg.com/three/examples/jsm/controls/OrbitControls.js"
+      
+    }
+  }
+</script>
+    <script type="module">
+  import * as THREE from "three";
+  import { ThreeJSOverlayView } from "@googlemaps/three";
+  import { GLTFLoader } from "GLTFLoader";
+  import { OrbitControls } from "OrbitControls";
+let map;
+const mapOptions = {
+  tilt: 0,
+  heading: 0,
+  zoom: 18,
+  center: { lat: 36.89998720912175, lng: 30.646035075187687 },
+  //mapId: "15431d2b469f209e",
+  mapId:"7b9a897acd0a63a4",
+  // disable interactions due to animation loop and moveCamera
+  disableDefaultUI: true,
+  gestureHandling: "none",
+  keyboardShortcuts: false,
+ 
+};
+
+function initMap() {
+  const mapDiv = document.getElementById("map");
+
+  map = new google.maps.Map(mapDiv, mapOptions);
+
+  const scene = new THREE.Scene();
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.75);
+
+  scene.add(ambientLight);
+
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.25);
+
+  directionalLight.position.set(0, 10, 50);
+  scene.add(directionalLight);
+
+  //const controls = new THREE.OrbitControls( camera, renderer.domElement );
+
+
+  // Load the model.
+  const loader = new GLTFLoader();
+  const url =
+    "https://raw.githubusercontent.com/googlemaps/js-samples/main/assets/pin.gltf";
+
+  loader.load(url, (gltf) => {
+    gltf.scene.scale.set(10, 10, 10);
+    gltf.scene.rotation.x = Math.PI / 2;
+    scene.add(gltf.scene);
+
+    let { tilt, heading, zoom } = mapOptions;
+
+    const animate = () => {
+      if (tilt < 67.5) {
+        tilt += 0.5;
+      } else if (heading <= 360) {
+        heading += 0.2;
+        zoom -= 0.0005;
+      } else {
+        // exit animation loop
+        return;
+      }
+
+      map.moveCamera({ tilt, heading, zoom });
+      requestAnimationFrame(animate);
+
+     // controls.update();
+    };
+
+    requestAnimationFrame(animate);
+  });
+  new ThreeJSOverlayView({
+    map,
+    scene,
+    anchor: {   lat: 35.6594945, lng: 139.6999859 , altitude: 100 },
+    THREE,
+  });
+}
+
+window.initMap = initMap;
+
+    </script>
+  </head>
+  <body>
+    <div id="map" class="map"></div>
+
+    <!-- 
+      The `defer` attribute causes the callback to execute after the full HTML
+      document has been parsed. For non-blocking uses, avoiding race conditions,
+      and consistent behavior across browsers, consider loading using Promises.
+      See https://developers.google.com/maps/documentation/javascript/load-maps-js-api
+      for more information.
+      -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=beta"
+      defer
+    ></script>
+  </body>
+</html>

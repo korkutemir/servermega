@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Start Meta -->
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="description" content="Metier  - Portfolio HTML5 Template"/>
+	<meta name="keywords" content="Creative, Digital, multipage, landing, freelancer template"/>
+	<meta name="author" content="ThemeOri">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Title of Site -->
+	<title>Metier  - Portfolio HTML5 Template</title>
+	<!-- Favicons -->
+	<link rel="icon" type="image/png" href="assets/img/favicon.png">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<!-- font awesome -->
+	<link rel="stylesheet" href="assets/css/all.css">
+	<!-- Animate CSS -->
+	<link rel="stylesheet" href="assets/css/animate.css">
+	<!-- Nice Select CSS -->
+	<link rel="stylesheet" href="assets/css/nice-select.css">
+	<!-- Swiper -->
+	<link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+	<!-- Magnific -->
+	<link rel="stylesheet" href="assets/css/magnific-popup.css">
+	<!-- Mean menu -->
+	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="assets/sass/style.css"> 
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.min.js"></script>
+	<script type="module" src="C:\Program Files\nodejs\node_modules\three\src\loaders\TextureLoader.js"></script>
+	<style>
+			 canvas{
+				position: absolute;
+				left: 0;
+				top:0;
+				
+			}
+		
+		::-webkit-scrollbar{
+			display: none;
+		}
+		
+		@media (max-width: 800px) {
+  #eko {
+    box-sizing: border-box !important;
+  }
+}
+		</style>
+
+<script>
+	
+window.onload=function() {
+
+
+	
+		let camera, controls, scene, renderer;
+
+  var waveobjects = new Array();
+  var clock;
+  
+// Wave configuration
+var wavespeed = 1;
+var wavewidth = 200;
+var waveheight = 100;
+var objects_margin = 20;
+  
+		init();
+		animate();
+
+
+		function init()
+  {
+	clock = new THREE.Clock();
+	
+			scene = new THREE.Scene();
+			//scene.background = new THREE.Color( 0xcccccc );
+			//scene.fog = new THREE.FogExp2( 0xcccccc, 0.001 );
+
+			var container1=document.getElementById("container");
+
+			renderer = new THREE.WebGLRenderer( { antialias: true , alpha: true } );
+			renderer.setPixelRatio( window.devicePixelRatio );
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			container1.appendChild( renderer.domElement );
+
+			camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 5000 );
+			camera.position.set( 2000, 500, 0 );
+			
+
+	// controls
+
+   // controls = new OrbitControls( camera, renderer.domElement );
+
+
+  //  controls.maxPolarAngle = Math.PI / 2;
+
+			// world
+	
+	var objects_margin = 20;
+
+			/*const geometry = new THREE.SphereGeometry( 5, 4, 4 );
+			const material = new THREE.MeshPhongMaterial( { color: 0xffffff, flatShading: false } );*/
+			
+			// ---------------- PARTICLES ----------------
+		
+		const loader = new THREE.TextureLoader();
+		var particleTexture = loader.load( 'icon6.png' );
+		// sprite material is using the loaded texture
+			var spriteMaterial = new THREE.SpriteMaterial( { map: particleTexture, transparent : true, opacity : 0.8, color: "#005BA4" } );
+			
+			// sprite creation
+			
+	
+
+
+	for ( var x = 0; x < 100; x ++ )
+	{
+	  for ( var y = 0; y < 100; y ++ )
+	  {
+		  var mesh = new THREE.Sprite( spriteMaterial );
+		  mesh.scale.set(10,10,10);
+		  mesh.position.x = x * objects_margin;
+		  mesh.position.y = 0;
+		  mesh.position.z = y * objects_margin;
+		  scene.add( mesh );
+		  
+		
+		  waveobjects.push(mesh); 
+	  }
+
+			}
+
+			// lights
+
+			const dirLight1 = new THREE.DirectionalLight( 0xffffff );
+			dirLight1.position.set( 1, 1, 1 );
+			scene.add( dirLight1 );
+
+			const dirLight2 = new THREE.DirectionalLight( 0x002288 );
+			dirLight2.position.set( - 1, - 1, - 1 );
+			scene.add( dirLight2 );
+
+			const ambientLight = new THREE.AmbientLight( 0x222222 );
+			scene.add( ambientLight );
+
+			//
+
+			window.addEventListener( 'resize', onWindowResize );
+			
+			camera.lookAt( 1000, 0, 1000 );
+
+		}
+
+		function onWindowResize()
+  {
+
+			camera.aspect = window.innerWidth / window.innerHeight;
+			camera.updateProjectionMatrix();
+
+			renderer.setSize( window.innerWidth, window.innerHeight );
+
+		}
+
+		function animate()
+  {
+	  var delta = clock.getDelta();
+	  var elapsed = clock.elapsedTime;
+	
+	  requestAnimationFrame( animate );
+	  
+	  for(var i = 0 ; i < waveobjects.length ; i++)
+	  {
+
+		  waveobjects[i].position.y = Math.cos( (elapsed + (waveobjects[i].position.x /wavewidth) + (waveobjects[i].position.z /wavewidth) ) *wavespeed ) * waveheight;
+	  }
+	
+	  renderer.render( scene, camera );
+		}
+}
+	
+</script>
+</head>
+
+<body class="custom__cursor">
+
+	
+	<div class="custom__cursor-one"></div>
+    <div class="custom__cursor-two"></div>
+	<!-- Preloader start -->
+	<div class="theme-loader">
+		<div class="spinner">
+			<div class="double-bounce1"></div>
+			<div class="double-bounce2"></div>
+		</div>
+	</div>
+	<!-- Preloader end -->
+	<!-- Header Area Start -->
+	<div class="header__area all-page">
+		<div class="container custom-container">
+			<div class="header__area-box">
+				<div class="header__area-box-logo two">
+						<a draggable="false" href="index.html"> <img draggable="false" src="icon6.png" alt=""><span id="span-1">EMIRKORKUT.COM</span></a>
+					<div class="responsive-menu"></div>
+				</div>
+				<div class="header__area-box-main-menu meanmenu-responsive">
+						<ul id="mobilemenu">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="javascript:void(0);">About Me</a></li>		
+								<li><a href="contact.html">Contact</a></li>
+								<li><a href="#"><img draggable="false"  src="assets/img/country/eng.png" class="flag">EN</a>
+									<ul class="sub-menu" style="overflow:scroll !important;height:300px !important;">
+										<li><a href="index.html"><img draggable="false"  src="assets/img/country/Flag_of_Turkey_Flat_Round-64x64.png" class="flag">TURKISH</a> </li>
+										<li><a href="index-2.html"><img draggable="false"  src="assets/img/country/eng.png" class="flag">ENGLISH</a> </li>
+										<li><a href="index-2.html"><img draggable="false"  src="assets/img/country/Flag_of_Spain_Flat_Round-64x64.png" class="flag">SPAIN</a> </li>
+										<li><a href="index-3.html"><img draggable="false"  src="assets/img/country/Flag_of_Germany_Flat_Round-64x64.png" class="flag">GERMAN</a> </li>
+										<li><a href="index.html"><img draggable="false"  src="assets/img/country/Flag_of_France_Flat_Round-64x64.png" class="flag">FRENCH</a> </li>
+										<li><a href="index-2.html"><img draggable="false"  src="assets/img/country/Flag_of_Italy_Flat_Round-64x64.png" class="flag">ITALY</a> </li>
+										<li><a href="index-3.html"><img draggable="false"  src="assets/img/country/Flag_of_Russia_Flat_Round-64x64.png" class="flag">RUSSIAN</a> </li>
+										<li><a href="index.html"><img draggable="false"  src="assets/img/country/Flag_of_South_Korea_Flat_Round-64x64.png" class="flag">KOREAN</a> </li>
+										<li><a href="index-2.html"><img draggable="false"  src="assets/img/country/Flag_of_Saudi_Arabia_Flat_Round-64x64.png" class="flag">ARABIC</a> </li>
+										<li><a href="index-3.html"><img draggable="false"  src="assets/img/country/Flag_of_Israel_Flat_Round-64x64.png" class="flag">ISRAEL</a> </li>
+										<li><a href="index.html"><img draggable="false"  src="assets/img/country/Flag_of_Ukraine_Flat_Round-64x64.png" class="flag">UKRANIA</a> </li>								<li><a href="index-3.html"><img src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
+										<li><a href="index.html"><img draggable="false"  src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
+										<li><a href="index-2.html"><img draggable="false"  src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
+										<li><a href="index-3.html"><img draggable="false"  src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
+										<li><a href="index.html"><img draggable="false"  src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
+										<li><a href="index-2.html"><img draggable="false"  src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
+										<li><a href="index-3.html"><img draggable="false"  src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
+									</ul>
+								</li>
+							</ul>
+				</div>
+				<div class="header__area-box-sidebar">
+					<div class="header__area-box-sidebar-popup-icon"> <a href="#"><i class="fal fa-bars"></i></a> </div>
+				</div>
+				<!-- sidebar Menu Start -->
+				<div class="header__area-box-sidebar-popup">
+					<div class="sidebar-close-btn"> <a href="#"><i class="fal fa-times"></i></a> </div>
+					<div class="header__area-box-sidebar-popup-logo">
+							<a href="index.html"> <img draggable="false"  src="icon6.png" alt=""><span id="span-2">EMIRKORKUT.COM</span></a>
+					</div>
+					<p></p>
+					<div class="header__area-box-sidebar-popup-contact">
+						<h4 class="mb-25">Contact Me</h4>
+						<form action="#">
+							<div class="row">
+								<div class="col-sm-12 mb-30">
+									<div class="header__area-box-sidebar-popup-contact-form-item two"> <i class="far fa-user"></i>
+										<input type="text" name="name" placeholder="Your Name" required="required"> </div>
+								</div>
+								<div class="col-sm-12 mb-30">
+									<div class="header__area-box-sidebar-popup-contact-form-item two"> <i class="far fa-envelope-open"></i>
+										<input type="text" name="email" placeholder="Email Address" required="required"> </div>
+								</div>
+								<div class="col-sm-12 mb-30">
+										<div class="header__area-box-sidebar-popup-contact-form-item two"> <i class="far fa-phone"></i>
+											<input type="tel" name="tel" placeholder="Phone Number" required="required"> </div>
+									</div>
+								<div class="col-sm-12 mb-30">
+									<div class="header__area-box-sidebar-popup-contact-form-item two"> <i class="fal fa-pen"></i>
+										<textarea name="message" rows="5" placeholder="Message"></textarea>
+									</div>
+								</div>
+								<div class="col-sm-12">
+									<div class="header__area-box-sidebar-popup-contact-form-item">
+										<button class="theme-btn-1" type="submit">Submit Now<i class="fal fa-long-arrow-right"></i></button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="header__area-box-sidebar-popup-follow-us">
+						<h4 class="mb-25">Follow Us</h4>
+						<div class="header__area-box-sidebar-popup-follow-us-social two">
+							<ul>
+								<li><a href="#"><i class="fab fa-facebook-f"></i></a> </li>
+								<li><a href="#"><i class="fab fa-twitter"></i></a> </li>
+								<li><a href="#"><i class="fab fa-instagram"></i></a> </li>
+								<li><a href="#"><i class="fab fa-linkedin-in"></i></a> </li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="sidebar-overlay"></div>
+				<!-- sidebar Menu Start -->
+			</div>
+		</div>
+	</div>
+	<!-- Header Area End -->
+	<!-- Portfolio Details Start -->
+    <div class="portfolio__details section-padding">
+        <div class="container" id="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 lg-mb-30">
+                    <div class="all__sidebar mr-30 xl-mr-0">
+                        <div class="all__sidebar-item details">
+                    <img id="eko" src="emirkorkut1.jpg" style="height: 500px;width: 500px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-8 col-lg-8">
+                    <div class="portfolio__details-left">
+                        <div class="portfolio__details-left-content">
+                            <h2 class="mb-30">EMIR KORKUT</h2>
+							<p>Akdeniz Üniversitesi Bilgisayar Programcılığı bölümünden mezun. Javascript, Nodejs dillerine hakim, AI destekli web3.0 çağına adapte webapp, mobil, desktop, kiosk, TV, VR/AR, Server yazabilen</p> 
+							
+						</div>
+                    </div>
+                </div>
+                <div class="col-xl-12">
+						
+								<div class="skill__area-right">
+									<div class="skill__area-right-title mb-30">
+										<h2>My Skills</h2> </div>
+									<div class="skill__area-right-skill">
+										<div class="skill__area-right-skill-item">
+											<div class="skill__area-right-skill-item-content">
+												<h6>HTML/CSS</h6> <span class="skill__area-right-skill-item-count">
+												<span class="counter">80</span>%</span>
+											</div>
+											<div class="skill__area-right-skill-item-inner">
+												<div class="skill__area-right-skill-item-bar" data-width="80"></div>
+											</div>
+										</div>
+									</div>
+									<div class="skill__area-right-skill mt-30">
+										<div class="skill__area-right-skill-item">
+											<div class="skill__area-right-skill-item-content">
+												<h6>Javascript</h6> <span class="skill__area-right-skill-item-count">
+												<span class="counter">70</span>%</span>
+											</div>
+											<div class="skill__area-right-skill-item-inner">
+												<div class="skill__area-right-skill-item-bar" data-width="70"></div>
+											</div>
+										</div>
+									</div>
+									<div class="skill__area-right-skill mt-30">
+										<div class="skill__area-right-skill-item">
+											<div class="skill__area-right-skill-item-content">
+												<h6>Nodejs</h6> <span class="skill__area-right-skill-item-count">
+												<span class="counter">75</span>%</span>
+											</div>
+											<div class="skill__area-right-skill-item-inner">
+												<div class="skill__area-right-skill-item-bar" data-width="75"></div>
+											</div>
+										</div>
+									</div>
+									<div class="skill__area-right-skill mt-30">
+										<div class="skill__area-right-skill-item">
+											<div class="skill__area-right-skill-item-content">
+												<h6>NoSQL(MongoDB/DynamoDB)</h6> <span class="skill__area-right-skill-item-count">
+												<span class="counter">75</span>%</span>
+											</div>
+											<div class="skill__area-right-skill-item-inner">
+												<div class="skill__area-right-skill-item-bar" data-width="75"></div>
+											</div>
+										</div>
+									</div>
+									<div class="skill__area-right-skill mt-30">
+										<div class="skill__area-right-skill-item">
+											<div class="skill__area-right-skill-item-content">
+												<h6>WebApp(SPA,PWA)</h6> <span class="skill__area-right-skill-item-count">
+												<span class="counter">75</span>%</span>
+											</div>
+											<div class="skill__area-right-skill-item-inner">
+												<div class="skill__area-right-skill-item-bar" data-width="75"></div>
+											</div>
+										</div>
+									</div>
+									<div class="skill__area-right-skill mt-30">
+										<div class="skill__area-right-skill-item">
+											<div class="skill__area-right-skill-item-content">
+												<h6>Mobil(android,ios,windows phone)</h6> <span class="skill__area-right-skill-item-count">
+												<span class="counter">75</span>%</span>
+											</div>
+											<div class="skill__area-right-skill-item-inner">
+												<div class="skill__area-right-skill-item-bar" data-width="75"></div>
+											</div>
+										</div>
+									</div>
+									<div class="skill__area-right-skill mt-30">
+										<div class="skill__area-right-skill-item">
+											<div class="skill__area-right-skill-item-content">
+												<h6>Desktop(windows,macos,linux)</h6> <span class="skill__area-right-skill-item-count">
+												<span class="counter">75</span>%</span>
+											</div>
+											<div class="skill__area-right-skill-item-inner">
+												<div class="skill__area-right-skill-item-bar" data-width="75"></div>
+											</div>
+										</div>
+									</div>
+									<div class="skill__area-right-skill mt-30">
+										<div class="skill__area-right-skill-item">
+											<div class="skill__area-right-skill-item-content">
+												<h6>TV(android TV,Tizen TV,LG TV)</h6> <span class="skill__area-right-skill-item-count">
+												<span class="counter">75</span>%</span>
+											</div>
+											<div class="skill__area-right-skill-item-inner">
+												<div class="skill__area-right-skill-item-bar" data-width="75"></div>
+											</div>
+										</div>
+									</div>
+									<div class="skill__area-right-skill mt-30">
+											<div class="skill__area-right-skill-item">
+												<div class="skill__area-right-skill-item-content">
+													<h6>AR/VR</h6> <span class="skill__area-right-skill-item-count">
+													<span class="counter">75</span>%</span>
+												</div>
+												<div class="skill__area-right-skill-item-inner">
+													<div class="skill__area-right-skill-item-bar" data-width="75"></div>
+												</div>
+											</div>
+										</div>
+									<div class="skill__area-right-skill mt-30">
+										<div class="skill__area-right-skill-item">
+											<div class="skill__area-right-skill-item-content">
+												<h6>Touchable screens(Kiosk,Touchable table)</h6> <span class="skill__area-right-skill-item-count">
+												<span class="counter">75</span>%</span>
+											</div>
+											<div class="skill__area-right-skill-item-inner">
+												<div class="skill__area-right-skill-item-bar" data-width="75"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							
+                </div>
+            </div>
+        </div>
+    </div>
+	<!-- Portfolio Details End -->
+    <!-- Footer Area Start -->
+	<div class="footer__area pt-60 pb-60">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-xl-12">
+					<div class="footer__area-widget t-center">
+						<div class="footer__area-widget-about m-0">
+							<div class="footer__area-widget-about-social three">
+								<ul>
+									<li><a href="#"><i class="fab fa-facebook-f"></i></a> </li>
+									<li><a href="#"><i class="fab fa-instagram"></i></a> </li>
+									<li><a href="#"><i class="fab fa-twitter"></i></a> </li>
+									<li><a href="#"><i class="fab fa-linkedin-in"></i></a> </li>
+									<li><a href="#"><i class="fab fa-youtube"></i></a> </li>
+
+								</ul>
+							</div>
+							<div class="footer__area-widget-about-menu three">
+								<ul>
+									<li><a href="index.html">Home</a></li>
+									<li><a href="javascript:void(0)">About Me</a></li>
+									<li><a href="contact.html">Contact</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Footer Area End -->
+	<!-- Copyright Area Start -->
+	<div class="copyright__area">
+		<div class="container">
+			<div class="row align-items-center copyright__area-border">
+				<div class="col-xl-12">
+					<div class="copyright__area-left t-center">
+							<p>Copyright © 2023<a href="#"> EMIR KORKUT</a> all rights reserved. </p>					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+	<!-- Copyright Area End -->
+	<!-- Scroll Btn Start -->
+	<div class="scroll-up">
+		<svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+			<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /> </svg>
+	</div>
+	<!-- Scroll Btn End -->
+	<!-- Main JS -->
+	<script src="assets/js/jquery-3.6.0.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="assets/js/bootstrap.min.js"></script>
+	<!-- Counter up -->
+	<script src="assets/js/jquery.counterup.min.js"></script>
+	<!-- Popper JS -->
+	<script src="assets/js/popper.min.js"></script>
+	<!-- Progressbar JS -->
+	<script src="assets/js/progressbar.min.js"></script>
+	<!-- Magnific JS -->
+	<script src="assets/js/jquery.magnific-popup.min.js"></script>
+	<!-- Nice Select JS -->
+	<script src="assets/js/jquery.nice-select.min.js"></script>
+	<!-- Swiper JS -->
+	<script src="assets/js/swiper-bundle.min.js"></script>
+	<!-- Waypoints JS -->
+	<script src="assets/js/jquery.waypoints.min.js"></script>
+	<!-- Isotope JS -->
+	<script src="assets/js/isotope.pkgd.min.js"></script>
+	<!-- Mean menu -->
+	<script src="assets/js/jquery.meanmenu.min.js"></script>
+	<!-- Custom JS -->
+	<script src="assets/js/custom.js"></script>
+</body>
+
+</html>

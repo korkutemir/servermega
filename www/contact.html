@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Start Meta -->
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="description" content="Metier  - Portfolio HTML5 Template"/>
+	<meta name="keywords" content="Creative, Digital, multipage, landing, freelancer template"/>
+	<meta name="author" content="ThemeOri">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Title of Site -->
+	<title>Metier  - Portfolio HTML5 Template</title>
+	<!-- Favicons -->
+	<link rel="icon" type="image/png" href="assets/img/favicon.png">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<!-- font awesome -->
+	<link rel="stylesheet" href="assets/css/all.css">
+	<!-- Animate CSS -->
+	<link rel="stylesheet" href="assets/css/animate.css">
+	<!-- Nice Select CSS -->
+	<link rel="stylesheet" href="assets/css/nice-select.css">
+	<!-- Swiper -->
+	<link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+	<!-- Magnific -->
+	<link rel="stylesheet" href="assets/css/magnific-popup.css">
+	<!-- Mean menu -->
+	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="assets/sass/style.css"> 
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+  <script type="importmap">
+		{
+		  "imports": {
+			"three": "https://unpkg.com/three/build/three.module.js",
+			"@googlemaps/three": "https://unpkg.com/@googlemaps/three/dist/index.esm.js",
+			"GLTFLoader":"https://unpkg.com/three/examples/jsm/loaders/GLTFLoader.js",
+			"OrbitControls":"https://unpkg.com/three/examples/jsm/controls/OrbitControls.js"
+			
+		  }
+		}
+	  </script>
+		  <script type="module">
+		import * as THREE from "three";
+		import { ThreeJSOverlayView } from "@googlemaps/three";
+		import { GLTFLoader } from "GLTFLoader";
+		import { OrbitControls } from "OrbitControls";
+	  let map;
+	  const mapOptions = {
+		tilt: 0,
+		heading: 0,
+		zoom: 18,
+		center: { lat:36.90001723802048, lng:30.646029710769653},
+		mapId: "15431d2b469f209e",
+		//mapId:"7b9a897acd0a63a4",
+		//mapId:"8e0a97af9386fef",
+		//mapId:"57aef00edd8f1f7d",
+		// disable interactions due to animation loop and moveCamera
+		disableDefaultUI: true,
+		gestureHandling: "none",
+		keyboardShortcuts: false,
+	
+	  };
+	  
+	  function initMap() {
+		const mapDiv = document.getElementById("map");
+
+		   var pointA = new google.maps.LatLng(36.90001723802048, 30.646029710769653),
+        pointB = new google.maps.LatLng(36.898292702118674, 30.65322875976563),
+	  
+		map = new google.maps.Map(mapDiv, mapOptions);
+
+		 var directionsService = new google.maps.DirectionsService,
+        directionsDisplay = new google.maps.DirectionsRenderer({
+            map: map
+        });
+
+		/*markerA = new google.maps.Marker({
+            position: pointA,
+            title: "point A",
+            label: "A",
+            map: map
+        }),*/
+       /* markerB = new google.maps.Marker({
+            position: pointB,
+            title: "point B",
+            label: "B",
+            map: map
+        }); */
+
+		    calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB);
+
+			function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB) {
+    directionsService.route({
+        origin: pointA,
+        destination: pointB,
+        avoidTolls: true,
+        avoidHighways: false,
+        travelMode: google.maps.TravelMode.DRIVING
+    }, function (response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(response);
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
+    });
+}
+	  
+		const scene = new THREE.Scene();
+		const ambientLight = new THREE.AmbientLight(0xffffff, 0.75);
+	  
+		scene.add(ambientLight);
+	  
+		const directionalLight = new THREE.DirectionalLight(0xffffff, 0.25);
+	  
+		directionalLight.position.set(0, 10, 50);
+		scene.add(directionalLight);
+	  
+		//const controls = new THREE.OrbitControls( camera, renderer.domElement );
+	  
+	  
+		// Load the model.
+		const loader = new GLTFLoader();
+		const url =
+		  "https://raw.githubusercontent.com/googlemaps/js-samples/main/assets/pin.gltf";
+
+		  var url_2="https://github.com/KhronosGroup/glTF-Sample-Models/blob/master/2.0/Lantern/glTF/Lantern.gltf";
+	  
+		loader.load(url, (gltf) => {
+		  gltf.scene.scale.set(7, 7, 7);
+		  gltf.scene.rotation.x = Math.PI / 1;
+		  scene.add(gltf.scene);
+	  
+		  let { tilt, heading, zoom } = mapOptions;
+	  
+		  const animate = () => {
+			if (tilt < 67.5) {
+			  tilt += 0.5;
+			} else if (heading <= 360) {
+			  heading += 0.2;
+			  zoom -= 0.0002;
+			}
+			else if (heading >= 360) {
+			  heading += 0.2;
+			 // zoom -= 0.0005;
+			}
+			 else {
+			  // exit animation loop
+			  return;
+			}
+	  
+			map.moveCamera({ tilt, heading, zoom });
+			requestAnimationFrame(animate);
+	  
+		   // controls.update();
+		  };
+	  
+		  requestAnimationFrame(animate);
+		});
+		new ThreeJSOverlayView({
+		  map,
+		  scene,
+		  anchor: {   lat: 36.90001723802048, lng: 30.646029710769653, altitude: 50 },
+		  THREE,
+		});
+	  }
+	  
+	  window.initMap = initMap;
+	  
+		  </script>
+	
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.min.js"></script>
+	<script type="module" src="C:\Program Files\nodejs\node_modules\three\src\loaders\TextureLoader.js"></script> -->
+<style>
+	#canvas2 {
+		position: absolute;
+		top: 0;
+		left:0;
+		height: 100% !important;
+		width: 100% !important;
+		z-index: -1 ;
+	}
+	@media (max-width: 575px) {
+  #canvas2 {
+   z-index:-1;
+  }
+  #contact-form {
+	  z-index: 1000 !important;
+  }
+}
+::-webkit-scrollbar {
+	display: none !important;
+}
+
+#map {
+    width: 100%;
+  height: 570px;
+  display: block;
+}
+#map a {
+  display: none !important;
+}
+#map .gmnoprint {
+  display: none !important;
+}
+#map .gm-style-cc {
+  display: none !important;
+}
+ 
+</style>
+	<!--<script>
+		window.onload=function() {
+			var canvas1=document.createElement("canvas");
+			canvas1.setAttribute("id","canvas2");
+			var container2 = document.getElementById('contact-page');
+		container2.appendChild(canvas1);
+	let renderer2 = new THREE.WebGLRenderer({canvas:document.getElementById("canvas2"),antialias:true});
+	renderer2.setSize(window.innerWidth, window.innerHeight);
+	//container2.appendChild(renderer2.domElement);
+	
+	//Defining the objects in the scene
+	let geometry2 = new THREE.SphereGeometry(30, 100, 20);
+	let loader2 = new THREE.TextureLoader();
+	loader2.crossOrigin = true;
+	let particleTexture2 = loader2.load('icon6.png');
+	let material2 = new THREE.PointsMaterial({
+	color: 0x20C9BD,
+	size: 1,
+	transparent: true,
+	blending: THREE.AdditiveBlending,
+	map: particleTexture2,
+	depthWrite: false
+	});
+	
+	let points2 = new THREE.Points(geometry2, material2);
+	let scene2 = new THREE.Scene();
+	let camera2 = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+	
+	
+	//Setting the scene
+	scene2.add(points2);
+	camera2.position.z = 100;
+	
+	//Copy the default sphere into a vector
+	const def = new THREE.Vector3;
+	for (let i = 0; i < geometry2.vertices.length; i++) {
+	def[i] = {
+	  x: geometry2.vertices[i].x,
+	  y: geometry2.vertices[i].y,
+	  z: geometry2.vertices[i].z
+	};
+	}
+	var check=false;
+	//Render the scene(looping through it 60 times a second)
+	//This is where the issue is
+	function render() {
+	requestAnimationFrame(render);
+	
+	var x = camera2.position.x;
+	var z = camera2.position.z;
+	if(camera2.position.z <=-100 && check==true) {
+	  camera2.position.z +=0.1;
+	  console.log(check);
+	  check=true;
+	}
+	else if(camera2.position.z >-100 && check==false) {
+		camera2.position.z -=0.05;
+		if(camera2.position.z <-100) {
+			check=true;
+		}
+	}
+	
+/*	else {
+	  camera2.position.z -=0.1;
+	}*/
+	console.log(camera2.position.z);
+	points2.rotation.y+=0.005;
+	camera2.lookAt(points2.position);
+	
+	geometry2.verticesNeedUpdate = true;
+	renderer2.render(scene2, camera2);
+	}
+	render();
+		}
+	</script> -->
+</head>
+
+<body class="custom__cursor">
+	
+	<div class="custom__cursor-one"></div>
+    <div class="custom__cursor-two"></div>
+	<!-- Preloader start -->
+	<div class="theme-loader">
+		<div class="spinner">
+			<div class="double-bounce1"></div>
+			<div class="double-bounce2"></div>
+		</div>
+	</div>
+	<!-- Preloader end -->
+	<!-- Header Area Start -->
+	<div class="header__area all-page">
+		<div class="container custom-container">
+			<div class="header__area-box">
+				<div class="header__area-box-logo two">
+						<a draggable="false" href="index.html"> <img draggable="false" src="icon6.png" alt=""><span id="span-1">EMIRKORKUT.COM</span></a>
+					<div class="responsive-menu"></div>
+				</div>
+				<div class="header__area-box-main-menu meanmenu-responsive">
+						<ul id="mobilemenu">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="portfolio-details.html">About Me</a></li>		
+								<li><a href="javascript:void(0);">Contact</a></li>
+								<li><a href="#"><img draggable="false"  src="assets/img/country/eng.png" class="flag">EN</a>
+									<ul class="sub-menu" style="overflow:scroll !important;height:300px !important;">
+										<li><a href="index.html"><img draggable="false"  src="assets/img/country/Flag_of_Turkey_Flat_Round-64x64.png" class="flag">TURKISH</a> </li>
+										<li><a href="index-2.html"><img draggable="false"  src="assets/img/country/eng.png" class="flag">ENGLISH</a> </li>
+										<li><a href="index-2.html"><img draggable="false"  src="assets/img/country/Flag_of_Spain_Flat_Round-64x64.png" class="flag">SPAIN</a> </li>
+										<li><a href="index-3.html"><img draggable="false"  src="assets/img/country/Flag_of_Germany_Flat_Round-64x64.png" class="flag">GERMAN</a> </li>
+										<li><a href="index.html"><img draggable="false"  src="assets/img/country/Flag_of_France_Flat_Round-64x64.png" class="flag">FRENCH</a> </li>
+										<li><a href="index-2.html"><img draggable="false"  src="assets/img/country/Flag_of_Italy_Flat_Round-64x64.png" class="flag">ITALY</a> </li>
+										<li><a href="index-3.html"><img draggable="false"  src="assets/img/country/Flag_of_Russia_Flat_Round-64x64.png" class="flag">RUSSIAN</a> </li>
+										<li><a href="index.html"><img draggable="false"  src="assets/img/country/Flag_of_South_Korea_Flat_Round-64x64.png" class="flag">KOREAN</a> </li>
+										<li><a href="index-2.html"><img draggable="false"  src="assets/img/country/Flag_of_Saudi_Arabia_Flat_Round-64x64.png" class="flag">ARABIC</a> </li>
+										<li><a href="index-3.html"><img draggable="false"  src="assets/img/country/Flag_of_Israel_Flat_Round-64x64.png" class="flag">ISRAEL</a> </li>
+										<li><a href="index.html"><img draggable="false"  src="assets/img/country/Flag_of_Ukraine_Flat_Round-64x64.png" class="flag">UKRANIA</a> </li>								<li><a href="index-3.html"><img src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
+										<li><a href="index.html"><img draggable="false"  src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
+										<li><a href="index-2.html"><img draggable="false"  src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
+										<li><a href="index-3.html"><img draggable="false"  src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
+										<li><a href="index.html"><img draggable="false"  src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
+										<li><a href="index-2.html"><img draggable="false"  src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
+										<li><a href="index-3.html"><img draggable="false"  src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
+									</ul>
+								</li>
+							</ul>
+				</div>
+				<div class="header__area-box-sidebar">
+					<div class="header__area-box-sidebar-popup-icon"> <a href="#"><i class="fal fa-bars"></i></a> </div>
+				</div>
+				<!-- sidebar Menu Start -->
+				<div class="header__area-box-sidebar-popup">
+					<div class="sidebar-close-btn"> <a href="#"><i class="fal fa-times"></i></a> </div>
+					<div class="header__area-box-sidebar-popup-logo">
+							<a href="index.html"> <img draggable="false"  src="icon6.png" alt=""><span id="span-2">EMIRKORKUT.COM</span></a>
+					</div>
+					<p></p>
+					<div class="header__area-box-sidebar-popup-contact">
+						<h4 class="mb-25">Contact Me</h4>
+						<form action="#">
+							<div class="row">
+								<div class="col-sm-12 mb-30">
+									<div class="header__area-box-sidebar-popup-contact-form-item two"> <i class="far fa-user"></i>
+										<input type="text" name="name" placeholder="Your Name" required="required"> </div>
+								</div>
+								<div class="col-sm-12 mb-30">
+									<div class="header__area-box-sidebar-popup-contact-form-item two"> <i class="far fa-envelope-open"></i>
+										<input type="text" name="email" placeholder="Email Address" required="required"> </div>
+								</div>
+								<div class="col-sm-12 mb-30">
+										<div class="header__area-box-sidebar-popup-contact-form-item two"> <i class="far fa-phone"></i>
+											<input type="tel" name="tel" placeholder="Phone Number" required="required"> </div>
+									</div>
+								<div class="col-sm-12 mb-30">
+									<div class="header__area-box-sidebar-popup-contact-form-item two"> <i class="fal fa-pen"></i>
+										<textarea name="message" rows="5" placeholder="Message"></textarea>
+									</div>
+								</div>
+								<div class="col-sm-12">
+									<div class="header__area-box-sidebar-popup-contact-form-item">
+										<button class="theme-btn-1" type="submit">Submit Now<i class="fal fa-long-arrow-right"></i></button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="header__area-box-sidebar-popup-follow-us">
+						<h4 class="mb-25">Follow Us</h4>
+						<div class="header__area-box-sidebar-popup-follow-us-social two">
+							<ul>
+								<li><a href="#"><i class="fab fa-facebook-f"></i></a> </li>
+								<li><a href="#"><i class="fab fa-instagram"></i></a> </li>
+								<li><a href="#"><i class="fab fa-twitter"></i></a> </li>
+								<li><a href="#"><i class="fab fa-linkedin-in"></i></a> </li>
+								<li><a href="#"><i class="fab fa-youtube"></i></a> </li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="sidebar-overlay"></div>
+				<!-- sidebar Menu Start -->
+			</div>
+		</div>
+	</div>
+	<!-- Header Area End -->
+	<!-- Contact Area Start -->
+	<div class="contact__area section-padding">
+		<div class="container">
+			<div class="row mb-60">
+				<div class="col-xl-5 col-lg-6">
+					<div class="contact__area-title">
+                        <span class="subtitle">Contact Me</span>
+						<h2>contact with me for cooperation.</h2> 
+                    </div>
+                    <div class="contact__area-info">
+                        <div class="contact__area-info-item">
+                            <div class="contact__area-info-item-icon">
+                                <i class="far fa-phone-alt"></i>
+                                <span>Phone :</span>
+                            </div>
+                            <div class="contact__area-info-item-content">
+                                <a href="tel:+123(458)896895">+90 ( 534 ) 263 4506</a>
+                            </div>
+                        </div>
+                        <div class="contact__area-info-item">
+                            <div class="contact__area-info-item-icon">
+                                <i class="fal fa-envelope"></i>
+                                <span>Email :</span>
+                            </div>
+                            <div class="contact__area-info-item-content">
+                                <a href="mailto:support@gamil.com">korkutemir27@gamil.com</a>
+                            </div>
+                        </div>
+                        <div class="contact__area-info-item">
+                            <div class="contact__area-info-item-icon">
+                                <i class="far fa-map-marker-alt"></i>
+                                <span>Location :</span>
+                            </div>
+                            <div class="contact__area-info-item-content">
+                                <a href="#">ANTALYA TEKNOKENT AR-GE 2 ULUGBEY NO: 3A</a>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xl-12">
+					<div class="contact__area-bottom">
+						<div class="contact__area-bottom-form page" id="contact-page" style="visibility:hidden !important;">
+							<form id="contact-form" action="assets/form/mail.php" method="POST" style="z-index:1000 !important;">
+								<div class="row">
+									<div class="col-sm-12 mb-25">
+										<div class="contact__area-bottom-form-item">
+											<input type="text" name="name" placeholder="Your Name" required="required"> </div>
+									</div>
+									<div class="col-sm-12 mb-25">
+										<div class="contact__area-bottom-form-item">
+											<input type="text" name="email" placeholder="Email Address" required="required"> </div>
+									</div>
+									<div class="col-sm-12 mb-25">
+											<div class="contact__area-bottom-form-item">
+												<input type="tel" name="tel" placeholder="Phone Number" required="required"> </div>
+										</div>
+								
+									<div class="col-sm-12 mb-30">
+										<div class="contact__area-bottom-form-item">
+											<textarea name="message" rows="5" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<div class="col-sm-12 mb-45">
+										<div class="contact__area-bottom-form-item">
+											<label>
+												<input class="mr-10" type="checkbox">I agree with services tarms and condition</label>
+										</div>
+									</div>
+									<div class="col-sm-12">
+										<div class="contact__area-bottom-form-item">
+											<button class="theme-btn-1" type="submit">Submit Now<i class="far fa-long-arrow-right"></i></button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="contact__area-bottom-map">
+								<div id="map" class="map"></div>
+
+								<script
+								src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=beta"
+								defer
+							  ></script>
+							<!--<iframe src="https://maps.google.com/maps?width=100%25&amp;height=100%25&amp;hl=en&amp;q=k%C3%BClt%C3%BCr%203880.sk%20kepez/antalya+(emirkorkut.com)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" loading="lazy"></iframe> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Contact Area End -->
+    <!-- Footer Area Start -->
+	<div class="footer__area pt-60 pb-60">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-xl-12">
+					<div class="footer__area-widget t-center">
+						<div class="footer__area-widget-about m-0">
+							<div class="footer__area-widget-about-social three">
+								<ul>
+									<li><a href="#"><i class="fab fa-facebook-f"></i></a> </li>
+									<li><a href="#"><i class="fab fa-instagram"></i></a> </li>
+									<li><a href="#"><i class="fab fa-twitter"></i></a> </li>
+									<li><a href="#"><i class="fab fa-linkedin-in"></i></a> </li>
+									<li><a href="#"><i class="fab fa-youtube"></i></a> </li>
+									<li><a href="#"><i class="fab fa-whatsapp"></i></a> </li>
+								</ul>
+							</div>
+							<div class="footer__area-widget-about-menu three">
+								<ul>
+									<li><a href="index.html">Home</a></li>
+									<li><a href="portfolio-details.html">About Me</a></li>
+									<li><a href="contact.html">Contact</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Footer Area End -->
+	<!-- Copyright Area Start -->
+	<div class="copyright__area">
+		<div class="container">
+			<div class="row align-items-center copyright__area-border">
+				<div class="col-xl-12">
+					<div class="copyright__area-left t-center">
+							<p>Copyright © 2023<a href="#"> EMIR KORKUT</a> all rights reserved. </p>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+	<!-- Copyright Area End -->
+	<!-- Scroll Btn Start -->
+	<div class="scroll-up">
+		<svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+			<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /> </svg>
+	</div>
+	<!-- Scroll Btn End -->
+	<!-- Main JS -->
+	<script src="assets/js/jquery-3.6.0.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="assets/js/bootstrap.min.js"></script>
+	<!-- Counter up -->
+	<script src="assets/js/jquery.counterup.min.js"></script>
+	<!-- Popper JS -->
+	<script src="assets/js/popper.min.js"></script>
+	<!-- Progressbar JS -->
+	<script src="assets/js/progressbar.min.js"></script>
+	<!-- Magnific JS -->
+	<script src="assets/js/jquery.magnific-popup.min.js"></script>
+	<!-- Nice Select JS -->
+	<script src="assets/js/jquery.nice-select.min.js"></script>
+	<!-- Swiper JS -->
+	<script src="assets/js/swiper-bundle.min.js"></script>
+	<!-- Waypoints JS -->
+	<script src="assets/js/jquery.waypoints.min.js"></script>
+	<!-- Isotope JS -->
+	<script src="assets/js/isotope.pkgd.min.js"></script>
+	<!-- Mean menu -->
+	<script src="assets/js/jquery.meanmenu.min.js"></script>
+	<!-- Custom JS -->
+	<script src="assets/js/custom.js"></script>
+
+
+</body>
+
+</html>
+
+
+
