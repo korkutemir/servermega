@@ -5,14 +5,14 @@
 	<!-- Start Meta -->
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-	<meta name="description" content="Metier  - Portfolio HTML5 Template"/>
-	<meta name="keywords" content="Creative, Digital, multipage, landing, freelancer template"/>
-	<meta name="author" content="ThemeOri">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Title of Site -->
-	<title>Metier  - Portfolio HTML5 Template</title>
+	<meta name="description" content="Antalya kiosk üzerinde AR (Artırılmış Gerçeklik) ve VR (Sanal Gerçeklik) teknolojileriyle çalışan web, mobil ve masaüstü uygulamalar geliştirmekteyiz. Frontend ve backend tarafında uzmanlaşmış ekip, cross-platform uyumlu çözümler sunarak 3D modeller ve sanal turlar oluşturuyor. Antalya'nın turistik yerlerini keşfetmek için bizimle iletişime geçin.">
+	<meta name="keywords" content="Antalya kiosk, AR, VR, webapp, mobil, desktop, frontend, backend, cross-platform, 3D model, sanal tur, Antalya yazılım,antalya yazılım geliştirme">
+	<meta name="author" content="emir korkut">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<!-- Title of Site -->
+	<title translate="no">E-KO | Hakkımda</title>
 	<!-- Favicons -->
-	<link rel="icon" type="image/png" href="assets/img/favicon.png">
+	<link rel="icon" type="image/png" href="icon6.png">
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<!-- font awesome -->
@@ -29,6 +29,17 @@
 	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="assets/sass/style.css"> 
+
+	<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+	<script type="text/javascript">
+		function googleTranslateElementInit() {
+			new google.translate.TranslateElement(
+				{pageLanguage: 'en',includedLanguages: 'en,tr,ko,es,fr,de,ar,it,uk,iw,ru,zh-CN,ja,hi',layout: google.translate.TranslateElement.InlineLayout.SIMPLE},
+				'google_translate_element'
+			);
+		}
+	</script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.min.js"></script>
 	<script type="module" src="C:\Program Files\nodejs\node_modules\three\src\loaders\TextureLoader.js"></script>
@@ -55,7 +66,9 @@
 	
 window.onload=function() {
 
-
+	document.getElementById("eko").onloadeddata=function() {
+		document.getElementById("eko").play();
+	}
 	
 		let camera, controls, scene, renderer;
 
@@ -203,33 +216,30 @@ var objects_margin = 20;
 		<div class="container custom-container">
 			<div class="header__area-box">
 				<div class="header__area-box-logo two">
-						<a draggable="false" href="index.html"> <img draggable="false" src="icon6.png" alt=""><span id="span-1">EMIRKORKUT.COM</span></a>
+						<a draggable="false" href="index.html"> <img draggable="false" src="icon6.png" alt=""><span id="span-1" translate="no">EMIRKORKUT.COM</span></a>
 					<div class="responsive-menu"></div>
 				</div>
 				<div class="header__area-box-main-menu meanmenu-responsive">
 						<ul id="mobilemenu">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="javascript:void(0);">About Me</a></li>		
-								<li><a href="contact.html">Contact</a></li>
-								<li><a href="#"><img draggable="false"  src="assets/img/country/eng.png" class="flag">EN</a>
+								<li><a href="index-tr.html" class="home2">Anasayfa</a></li>
+								<li><a href="javascript:void(0);" class="about2">Hakkımda</a></li>		
+								<li><a href="contact-tr.html" class="content2">İletişim</a></li>
+								<li><a href="#"><img draggable="false"  src="assets/img/country/eng.png" class="flag" id="flag2"><span translate="no" id="flag-name2">EN</span></a>
 									<ul class="sub-menu" style="overflow:scroll !important;height:300px !important;">
-										<li><a href="index.html"><img draggable="false"  src="assets/img/country/Flag_of_Turkey_Flat_Round-64x64.png" class="flag">TURKISH</a> </li>
-										<li><a href="index-2.html"><img draggable="false"  src="assets/img/country/eng.png" class="flag">ENGLISH</a> </li>
-										<li><a href="index-2.html"><img draggable="false"  src="assets/img/country/Flag_of_Spain_Flat_Round-64x64.png" class="flag">SPAIN</a> </li>
-										<li><a href="index-3.html"><img draggable="false"  src="assets/img/country/Flag_of_Germany_Flat_Round-64x64.png" class="flag">GERMAN</a> </li>
-										<li><a href="index.html"><img draggable="false"  src="assets/img/country/Flag_of_France_Flat_Round-64x64.png" class="flag">FRENCH</a> </li>
-										<li><a href="index-2.html"><img draggable="false"  src="assets/img/country/Flag_of_Italy_Flat_Round-64x64.png" class="flag">ITALY</a> </li>
-										<li><a href="index-3.html"><img draggable="false"  src="assets/img/country/Flag_of_Russia_Flat_Round-64x64.png" class="flag">RUSSIAN</a> </li>
-										<li><a href="index.html"><img draggable="false"  src="assets/img/country/Flag_of_South_Korea_Flat_Round-64x64.png" class="flag">KOREAN</a> </li>
-										<li><a href="index-2.html"><img draggable="false"  src="assets/img/country/Flag_of_Saudi_Arabia_Flat_Round-64x64.png" class="flag">ARABIC</a> </li>
-										<li><a href="index-3.html"><img draggable="false"  src="assets/img/country/Flag_of_Israel_Flat_Round-64x64.png" class="flag">ISRAEL</a> </li>
-										<li><a href="index.html"><img draggable="false"  src="assets/img/country/Flag_of_Ukraine_Flat_Round-64x64.png" class="flag">UKRANIA</a> </li>								<li><a href="index-3.html"><img src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
-										<li><a href="index.html"><img draggable="false"  src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
-										<li><a href="index-2.html"><img draggable="false"  src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
-										<li><a href="index-3.html"><img draggable="false"  src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
-										<li><a href="index.html"><img draggable="false"  src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
-										<li><a href="index-2.html"><img draggable="false"  src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
-										<li><a href="index-3.html"><img draggable="false"  src="Flag_of_Germany_Flat_Round-64x64.png" class="flag">DE</a> </li>
+										<li class="slct-item" icon-lang="tr"><a translate="no" href="javascript:void(0);"><img draggable="false"  src="assets/img/country/Flag_of_Turkey_Flat_Round-64x64.png" class="flag">TURKISH</a> </li>
+										<li class="slct-item" icon-lang="en"><a translate="no" href="aboutme.html"><img draggable="false"  src="assets/img/country/eng.png" class="flag">ENGLISH</a> </li>
+										<li class="slct-item" icon-lang="es"><a translate="no" href="#googtrans(en|es)"><img draggable="false"  src="assets/img/country/Flag_of_Spain_Flat_Round-64x64.png" class="flag">SPAIN</a> </li>
+										<li class="slct-item" icon-lang="de"><a translate="no" href="#googtrans(en|de)"><img draggable="false"  src="assets/img/country/Flag_of_Germany_Flat_Round-64x64.png" class="flag">GERMAN</a> </li>
+										<li class="slct-item" icon-lang="fr"><a translate="no" href="#googtrans(en|fr)"><img draggable="false"  src="assets/img/country/Flag_of_France_Flat_Round-64x64.png" class="flag">FRENCH</a> </li>
+										<li class="slct-item" icon-lang="it"><a translate="no" href="#googtrans(en|it)"><img draggable="false"  src="assets/img/country/Flag_of_Italy_Flat_Round-64x64.png" class="flag">ITALY</a> </li>
+										<li class="slct-item" icon-lang="ru"><a translate="no" href="#googtrans(en|ru)"><img draggable="false"  src="assets/img/country/Flag_of_Russia_Flat_Round-64x64.png" class="flag">RUSSIAN</a> </li>
+										<li class="slct-item" icon-lang="ko"><a translate="no" href="#googtrans(en|ko)"><img draggable="false"  src="assets/img/country/Flag_of_South_Korea_Flat_Round-64x64.png" class="flag">KOREAN</a> </li>
+										<li class="slct-item" icon-lang="ar"><a translate="no" href="#googtrans(en|ar)"><img draggable="false"  src="assets/img/country/Flag_of_Saudi_Arabia_Flat_Round-64x64.png" class="flag">ARABIC</a> </li>
+										<li class="slct-item" icon-lang="iw"><a translate="no" href="#googtrans(en|iw)"><img draggable="false"  src="assets/img/country/Flag_of_Israel_Flat_Round-64x64.png" class="flag">ISRAEL</a> </li>
+										<li class="slct-item" icon-lang="uk"><a translate="no" href="#googtrans(en|uk)"><img draggable="false"  src="assets/img/country/Flag_of_Ukraine_Flat_Round-64x64.png" class="flag">UKRANIA</a> </li>
+										<li class="slct-item" icon-lang="zh"><a translate="no" href="#googtrans(en|zh-CN)"><img draggable="false"  src="assets/img/country/china.png" class="flag">CHINESE</a> </li>
+										<li class="slct-item" icon-lang="ja"><a translate="no" href="#googtrans(en|ja)"><img draggable="false"  src="assets/img/country/japan.png" class="flag">JAPANESE</a> </li>
+										<li class="slct-item" icon-lang="hi"><a translate="no" href="#googtrans(en|hi)"><img draggable="false"  src="assets/img/country/india.png" class="flag">HINDI</a> </li>							
 									</ul>
 								</li>
 							</ul>
@@ -241,40 +251,40 @@ var objects_margin = 20;
 				<div class="header__area-box-sidebar-popup">
 					<div class="sidebar-close-btn"> <a href="#"><i class="fal fa-times"></i></a> </div>
 					<div class="header__area-box-sidebar-popup-logo">
-							<a href="index.html"> <img draggable="false"  src="icon6.png" alt=""><span id="span-2">EMIRKORKUT.COM</span></a>
+							<a href="index.html"> <img draggable="false"  src="icon6.png" alt=""><span id="span-2" translate="no">EMIRKORKUT.COM</span></a>
 					</div>
 					<p></p>
 					<div class="header__area-box-sidebar-popup-contact">
-						<h4 class="mb-25">Contact Me</h4>
+						<h4 class="mb-25">İletişim</h4>
 						<form action="#">
 							<div class="row">
 								<div class="col-sm-12 mb-30">
 									<div class="header__area-box-sidebar-popup-contact-form-item two"> <i class="far fa-user"></i>
-										<input type="text" name="name" placeholder="Your Name" required="required"> </div>
+										<input type="text" name="name" placeholder="İsim" required="required"> </div>
 								</div>
 								<div class="col-sm-12 mb-30">
 									<div class="header__area-box-sidebar-popup-contact-form-item two"> <i class="far fa-envelope-open"></i>
-										<input type="text" name="email" placeholder="Email Address" required="required"> </div>
+										<input type="text" name="email" placeholder="Mail Adresi" required="required"> </div>
 								</div>
 								<div class="col-sm-12 mb-30">
 										<div class="header__area-box-sidebar-popup-contact-form-item two"> <i class="far fa-phone"></i>
-											<input type="tel" name="tel" placeholder="Phone Number" required="required"> </div>
+											<input type="tel" name="tel" placeholder="Telefon Numarası" required="required"> </div>
 									</div>
 								<div class="col-sm-12 mb-30">
 									<div class="header__area-box-sidebar-popup-contact-form-item two"> <i class="fal fa-pen"></i>
-										<textarea name="message" rows="5" placeholder="Message"></textarea>
+										<textarea name="message" rows="5" placeholder="Mesaj"></textarea>
 									</div>
 								</div>
 								<div class="col-sm-12">
 									<div class="header__area-box-sidebar-popup-contact-form-item">
-										<button class="theme-btn-1" type="submit">Submit Now<i class="fal fa-long-arrow-right"></i></button>
+										<button class="theme-btn-1" type="submit">Gönder<i class="fal fa-long-arrow-right"></i></button>
 									</div>
 								</div>
 							</div>
 						</form>
 					</div>
 					<div class="header__area-box-sidebar-popup-follow-us">
-						<h4 class="mb-25">Follow Us</h4>
+						<h4 class="mb-25">Takip Et</h4>
 						<div class="header__area-box-sidebar-popup-follow-us-social two">
 							<ul>
 								<li><a href="#"><i class="fab fa-facebook-f"></i></a> </li>
@@ -298,16 +308,22 @@ var objects_margin = 20;
                 <div class="col-xl-4 col-lg-4 lg-mb-30">
                     <div class="all__sidebar mr-30 xl-mr-0">
                         <div class="all__sidebar-item details">
-                    <img id="eko" src="emirkorkut1.jpg" style="height: 500px;width: 500px;">
+				   <!-- <img id="eko" src="emirkorkut1.jpg" style="height: 500px;width: 500px;"> -->
+				   <video id="eko" style="height: 500px;width: 300px;" src="ai2.mp4" loop autoplay></video>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-8 col-lg-8">
                     <div class="portfolio__details-left">
                         <div class="portfolio__details-left-content">
-                            <h2 class="mb-30">EMIR KORKUT</h2>
-							<p>Akdeniz Üniversitesi Bilgisayar Programcılığı bölümünden mezun. Javascript, Nodejs dillerine hakim, AI destekli web3.0 çağına adapte webapp, mobil, desktop, kiosk, TV, VR/AR, Server yazabilen</p> 
-							
+                            <h2 class="mb-30" translate="no">EMIR KORKUT</h2>
+						<!--	<p>Akdeniz Üniversitesi Bilgisayar Programcılığı bölümünden mezun. Javascript, Nodejs dillerine hakim, AI destekli web3.0 çağına adapte webapp, mobil, desktop, kiosk, TV, VR/AR, Server hizmeti vermekteyiz.yurt içi ve yurt dışı projelerde yer almış. gün gün tecrübe kazanan geleceği yazanlardan birisi olmaya çalışan teknolojinin gelişmesi için katkıda bulunan bi yazılım geliştiricisiyimdir.</p> -->
+						<p>Akdeniz Üniversitesi Bilgisayar Programcılığı bölümünden mezun.</p><br>
+						<p>Javascript, Nodejs dillerine hakim.</p><br>
+						<p>AI destekli web3.0 çağına adapte webapp, mobil, desktop, kiosk, TV, VR/AR, Server hizmeti vermekteyiz.</p><br>
+						<p>yurt içi ve yurt dışı projelerde yer almış.</p><br>
+						<p>gün gün tecrübe kazanan geleceği yazanlardan birisi olmaya çalışan</p><br>
+						<p>teknolojinin gelişmesi için katkıda bulunan bi yazılım geliştiricisiyimdir.</p>	
 						</div>
                     </div>
                 </div>
@@ -315,7 +331,7 @@ var objects_margin = 20;
 						
 								<div class="skill__area-right">
 									<div class="skill__area-right-title mb-30">
-										<h2>My Skills</h2> </div>
+										<h2 translate="no">Beceriler</h2> </div>
 									<div class="skill__area-right-skill">
 										<div class="skill__area-right-skill-item">
 											<div class="skill__area-right-skill-item-content">
@@ -452,9 +468,9 @@ var objects_margin = 20;
 							</div>
 							<div class="footer__area-widget-about-menu three">
 								<ul>
-									<li><a href="index.html">Home</a></li>
-									<li><a href="javascript:void(0)">About Me</a></li>
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="index-tr.html" class="home2">Anasayfa</a></li>
+									<li><a href="javascript:void(0)" class="about2">Hakkımda</a></li>
+									<li><a href="contact-tr.html" class="content2">İletişim</a></li>
 								</ul>
 							</div>
 						</div>
@@ -470,7 +486,7 @@ var objects_margin = 20;
 			<div class="row align-items-center copyright__area-border">
 				<div class="col-xl-12">
 					<div class="copyright__area-left t-center">
-							<p>Copyright © 2023<a href="#"> EMIR KORKUT</a> all rights reserved. </p>					</div>
+							<p>Copyright © 2023<a href="#" translate="no"> EMIR KORKUT </a> Tüm Hakları Saklıdır.</p>					</div>
 				</div>
 			</div>
 		</div>
@@ -483,6 +499,8 @@ var objects_margin = 20;
 	</div>
 	<!-- Scroll Btn End -->
 	<!-- Main JS -->
+	<div id="google_translate_element"></div>
+
 	<script src="assets/js/jquery-3.6.0.min.js"></script>
 	<!-- Bootstrap JS -->
 	<script src="assets/js/bootstrap.min.js"></script>

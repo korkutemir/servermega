@@ -9,8 +9,8 @@
 	<meta name="keywords" content="Antalya kiosk, AR, VR, webapp, mobil, desktop, frontend, backend, cross-platform, 3D model, sanal tur, Antalya yazılım,antalya yazılım geliştirme">
 	<meta name="author" content="emir korkut">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<!-- Title of Site -->
-	<title translate="no">E-KO | Contact</title>
+		<!-- Title of Site -->
+	<title translate="no">E-KO | İletişim</title>
 	<!-- Favicons -->
 	<link rel="icon" type="image/png" href="icon6.png">
 	<!-- Bootstrap CSS -->
@@ -228,13 +228,13 @@ display: none;
 
 document.getElementById("map-button").onclick=function() {
 	if(check_map==true) {
-		this.innerHTML="3D Map";
+		this.innerHTML="3D Harita";
 	document.getElementById("map").style.display="none";
 	document.getElementById("map-2").style.display="block";
 		check_map=false;
 	}
 	else {
-		this.innerHTML="Normal Map";
+		this.innerHTML="Normal Harita";
 		document.getElementById("map-2").style.display="none";
 		document.getElementById("map").style.display="block";
 		check_map=true;
@@ -336,18 +336,18 @@ document.getElementById("map-button").onclick=function() {
 		<div class="container custom-container">
 			<div class="header__area-box">
 				<div class="header__area-box-logo two">
-						<a draggable="false" href="index.html"> <img draggable="false" src="icon6.png" alt=""><span id="span-1" translate="no">EMIRKORKUT.COM</span></a>
+						<a draggable="false" href="index-tr.html"> <img draggable="false" src="icon6.png" alt=""><span id="span-1" translate="no">EMIRKORKUT.COM</span></a>
 					<div class="responsive-menu"></div>
 				</div>
 				<div class="header__area-box-main-menu meanmenu-responsive">
 						<ul id="mobilemenu">
-								<li><a href="index.html" class="home">Home</a></li>
-								<li><a href="aboutme.html" class="about">About Me</a></li>		
-								<li><a href="javascript:void(0);" class="content">Contact</a></li>
+								<li><a href="index-tr.html" class="home2">Anasayfa</a></li>
+								<li><a href="aboutme-tr.html" class="about2">Hakkımda</a></li>		
+								<li><a href="javascript:void(0);" class="content2">İletişim</a></li>
 								<li><a href="#"><img draggable="false"  src="assets/img/country/eng.png" class="flag" id="flag2"><span translate="no" id="flag-name2">EN</span></a>
 									<ul class="sub-menu" style="overflow:scroll !important;height:300px !important;">
-										<li class="slct-item" icon-lang="tr"><a translate="no" href="#googtrans(en|tr)"><img draggable="false"  src="assets/img/country/Flag_of_Turkey_Flat_Round-64x64.png" class="flag">TURKISH</a> </li>
-										<li class="slct-item" icon-lang="en"><a translate="no" href="#googtrans(en|en)"><img draggable="false"  src="assets/img/country/eng.png" class="flag">ENGLISH</a> </li>
+										<li class="slct-item" icon-lang="tr"><a translate="no" href="javascript:void(0);"><img draggable="false"  src="assets/img/country/Flag_of_Turkey_Flat_Round-64x64.png" class="flag">TURKISH</a> </li>
+										<li class="slct-item" icon-lang="en"><a translate="no" href="contact.html"><img draggable="false"  src="assets/img/country/eng.png" class="flag">ENGLISH</a> </li>
 										<li class="slct-item" icon-lang="es"><a translate="no" href="#googtrans(en|es)"><img draggable="false"  src="assets/img/country/Flag_of_Spain_Flat_Round-64x64.png" class="flag">SPAIN</a> </li>
 										<li class="slct-item" icon-lang="de"><a translate="no" href="#googtrans(en|de)"><img draggable="false"  src="assets/img/country/Flag_of_Germany_Flat_Round-64x64.png" class="flag">GERMAN</a> </li>
 										<li class="slct-item" icon-lang="fr"><a translate="no" href="#googtrans(en|fr)"><img draggable="false"  src="assets/img/country/Flag_of_France_Flat_Round-64x64.png" class="flag">FRENCH</a> </li>
@@ -371,40 +371,40 @@ document.getElementById("map-button").onclick=function() {
 				<div class="header__area-box-sidebar-popup">
 					<div class="sidebar-close-btn"> <a href="#"><i class="fal fa-times"></i></a> </div>
 					<div class="header__area-box-sidebar-popup-logo">
-							<a href="index.html"> <img draggable="false"  src="icon6.png" alt=""><span id="span-2" translate="no">EMIRKORKUT.COM</span></a>
+							<a href="index-tr.html"> <img draggable="false"  src="icon6.png" alt=""><span id="span-2" translate="no">EMIRKORKUT.COM</span></a>
 					</div>
 					<p></p>
 					<div class="header__area-box-sidebar-popup-contact">
-						<h4 class="mb-25">Contact Me</h4>
+						<h4 class="mb-25">İletişim</h4>
 						<form action="#">
 							<div class="row">
 								<div class="col-sm-12 mb-30">
 									<div class="header__area-box-sidebar-popup-contact-form-item two"> <i class="far fa-user"></i>
-										<input type="text" name="name" placeholder="Your Name" required="required"> </div>
+										<input type="text" name="name" placeholder="İsim" required="required"> </div>
 								</div>
 								<div class="col-sm-12 mb-30">
 									<div class="header__area-box-sidebar-popup-contact-form-item two"> <i class="far fa-envelope-open"></i>
-										<input type="text" name="email" placeholder="Email Address" required="required"> </div>
+										<input type="text" name="email" placeholder="Mail Adresi" required="required"> </div>
 								</div>
 								<div class="col-sm-12 mb-30">
 										<div class="header__area-box-sidebar-popup-contact-form-item two"> <i class="far fa-phone"></i>
-											<input type="tel" name="tel" placeholder="Phone Number" required="required"> </div>
+											<input type="tel" name="tel" placeholder="Telefon Numarası" required="required"> </div>
 									</div>
 								<div class="col-sm-12 mb-30">
 									<div class="header__area-box-sidebar-popup-contact-form-item two"> <i class="fal fa-pen"></i>
-										<textarea name="message" rows="5" placeholder="Message"></textarea>
+										<textarea name="message" rows="5" placeholder="Mesaj"></textarea>
 									</div>
 								</div>
 								<div class="col-sm-12">
 									<div class="header__area-box-sidebar-popup-contact-form-item">
-										<button class="theme-btn-1" type="submit">Submit Now<i class="fal fa-long-arrow-right"></i></button>
+										<button class="theme-btn-1" type="submit">Gönder<i class="fal fa-long-arrow-right"></i></button>
 									</div>
 								</div>
 							</div>
 						</form>
 					</div>
 					<div class="header__area-box-sidebar-popup-follow-us">
-						<h4 class="mb-25">Follow Us</h4>
+						<h4 class="mb-25">Takip et</h4>
 						<div class="header__area-box-sidebar-popup-follow-us-social two">
 							<ul>
 								<li><a href="#"><i class="fab fa-facebook-f"></i></a> </li>
@@ -428,14 +428,14 @@ document.getElementById("map-button").onclick=function() {
 			<div class="row mb-60">
 				<div class="col-xl-7 col-lg-6">
 					<div class="contact__area-title">
-                        <span class="subtitle">Contact Me</span>
-						<h2>contact with me for cooperation.</h2> 
+                        <span class="subtitle">İletişim</span>
+						<h2>İşbirliği için iletişime geçin</h2> 
                     </div>
                     <div class="contact__area-info">
                         <div class="contact__area-info-item">
                             <div class="contact__area-info-item-icon">
                                 <i class="far fa-phone-alt"></i>
-                                <span>Phone :</span>
+                                <span>Telefon :</span>
                             </div>
                             <div class="contact__area-info-item-content">
                                 <a href="tel:+123(458)896895" translate="no">+90 ( 534 ) 263 4506</a>
@@ -453,7 +453,7 @@ document.getElementById("map-button").onclick=function() {
                         <div class="contact__area-info-item">
                             <div class="contact__area-info-item-icon">
                                 <i class="far fa-map-marker-alt"></i>
-                                <span>Location :</span>
+                                <span>Konum :</span>
                             </div>
                             <div class="contact__area-info-item-content">
                                 <a href="#" translate="no"> Akdeniz Üniversitesi Ar-Ge 2 Uluğbey Binası No:3A/Z Konyaaltı / ANTALYA</a>
@@ -461,7 +461,7 @@ document.getElementById("map-button").onclick=function() {
 						</div>
 						<div class="contact__area-info-item" style="position: relative !important;top:30px !important;">
                             <div class="contact__area-info-item-icon">
-                                <button id="map-button">Normal Map</button>
+                                <button id="map-button">Normal Harita</button>
                             </div>
                         </div>
                     </div>
@@ -475,26 +475,26 @@ document.getElementById("map-button").onclick=function() {
 								<div class="row">
 									<div class="col-sm-12 mb-25">
 										<div class="contact__area-bottom-form-item">
-											<input type="text" name="name" placeholder="Your Name" required="required"> </div>
+											<input type="text" name="name" placeholder="İsim" required="required"> </div>
 									</div>
 									<div class="col-sm-12 mb-25">
 										<div class="contact__area-bottom-form-item">
-											<input type="text" name="email" placeholder="Email Address" required="required"> </div>
+											<input type="text" name="email" placeholder="Mail Adresi" required="required"> </div>
 									</div>
 									<div class="col-sm-12 mb-25">
 											<div class="contact__area-bottom-form-item">
-												<input type="tel" name="tel" placeholder="Phone Number" required="required"> </div>
+												<input type="tel" name="tel" placeholder="Telefon Numarası" required="required"> </div>
 										</div>
 								
 									<div class="col-sm-12 mb-30">
 										<div class="contact__area-bottom-form-item">
-											<textarea name="message" rows="5" placeholder="Message"></textarea>
+											<textarea name="message" rows="5" placeholder="Mesaj"></textarea>
 										</div>
 									</div>
 								
 									<div class="col-sm-12">
 										<div class="contact__area-bottom-form-item">
-											<button class="theme-btn-1" type="submit">Submit Now<i class="far fa-long-arrow-right"></i></button>
+											<button class="theme-btn-1" type="submit">Gönder<i class="far fa-long-arrow-right"></i></button>
 										</div>
 									</div>
 								</div>
@@ -535,9 +535,9 @@ document.getElementById("map-button").onclick=function() {
 							</div>
 							<div class="footer__area-widget-about-menu three">
 								<ul>
-									<li><a href="index.html" class="home">Home</a></li>
-									<li><a href="aboutme.html" class="about">About Me</a></li>
-									<li><a href="javascript:void(0);" class="content">Contact</a></li>
+									<li><a href="index-tr.html" class="home2">Anasayfa</a></li>
+									<li><a href="aboutme-tr.html" class="about2">Hakkımda</a></li>
+									<li><a href="javascript:void(0);" class="content2">İletişim</a></li>
 								</ul>
 							</div>
 						</div>
@@ -553,7 +553,7 @@ document.getElementById("map-button").onclick=function() {
 			<div class="row align-items-center copyright__area-border">
 				<div class="col-xl-12">
 					<div class="copyright__area-left t-center">
-							<p>Copyright © 2023<a href="#" translate="no"> EMIR KORKUT </a> all rights reserved. </p>	
+							<p>Copyright © 2023<a href="#" translate="no"> EMIR KORKUT </a> tüm hakları saklıdır.</p>	
 					</div>
 				</div>
 			</div>

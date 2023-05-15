@@ -6584,3 +6584,70 @@ Pagination
    font-size: 22px;
  }
 }
+
+
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+  display: none !important;
+}
+.skiptranslate {
+ position: absolute;
+ right: 0%;
+ top:0%;
+ display: none !important;
+}
+.goog-te-gadget-icon {
+display:none;
+}
+
+
+.goog-te-gadget-simple {
+background-color: #ecebf0 !important;
+border:0 !important;
+font-size: 10pt;
+font-weight:800;
+display: inline-block;
+padding:10px 10px !important;
+cursor: pointer;
+zoom: 1;
+position: absolute !important;
+top:100px !important;
+right: 200px !important;
+border-radius: 10px;
+}
+
+.goog-te-gadget-simple  span {
+color:#3e3065 !important;
+
+}
+.goog-te-banner-frame{
+display:none !important;
+}
+#goog-gt-tt, .goog-te-balloon-frame
+{
+display: none !important;
+}
+.goog-text-highlight 
+{ 
+background: none !important;
+box-shadow: none !important;
+}
+
+
+.VIpgJd-ZVi9od-vH1Gmf {
+width: 300px !important;
+color:red !important;
+}
+
+.VIpgJd-ZVi9od-aZ2wEe {
+display: none !important;
+}
+
+.VIpgJd-ZVi9od-aZ2wEe-OiiCO {
+display: none !important;
+}
+
+body {
+	  min-width: 100% !important;
+  left:0 !important;
+  top:0 !important;
+}

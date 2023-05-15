@@ -23,7 +23,7 @@ app.use(cors({
 
 //app.use(express.static(`${__dirname}`));
 //app.use("/static", express.static(__dirname + "/nodejs"));
-app.use(express.static(path.join(__dirname, "assets")));
+app.use(express.static(path.join(__dirname, "/")));
 app.use(express.json());
 
 app.use(fileUpload());
@@ -93,8 +93,8 @@ app.get('/',function(req,res,next) {
    // res.download('eko.pdf');
 }); 
 
-app.get('/megagen-content',function(req,res,next) {
-  res.sendFile( __dirname + "/www/products_server3.html");
+app.get('/portfolio-details.html',function(req,res,next) {
+  res.sendFile( __dirname + "/www/portfolio-details.html");
  // res.download('eko.pdf');
 });
 
@@ -103,8 +103,9 @@ app.get('/megagen-admin',function(req,res,next) {
  // res.download('eko.pdf');
 });
 
-app.get('/proccess',function(req,res) {
-    res.send({"name":process.pid});
+app.get('/contact.html',function(req,res) {
+   // res.send({"name":process.pid});
+      res.sendFile( __dirname + "/www/contact.html");
 });
 
 app.get("/error",function(req,res) {
