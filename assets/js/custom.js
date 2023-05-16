@@ -225,4 +225,34 @@
 		}, duration);
 		return false;
 	});
+
+	document.querySelectorAll(".slct-item").forEach(function(elemnt8) {
+		elemnt8.onclick=function() {
+		   
+			window.localStorage.setItem("icon_url",elemnt8.getElementsByTagName("img")[0].getAttribute("src"));
+			window.localStorage.setItem("icon_lang",this.getAttribute("icon-lang"));
+		
+		window.location=window.location.href+elemnt8.getElementsByTagName("a")[0].getAttribute("href");
+		window.location.reload();
+		}
+	});
+	
+	if(window.localStorage.getItem("icon_url").length>0) {
+		document.getElementById("flag2").setAttribute("src",window.localStorage.getItem("icon_url"));
+		document.getElementById("flag-name2").innerHTML=window.localStorage.getItem("icon_lang");
+		
+		document.querySelectorAll(".home").forEach(function(element1) {
+			element1.setAttribute("href","index.html#googtrans(en|"+window.localStorage.getItem("icon_lang")+")");
+		});
+		document.querySelectorAll(".about").forEach(function(element1) {
+			element1.setAttribute("href","aboutme.html#googtrans(en|"+window.localStorage.getItem("icon_lang")+")");
+		});
+		document.querySelectorAll(".content").forEach(function(element1) {
+			element1.setAttribute("href","contact.html#googtrans(en|"+window.localStorage.getItem("icon_lang")+")");
+		});
+	}	
+
+
+
+
 })(jQuery);
