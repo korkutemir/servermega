@@ -6575,6 +6575,13 @@ Pagination
   color:#005BA4;
 }
 
+#mobil-map {
+  visibility: visible;
+}
+#mobil-map-2 {
+  visibility: hidden;
+}
+
 @media (max-width: 991px) {
  .header__area-box-logo img {
    height: 55px;
@@ -6583,6 +6590,13 @@ Pagination
  #span-1 {
    font-size: 22px;
  }
+
+ #mobil-map {
+   visibility: hidden;
+ }
+ #mobil-map-2 {
+  visibility: visible;
+}
 }
 
 

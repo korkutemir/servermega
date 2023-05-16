@@ -226,7 +226,7 @@ display: none;
 		
 	var check_map=true;
 
-document.getElementById("map-button").onclick=function() {
+/*document.getElementById("map-button").onclick=function() {
 	if(check_map==true) {
 		this.innerHTML="3D Map";
 	document.getElementById("map").style.display="none";
@@ -239,7 +239,24 @@ document.getElementById("map-button").onclick=function() {
 		document.getElementById("map").style.display="block";
 		check_map=true;
 	}
-}
+}*/
+
+document.querySelectorAll("[id=map-button]").forEach(function(elmnt) {
+	elmnt.onclick=function() {
+		if(check_map==true) {
+		this.innerHTML="3D Map";
+	document.getElementById("map").style.display="none";
+	document.getElementById("map-2").style.display="block";
+		check_map=false;
+	}
+	else {
+		this.innerHTML="Normal Map";
+		document.getElementById("map-2").style.display="none";
+		document.getElementById("map").style.display="block";
+		check_map=true;
+	}
+	}
+});
 	}
 </script>
 	<!--<script>
@@ -453,13 +470,13 @@ document.getElementById("map-button").onclick=function() {
                         <div class="contact__area-info-item">
                             <div class="contact__area-info-item-icon">
                                 <i class="far fa-map-marker-alt"></i>
-                                <span>Location :</span>
+                                <span style="width: 70px !important;">Location :</span>
                             </div>
                             <div class="contact__area-info-item-content">
                                 <a href="#" translate="no"> Akdeniz Üniversitesi Ar-Ge 2 Uluğbey Binası No:3A/Z Konyaaltı / ANTALYA</a>
                             </div>
 						</div>
-						<div class="contact__area-info-item" style="position: relative !important;top:30px !important;">
+						<div class="contact__area-info-item" id="mobil-map" style="position: relative !important;top:30px !important;">
                             <div class="contact__area-info-item-icon">
                                 <button id="map-button">Normal Map</button>
                             </div>
@@ -500,11 +517,16 @@ document.getElementById("map-button").onclick=function() {
 								</div>
 							</form>
 						</div>
+						<div class="contact__area-info-item" id="mobil-map-2" style="position: relative !important;top:0px !important;">
+                            <div class="contact__area-info-item-icon">
+                                <button id="map-button">Normal Map</button>
+                            </div>
+                        </div>
 						<div class="contact__area-bottom-map">
 								<div id="map" class="map"></div>
 
 								<script
-								src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=beta"
+								src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPMcohZr9rLMh_VnqQkSV8l4RKI2I0YAs&callback=initMap&v=beta"
 								defer
 							  ></script>
 							<!--<iframe src="https://maps.google.com/maps?width=100%25&amp;height=100%25&amp;hl=en&amp;q=k%C3%BClt%C3%BCr%203880.sk%20kepez/antalya+(emirkorkut.com)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" loading="lazy"></iframe> -->
