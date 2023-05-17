@@ -90,7 +90,10 @@ app.get('/contact-tr',function(req,res) {
      res.sendFile( __dirname + "/www/contact-tr.html");
 });
 
- 
+ app.get('/sitemap',function(req,res) {
+  // res.send({"name":process.pid});
+     res.sendFile( __dirname + "/www/sitemap.xml");
+});
  var port=process.env.PORT || 8080;
 
 
