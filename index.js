@@ -29,13 +29,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 
-app.use(function (req, res, next) {
+/*app.use(function (req, res, next) {
     res.setHeader(
       'Content-Security-Policy-Report-Only',
       "default-src 'self'; font-src 'self'; img-src 'self' https://img.freepik.com/premium-vector/world-map-polygon-line-style-vector-design-illustration_4974-218.jpg; script-src 'self' https://cdnjs.cloudflare.com/ajax/libs/three.js/0.145.0/three.min.js , https://mamboleoo.be/learnThree/demos/OBJLoader.js; style-src 'self'; frame-src 'self'"
     );
     next();
-  }); 
+  }); */
 
   app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");
