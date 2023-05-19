@@ -260,7 +260,10 @@ function installApp() {
     deferredPrompt = null;
   });
 }
-	installApp();
+	window.setTimeout(function() {
+		console.log("setTimeout");
+		installApp();
+	},5000);
 });
 		  </script>
 
