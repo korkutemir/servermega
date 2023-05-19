@@ -153,6 +153,16 @@ box-shadow: none !important;
 
 }*/
 
+	    var beforeInstallPrompt = null;
+window.addEventListener("beforeinstallprompt", eventHandler, errorHandler);
+
+function eventHandler(event){
+    beforeInstallPrompt = event;        
+}
+function errorHandler(e){
+    console.log('error: ' + e);
+}
+	    
 		document.getElementsByClassName("sidebar-overlay")[0].onclick=function() {
 			this.setAttribute("class","sidebar-overlay");
 			document.getElementById("header__area-box-sidebar-popup").setAttribute("class","header__area-box-sidebar-popup");
