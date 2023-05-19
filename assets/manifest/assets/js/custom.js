@@ -242,13 +242,13 @@
 		document.getElementById("flag-name2").innerHTML=window.localStorage.getItem("icon_lang");
 		
 		document.querySelectorAll(".home").forEach(function(element1) {
-			element1.setAttribute("href","index.html#googtrans(en|"+window.localStorage.getItem("icon_lang")+")");
+			element1.setAttribute("href","/#googtrans(en|"+window.localStorage.getItem("icon_lang")+")");
 		});
 		document.querySelectorAll(".about").forEach(function(element1) {
-			element1.setAttribute("href","aboutme.html#googtrans(en|"+window.localStorage.getItem("icon_lang")+")");
+			element1.setAttribute("href","/about#googtrans(en|"+window.localStorage.getItem("icon_lang")+")");
 		});
 		document.querySelectorAll(".content").forEach(function(element1) {
-			element1.setAttribute("href","contact.html#googtrans(en|"+window.localStorage.getItem("icon_lang")+")");
+			element1.setAttribute("href","/contact#googtrans(en|"+window.localStorage.getItem("icon_lang")+")");
 		});
 	}	
 
