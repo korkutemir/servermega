@@ -6,6 +6,7 @@ var https = require('https');
 var cors=require("cors");
 var helmet=require("helmet");
 var os=require("os");
+var nodemailer = require('nodemailer');
 
 var express = require('express');
 
@@ -95,7 +96,37 @@ app.get('/contact-tr',function(req,res) {
      res.sendFile( __dirname + "/sitemap.xml");
 });
 
+app.post('/mail/:id',function(req,res) {
 
+ 
+  var transporter = nodemailer.createTransport({
+   host: "smtp.hostinger.com",
+    //service:"yandex",
+    secure:true, // TLS requires secureConnection to be false
+    port: 465, // port for secure SMTP
+    auth: {
+      user: 'info@emirkorkut.com',
+      pass: 'Antalya07@'
+    }
+  });
+  
+  var mailOptions = {
+    from: 'info@emirkorkut.com',
+    to: req.query.mail,
+    subject: "E-KO feedback",
+    html : { path: 'www/mail.html' }
+   // text: "emir"
+  };
+
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+
+});
  var port=process.env.PORT || 8080;
 
 
