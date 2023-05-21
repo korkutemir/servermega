@@ -123,6 +123,7 @@ app.post('/mail/:id',function(req,res) {
       console.log(error);
     } else {
       console.log('Email sent: ' + info.response);
+        res.send(info.response);
     }
   });
 
