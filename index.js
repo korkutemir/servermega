@@ -128,7 +128,7 @@ app.post('/mail/:id',function(req,res) {
 });
 
 app.use((req, res, next) => {
-    res.status(404).sendFile( __dirname + "/www/contact-tr.html");
+    res.status(404).sendFile( __dirname + "/www/error.html");
 });
 
  var port=process.env.PORT || 8080;
