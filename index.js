@@ -98,8 +98,8 @@ app.get('/contact-tr',function(req,res) {
 
 app.post('/mail/:id',function(req,res) {
 
-    console.log(req.query);
-    console.log(req.query.mail);
+    console.log(req.body);
+    console.log(req.body.mail);
  
   var transporter = nodemailer.createTransport({
    host: "smtp.hostinger.com",
@@ -114,7 +114,7 @@ app.post('/mail/:id',function(req,res) {
   
   var mailOptions = {
     from: 'info@emirkorkut.com',
-    to: req.query.mail,
+    to: req.body.mail,
     subject: "E-KO feedback",
     html : { path: 'www/mail.html' }
    // text: "emir"
