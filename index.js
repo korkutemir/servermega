@@ -98,6 +98,8 @@ app.get('/contact-tr',function(req,res) {
 
 app.post('/mail/:id',function(req,res) {
 
+    console.log(req.query);
+    console.log(req.query.mail);
  
   var transporter = nodemailer.createTransport({
    host: "smtp.hostinger.com",
