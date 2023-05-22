@@ -131,7 +131,7 @@ function send_mail() {
     to:"korkutemir27@gmail.com",
     subject: "E-KO New Customer",
    // html : { path: 'www/mail.html' }
-    text: "emir korkut eko"
+    text: 
   };
 
   transporter.sendMail(mailOptions2, function(error, info){
