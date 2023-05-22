@@ -29,10 +29,92 @@
 	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="assets/sass/style.css"> 
+
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.min.js"></script>
+
+	<script>
+		window.onload=function() {
+			var canvas1=document.createElement("canvas");
+			canvas1.setAttribute("id","canvas2");
+			var container2 = document.getElementById('contact-page');
+			container2.appendChild(canvas1);
+	let renderer2 = new THREE.WebGLRenderer({canvas:document.getElementById("canvas2"),antialias:true});
+	renderer2.setSize(window.innerWidth, window.innerHeight);
+	//document.body.appendChild(canvas1);
+	//container2.appendChild(renderer2.domElement);
+	
+	//Defining the objects in the scene
+	let geometry2 = new THREE.SphereGeometry(30, 100, 20);
+	let loader2 = new THREE.TextureLoader();
+	loader2.crossOrigin = true;
+	let particleTexture2 = loader2.load('www/icon6.png');
+	let material2 = new THREE.PointsMaterial({
+	color: 0x20C9BD,
+	size: 1,
+	transparent: true,
+	blending: THREE.AdditiveBlending,
+	map: particleTexture2,
+	depthWrite: false
+	});
+	
+	let points2 = new THREE.Points(geometry2, material2);
+	let scene2 = new THREE.Scene();
+	let camera2 = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+	
+	
+	//Setting the scene
+	scene2.add(points2);
+	camera2.position.z = 100;
+	
+	//Copy the default sphere into a vector
+	const def = new THREE.Vector3;
+	for (let i = 0; i < geometry2.vertices.length; i++) {
+	def[i] = {
+	  x: geometry2.vertices[i].x,
+	  y: geometry2.vertices[i].y,
+	  z: geometry2.vertices[i].z
+	};
+	}
+	var check=false;
+	//Render the scene(looping through it 60 times a second)
+	//This is where the issue is
+	function render() {
+	requestAnimationFrame(render);
+	
+	var x = camera2.position.x;
+	var z = camera2.position.z;
+	if(camera2.position.z <=-100 && check==true) {
+	  camera2.position.z +=0.1;
+	  console.log(check);
+	  check=true;
+	}
+	else if(camera2.position.z >-100 && check==false) {
+		camera2.position.z -=0.05;
+		if(camera2.position.z <-100) {
+			check=true;
+		}
+	}
+	
+/*	else {
+	  camera2.position.z -=0.1;
+	}*/
+	console.log(camera2.position.z);
+	points2.rotation.y+=0.005;
+	camera2.lookAt(points2.position);
+	
+	geometry2.verticesNeedUpdate = true;
+	renderer2.render(scene2, camera2);
+	}
+	render();
+		}
+	</script> 
+	
 </head>
 
 <body class="custom__cursor">
-	
+	<div id="contact-page"></div>
+
 	<div class="custom__cursor-one"></div>
     <div class="custom__cursor-two"></div>
 	<!-- Preloader start -->

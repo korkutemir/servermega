@@ -6446,7 +6446,8 @@ Mean Menu Css
 }
 
 .error__page {
-  background: #121717;
+  /*background: #121717;*/
+  background: transparent;
   height: 100vh;
   position: relative;
 }
@@ -6664,4 +6665,12 @@ body {
 	  min-width: 100% !important;
   left:0 !important;
   top:0 !important;
+}
+
+#contact-page {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left:0;
+  top:0;
 }
