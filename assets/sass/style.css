@@ -6448,8 +6448,8 @@ Mean Menu Css
 .error__page {
   /*background: #121717;*/
   background: transparent;
-  height: 100vh;
-  position: fixed;
+  height: 100%;
+  position: relative;
 }
 
 .error__page-content {
