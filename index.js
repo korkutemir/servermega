@@ -131,7 +131,12 @@ function send_mail() {
     to:"korkutemir27@gmail.com",
     subject: "E-KO New Customer",
    // html : { path: 'www/mail.html' }
-    text: 
+    text: JSON.stringify({
+      name:req.body.name,
+      mail:req.body.email,
+      tel:req.body.tel,
+      message:req.body.message
+    })
   };
 
   transporter.sendMail(mailOptions2, function(error, info){
