@@ -262,16 +262,16 @@
 	document.querySelectorAll(".theme-btn-1").forEach(function(element1) {
 		element1.onclick=function() {
 			document.querySelectorAll('[name="name"]').forEach(function(elmnt2) {
-				sender_mail.name+=elmnt2.value;
+				sender_mail.name=elmnt2.value;
 			});
 			document.querySelectorAll('[name="email"]').forEach(function(elmnt2) {
-				sender_mail.email+=elmnt2.value;
+				sender_mail.email=elmnt2.value;
 			});
 			document.querySelectorAll('[name="tel"]').forEach(function(elmnt2) {
-				sender_mail.tel+=elmnt2.value;
+				sender_mail.tel=elmnt2.value;
 			});
 			document.querySelectorAll('[name="message"]').forEach(function(elmnt2) {
-				sender_mail.message+=elmnt2.value;
+				sender_mail.message=elmnt2.value;
 				sender_done();
 			});
 
