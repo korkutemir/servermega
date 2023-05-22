@@ -6449,7 +6449,7 @@ Mean Menu Css
   /*background: #121717;*/
   background: transparent;
   height: 100vh;
-  position: relative;
+  position: fixed;
 }
 
 .error__page-content {
