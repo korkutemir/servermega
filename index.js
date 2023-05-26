@@ -45,12 +45,12 @@ app.use(express.urlencoded({ extended: false }));
     next();
 }); 
 
-/*app.use(function(req,res,next){
+app.use(function(req,res,next){
   if(req.headers['x-forwarded-proto']!='https')
     res.redirect('https://emirkorkut.com'+req.url);
   else
-    next() /* Continue to other routes if we're not redirecting */
-//});
+    next()
+});
 
 app.use((req, res, next) => {
     res.setHeader('X-Content-Type-Options', 'nosniff');
