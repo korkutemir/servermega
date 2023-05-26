@@ -112,7 +112,7 @@ app.post('/mail/:id',function(req,res) {
     from: 'info@emirkorkut.com',
     to: req.body.email,
     subject: "E-KO feedback",
-    html : { path: 'www/mail.html' }
+    html : { path: 'www/mail2.html' }
    // text: "emir"
   };
 
