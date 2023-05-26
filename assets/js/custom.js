@@ -281,6 +281,7 @@
 request.open("POST","https://emirkorkut.com/mail/mail_id?eko=true",true);
 request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
 request.send(JSON.stringify(sender_mail));
+window.location="/contact#googtrans(en|"+window.localStorage.getItem("icon_lang")+")";
 			}
 
 		}
