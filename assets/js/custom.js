@@ -259,8 +259,8 @@
 		message:null
 	}
 
-	document.querySelectorAll(".theme-btn-1").forEach(function(element1) {
-		element1.onclick=function() {
+	document.querySelectorAll(".theme-btn-1").forEach(function(element2) {
+		element2.onclick=function() {
 			document.querySelectorAll('[name="name"]').forEach(function(elmnt2) {
 				sender_mail.name=elmnt2.value;
 			});
@@ -281,7 +281,6 @@
 request.open("POST","https://emirkorkut.com/mail/mail_id?eko=true",true);
 request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
 request.send(JSON.stringify(sender_mail));
-window.location="/contact#googtrans(en|"+window.localStorage.getItem("icon_lang")+")";
 			}
 
 		}
